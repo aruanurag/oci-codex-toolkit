@@ -5,10 +5,12 @@ from __future__ import annotations
 
 import argparse
 import base64
+from collections import defaultdict
 from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime, timezone
 import html
+from itertools import combinations
 import json
 import re
 from pathlib import Path
@@ -22,6 +24,12 @@ from resolve_oci_icon import resolve_icon
 
 DEFAULT_PAGE_WIDTH = 1600
 DEFAULT_PAGE_HEIGHT = 900
+DEFAULT_ICON_MAX_DIMENSION = 90.0
+EDGE_SEGMENT_TOLERANCE = 0.1
+EDGE_LANE_OVERLAP_TOLERANCE = 4.0
+EDGE_LANE_OVERLAP_MIN_LENGTH = 24.0
+NODE_OVERLAP_PADDING = 4.0
+MAX_EDGE_BENDS = 3
 
 TEXT_STYLE = (
     "whiteSpace=wrap;html=1;strokeColor=none;fillColor=none;align=center;"
@@ -54,6 +62,11 @@ PLACEHOLDER_STYLES = {
         "fontColor=#312D2A;fontFamily=Oracle Sans;fontSize=11;dashed=1;"
         "dashPattern=4 4;"
     ),
+}
+
+ANCHOR_STYLE_HINTS = {
+    "strokeColor=none",
+    "fillColor=none",
 }
 
 CONNECTOR_STYLES = {
@@ -157,6 +170,23 @@ def text_to_html(value: str) -> str:
     return html.escape(value).replace("\n", "<br>")
 
 
+def library_role(icon_title: str | None) -> str:
+    title = str(icon_title or "")
+    if " - Special Connectors - " in title:
+        return "special-connector"
+    if " - Grouping - " in title or title in VCN_LIKE_TITLES:
+        return "grouping"
+    return "icon"
+
+
+def scale_dimensions_to_max_dimension(width: float, height: float, max_dimension: float) -> tuple[float, float]:
+    largest = max(width, height, 0.0)
+    if largest <= 0:
+        return width, height
+    scale = max_dimension / largest
+    return width * scale, height * scale
+
+
 def append_style(style: str, additions: dict[str, str] | str | None = None) -> str:
     if not additions:
         return style
@@ -170,6 +200,15 @@ def append_style(style: str, additions: dict[str, str] | str | None = None) -> s
     if style and not style.endswith(";"):
         style += ";"
     return style + extra + ";"
+
+
+def is_anchor_shape_element(element: dict[str, Any], width: float, height: float, style: str) -> bool:
+    identifier = str(element.get("id") or "")
+    if identifier.endswith("-anchor"):
+        return True
+    if max(width, height) > 6.0:
+        return False
+    return all(fragment in style for fragment in ANCHOR_STYLE_HINTS)
 
 
 def encode_diagram(xml_text: str) -> str:
@@ -622,6 +661,51 @@ class DrawioRenderer:
             y += placed[parent_ref]["y"]
         return x, y
 
+    def _resolve_library_dimensions(
+        self,
+        element: dict[str, Any],
+        snippet: Snippet,
+        icon_title: str,
+    ) -> tuple[float, float, str, str]:
+        role = library_role(icon_title)
+        explicit_width = element.get("w", element.get("width"))
+        explicit_height = element.get("h", element.get("height"))
+
+        size_policy = str(element.get("size_policy", "")).strip().lower()
+        if role in {"grouping", "special-connector"} or size_policy == "native":
+            default_width = snippet.width
+            default_height = snippet.height
+            default_mode = "native"
+        else:
+            max_dimension = float(element.get("icon_max_dimension", DEFAULT_ICON_MAX_DIMENSION))
+            default_width, default_height = scale_dimensions_to_max_dimension(
+                snippet.width,
+                snippet.height,
+                max_dimension,
+            )
+            default_mode = "normalized-default"
+
+        if explicit_width is not None and explicit_height is not None:
+            return float(explicit_width), float(explicit_height), "explicit", role
+
+        if explicit_width is not None:
+            width = float(explicit_width)
+            if default_width > 0:
+                height = width * (default_height / default_width)
+            else:
+                height = default_height
+            return width, height, "explicit", role
+
+        if explicit_height is not None:
+            height = float(explicit_height)
+            if default_height > 0:
+                width = height * (default_width / default_height)
+            else:
+                width = default_width
+            return width, height, "explicit", role
+
+        return default_width, default_height, default_mode, role
+
     def _render_non_edge(
         self,
         root: ET.Element,
@@ -680,10 +764,16 @@ class DrawioRenderer:
         return {
             "element_id": element.get("id"),
             "kind": "text",
+            "role": "text",
             "resolution": "text",
             "icon_title": None,
             "source": None,
             "query": None,
+            "cell_id": cell_id,
+            "x": x,
+            "y": y,
+            "w": width,
+            "h": height,
         }
 
     def _render_shape(
@@ -703,6 +793,7 @@ class DrawioRenderer:
             raise KeyError(f"Unsupported placeholder shape: {shape_name}")
         style = append_style(style, element.get("style"))
         label = str(element.get("label", element.get("value", element.get("text", ""))))
+        is_anchor = is_anchor_shape_element(element, width, height, style)
 
         cell_id = self._new_id()
         cell = ET.Element(
@@ -740,11 +831,17 @@ class DrawioRenderer:
         return {
             "element_id": element.get("id"),
             "kind": "shape",
-            "resolution": resolution,
+            "role": "anchor" if is_anchor else "placeholder",
+            "resolution": "anchor" if is_anchor else resolution,
             "icon_title": None,
             "source": None,
             "query": query,
             "placeholder_shape": shape_name,
+            "cell_id": cell_id,
+            "x": x,
+            "y": y,
+            "w": width,
+            "h": height,
         }
 
     def _render_library(
@@ -778,8 +875,7 @@ class DrawioRenderer:
 
         snippet = self.catalog.get(str(icon_title))
         x, y = self._resolve_position(element, placed)
-        width = float(element.get("w", element.get("width", snippet.width)))
-        height = float(element.get("h", element.get("height", snippet.height)))
+        width, height, size_mode, role = self._resolve_library_dimensions(element, snippet, str(icon_title))
 
         if str(icon_title) in VCN_LIKE_TITLES:
             primary_cell_id = self._place_vcn_like_snippet(root, snippet, x, y, width, height, element)
@@ -813,10 +909,19 @@ class DrawioRenderer:
         return {
             "element_id": element.get("id"),
             "kind": "library",
+            "role": role,
             "resolution": resolution,
             "icon_title": icon_title,
             "source": source if source != "explicit" else snippet.source,
             "query": query,
+            "cell_id": primary_cell_id,
+            "x": x,
+            "y": y,
+            "w": width,
+            "h": height,
+            "native_w": snippet.width,
+            "native_h": snippet.height,
+            "size_mode": size_mode,
         }
 
     def _instantiate_snippet(
@@ -1148,6 +1253,7 @@ class DrawioRenderer:
         )
 
         geometry = ET.SubElement(edge, "mxGeometry", {"relative": "1", "as": "geometry"})
+        normalized_waypoints: list[dict[str, float]] = []
         if element.get("waypoints"):
             array = ET.SubElement(geometry, "Array", {"as": "points"})
             for waypoint in element["waypoints"]:
@@ -1162,16 +1268,25 @@ class DrawioRenderer:
                     "mxPoint",
                     {"x": format_number(point_x), "y": format_number(point_y)},
                 )
+                normalized_waypoints.append({"x": point_x, "y": point_y})
 
         root.append(edge)
 
         return {
             "element_id": element.get("id"),
             "kind": "edge",
+            "role": "edge",
             "resolution": connector_key,
             "icon_title": None,
             "source": None,
             "query": None,
+            "cell_id": cell_id,
+            "source_element_id": source_ref,
+            "target_element_id": target_ref,
+            "source_anchor": source_anchor,
+            "target_anchor": target_anchor,
+            "waypoints": normalized_waypoints,
+            "label": element.get("label"),
         }
 
     def _normalize_connector_key(self, connector: Any, page_type: str) -> str:
@@ -1245,21 +1360,403 @@ def validate_drawio_file(drawio_path: Path) -> dict[str, Any]:
     return {"page_count": len(pages), "pages": pages, "issues": issues}
 
 
+def record_identifier(record: dict[str, Any]) -> str:
+    return str(record.get("element_id") or record.get("cell_id") or record.get("kind") or "record")
+
+
+def record_bounds(record: dict[str, Any]) -> tuple[float, float, float, float] | None:
+    if any(record.get(key) is None for key in ("x", "y", "w", "h")):
+        return None
+    return (
+        float(record["x"]),
+        float(record["y"]),
+        float(record["w"]),
+        float(record["h"]),
+    )
+
+
+def is_anchor_record(record: dict[str, Any]) -> bool:
+    identifier = str(record.get("element_id") or "")
+    bounds = record_bounds(record)
+    if identifier.endswith("-anchor"):
+        return True
+    if bounds is None:
+        return False
+    _, _, width, height = bounds
+    return max(width, height) <= 6.0
+
+
+def is_container_record(record: dict[str, Any]) -> bool:
+    if record.get("kind") != "shape":
+        return False
+    identifier = str(record.get("element_id") or "")
+    bounds = record_bounds(record)
+    if identifier.endswith("-box") or "container" in identifier:
+        return True
+    if bounds is None:
+        return False
+    _, _, width, height = bounds
+    return width >= 180.0 or height >= 140.0
+
+
+def anchor_point(record: dict[str, Any], anchor: str | None) -> tuple[float, float]:
+    bounds = record_bounds(record)
+    if bounds is None:
+        return (0.0, 0.0)
+    x, y, width, height = bounds
+    if anchor == "left":
+        return (x, y + height / 2)
+    if anchor == "right":
+        return (x + width, y + height / 2)
+    if anchor == "top":
+        return (x + width / 2, y)
+    if anchor == "bottom":
+        return (x + width / 2, y + height)
+    return (x + width / 2, y + height / 2)
+
+
+def segment_orientation(start: tuple[float, float], end: tuple[float, float]) -> str:
+    delta_x = end[0] - start[0]
+    delta_y = end[1] - start[1]
+    if abs(delta_x) <= EDGE_SEGMENT_TOLERANCE and abs(delta_y) <= EDGE_SEGMENT_TOLERANCE:
+        return "point"
+    if abs(delta_x) <= EDGE_SEGMENT_TOLERANCE:
+        return "vertical"
+    if abs(delta_y) <= EDGE_SEGMENT_TOLERANCE:
+        return "horizontal"
+    return "diagonal"
+
+
+def overlap_length(first_start: float, first_end: float, second_start: float, second_end: float) -> float:
+    left = max(min(first_start, first_end), min(second_start, second_end))
+    right = min(max(first_start, first_end), max(second_start, second_end))
+    return max(0.0, right - left)
+
+
+def rectangles_overlap(
+    first: tuple[float, float, float, float] | None,
+    second: tuple[float, float, float, float] | None,
+    padding: float = 0.0,
+) -> bool:
+    if first is None or second is None:
+        return False
+
+    first_left, first_top, first_width, first_height = first
+    second_left, second_top, second_width, second_height = second
+    first_right = first_left + first_width
+    first_bottom = first_top + first_height
+    second_right = second_left + second_width
+    second_bottom = second_top + second_height
+
+    return (
+        max(first_left + padding, second_left + padding) < min(first_right - padding, second_right - padding)
+        and max(first_top + padding, second_top + padding) < min(first_bottom - padding, second_bottom - padding)
+    )
+
+
+def segment_intersects_rect(
+    start: tuple[float, float],
+    end: tuple[float, float],
+    rect: tuple[float, float, float, float] | None,
+    padding: float = 0.0,
+) -> bool:
+    if rect is None:
+        return False
+
+    left, top, width, height = rect
+    right = left + width
+    bottom = top + height
+    orientation = segment_orientation(start, end)
+
+    if orientation == "horizontal":
+        seg_y = start[1]
+        seg_left, seg_right = sorted((start[0], end[0]))
+        return top + padding < seg_y < bottom - padding and seg_left < right - padding and seg_right > left + padding
+
+    if orientation == "vertical":
+        seg_x = start[0]
+        seg_top, seg_bottom = sorted((start[1], end[1]))
+        return left + padding < seg_x < right - padding and seg_top < bottom - padding and seg_bottom > top + padding
+
+    return False
+
+
+def build_edge_points(edge: dict[str, Any], nodes_by_id: dict[str, dict[str, Any]]) -> list[tuple[float, float]] | None:
+    source = nodes_by_id.get(str(edge.get("source_element_id")))
+    target = nodes_by_id.get(str(edge.get("target_element_id")))
+    if source is None or target is None:
+        return None
+
+    start = anchor_point(source, edge.get("source_anchor"))
+    end = anchor_point(target, edge.get("target_anchor"))
+    points: list[tuple[float, float]] = [start]
+
+    for waypoint in edge.get("waypoints", []):
+        if isinstance(waypoint, dict):
+            points.append((float(waypoint["x"]), float(waypoint["y"])))
+        else:
+            points.append((float(waypoint[0]), float(waypoint[1])))
+
+    if len(points) == 1:
+        if abs(start[0] - end[0]) <= EDGE_SEGMENT_TOLERANCE or abs(start[1] - end[1]) <= EDGE_SEGMENT_TOLERANCE:
+            points.append(end)
+        elif edge.get("source_anchor") in {"left", "right"}:
+            midpoint_x = (start[0] + end[0]) / 2
+            points.extend([(midpoint_x, start[1]), (midpoint_x, end[1]), end])
+        else:
+            midpoint_y = (start[1] + end[1]) / 2
+            points.extend([(start[0], midpoint_y), (end[0], midpoint_y), end])
+    else:
+        points.append(end)
+    return points
+
+
+def review_render_report(report: list[dict[str, Any]]) -> dict[str, Any]:
+    issues: list[dict[str, Any]] = []
+    pages: list[dict[str, Any]] = []
+    rows_by_page: dict[str, list[dict[str, Any]]] = defaultdict(list)
+
+    for row in report:
+        rows_by_page[str(row.get("page", ""))].append(row)
+
+    for page_name, rows in rows_by_page.items():
+        page_issues: list[dict[str, Any]] = []
+        seen: set[tuple[str, str, str, str]] = set()
+
+        def add_issue(code: str, message: str, primary: str = "", secondary: str = "", **extra: Any) -> None:
+            key = (page_name, code, primary, secondary)
+            if key in seen:
+                return
+            seen.add(key)
+            issue = {"page": page_name, "code": code, "message": message}
+            issue.update({name: value for name, value in extra.items() if value is not None})
+            page_issues.append(issue)
+
+        nodes_by_id: dict[str, dict[str, Any]] = {}
+        for row in rows:
+            if row.get("kind") not in {"library", "shape", "text"}:
+                continue
+            identifier = record_identifier(row)
+            nodes_by_id[identifier] = row
+            if row.get("element_id") is not None:
+                nodes_by_id[str(row["element_id"])] = row
+
+        icon_records = [
+            row
+            for row in rows
+            if row.get("kind") == "library" and row.get("role") == "icon" and not is_anchor_record(row)
+        ]
+
+        icon_max_dimensions = sorted(
+            max(float(row["w"]), float(row["h"]))
+            for row in icon_records
+            if row.get("w") is not None and row.get("h") is not None and row.get("size_mode") != "explicit"
+        )
+        if len(icon_max_dimensions) >= 4:
+            midpoint = len(icon_max_dimensions) // 2
+            if len(icon_max_dimensions) % 2:
+                median_max_dimension = icon_max_dimensions[midpoint]
+            else:
+                median_max_dimension = (icon_max_dimensions[midpoint - 1] + icon_max_dimensions[midpoint]) / 2
+
+            for row in icon_records:
+                if row.get("size_mode") == "explicit":
+                    continue
+                max_dimension = max(float(row["w"]), float(row["h"]))
+                if max_dimension < median_max_dimension * 0.6 or max_dimension > median_max_dimension * 1.5:
+                    element_ref = record_identifier(row)
+                    add_issue(
+                        "icon-size-outlier",
+                        f"{element_ref} is sized far outside the page's normal service-icon range.",
+                        primary=element_ref,
+                        element_id=row.get("element_id"),
+                    )
+
+        for row in icon_records:
+            native_width = float(row.get("native_w") or 0.0)
+            native_height = float(row.get("native_h") or 0.0)
+            if native_width <= 0 or native_height <= 0:
+                continue
+            rendered_aspect = float(row["w"]) / float(row["h"]) if float(row["h"]) else 0.0
+            native_aspect = native_width / native_height if native_height else 0.0
+            if native_aspect <= 0 or rendered_aspect <= 0:
+                continue
+            distortion = abs(rendered_aspect - native_aspect) / native_aspect
+            if distortion > 0.75:
+                element_ref = record_identifier(row)
+                add_issue(
+                    "icon-aspect-distorted",
+                    f"{element_ref} is stretched away from its native OCI icon aspect ratio.",
+                    primary=element_ref,
+                    element_id=row.get("element_id"),
+                )
+
+        layout_nodes = [
+            row
+            for row in rows
+            if row.get("role") in {"icon", "placeholder"} and not is_anchor_record(row) and not is_container_record(row)
+        ]
+        for first, second in combinations(layout_nodes, 2):
+            if rectangles_overlap(record_bounds(first), record_bounds(second), padding=NODE_OVERLAP_PADDING):
+                first_ref = record_identifier(first)
+                second_ref = record_identifier(second)
+                add_issue(
+                    "node-overlap",
+                    f"{first_ref} overlaps {second_ref}.",
+                    primary=first_ref,
+                    secondary=second_ref,
+                    element_id=first.get("element_id"),
+                    peer_element_id=second.get("element_id"),
+                )
+
+        edge_obstacles = [
+            row
+            for row in rows
+            if row.get("role") in {"icon", "placeholder", "text"}
+            and not is_anchor_record(row)
+            and not is_container_record(row)
+        ]
+        edge_segments: list[dict[str, Any]] = []
+        edges = [row for row in rows if row.get("kind") == "edge"]
+
+        for edge in edges:
+            edge_ref = record_identifier(edge)
+            source = nodes_by_id.get(str(edge.get("source_element_id")))
+            target = nodes_by_id.get(str(edge.get("target_element_id")))
+            if source is None or target is None:
+                continue
+
+            points = build_edge_points(edge, nodes_by_id)
+            if not points or len(points) < 2:
+                continue
+
+            segments: list[tuple[tuple[float, float], tuple[float, float], str]] = []
+            for start, end in zip(points, points[1:]):
+                orientation = segment_orientation(start, end)
+                if orientation == "point":
+                    continue
+                segments.append((start, end, orientation))
+                if orientation == "diagonal":
+                    add_issue(
+                        "edge-diagonal-segment",
+                        f"{edge_ref} contains a diagonal segment instead of an orthogonal route.",
+                        primary=edge_ref,
+                        element_id=edge.get("element_id"),
+                    )
+
+            bend_count = max(len(segments) - 1, 0)
+            if bend_count > MAX_EDGE_BENDS:
+                add_issue(
+                    "edge-too-many-bends",
+                    f"{edge_ref} uses {bend_count} bends, which is more than the allowed {MAX_EDGE_BENDS}.",
+                    primary=edge_ref,
+                    element_id=edge.get("element_id"),
+                )
+
+            for obstacle in edge_obstacles:
+                obstacle_ref = record_identifier(obstacle)
+                if obstacle_ref in {record_identifier(source), record_identifier(target)}:
+                    continue
+
+                if any(
+                    segment_intersects_rect(start, end, record_bounds(obstacle), padding=NODE_OVERLAP_PADDING)
+                    for start, end, orientation in segments
+                    if orientation in {"horizontal", "vertical"}
+                ):
+                    add_issue(
+                        "edge-through-node",
+                        f"{edge_ref} crosses through {obstacle_ref}.",
+                        primary=edge_ref,
+                        secondary=obstacle_ref,
+                        element_id=edge.get("element_id"),
+                        obstacle_id=obstacle.get("element_id"),
+                    )
+                    break
+
+            for start, end, orientation in segments:
+                if orientation not in {"horizontal", "vertical"}:
+                    continue
+                edge_segments.append(
+                    {
+                        "edge_ref": edge_ref,
+                        "element_id": edge.get("element_id"),
+                        "start": start,
+                        "end": end,
+                        "orientation": orientation,
+                    }
+                )
+
+        for first, second in combinations(edge_segments, 2):
+            if first["edge_ref"] == second["edge_ref"]:
+                continue
+            if first["orientation"] != second["orientation"]:
+                continue
+
+            if first["orientation"] == "horizontal":
+                if abs(first["start"][1] - second["start"][1]) > EDGE_LANE_OVERLAP_TOLERANCE:
+                    continue
+                overlap = overlap_length(first["start"][0], first["end"][0], second["start"][0], second["end"][0])
+            else:
+                if abs(first["start"][0] - second["start"][0]) > EDGE_LANE_OVERLAP_TOLERANCE:
+                    continue
+                overlap = overlap_length(first["start"][1], first["end"][1], second["start"][1], second["end"][1])
+
+            if overlap > EDGE_LANE_OVERLAP_MIN_LENGTH:
+                add_issue(
+                    "edge-lane-overlap",
+                    f"{first['edge_ref']} shares a routing lane with {second['edge_ref']}.",
+                    primary=str(first["edge_ref"]),
+                    secondary=str(second["edge_ref"]),
+                    element_id=first["element_id"],
+                    peer_element_id=second["element_id"],
+                )
+
+        issues.extend(page_issues)
+        pages.append(
+            {
+                "name": page_name,
+                "issue_count": len(page_issues),
+                "edge_count": len(edges),
+                "icon_count": len(icon_records),
+            }
+        )
+
+    return {"page_count": len(pages), "pages": pages, "issues": issues}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--spec", type=Path, required=True, help="Path to the JSON diagram spec.")
     parser.add_argument("--output", type=Path, required=True, help="Output .drawio file path.")
     parser.add_argument("--report-out", type=Path, help="Optional JSON report path.")
+    parser.add_argument("--quality-out", type=Path, help="Optional JSON quality review path.")
+    parser.add_argument(
+        "--fail-on-quality",
+        action="store_true",
+        help="Exit non-zero when geometry quality issues are detected.",
+    )
     args = parser.parse_args()
 
     report = render_spec_to_file(args.spec, args.output, args.report_out)
     physical = sum(1 for row in report if row["kind"] == "library" and row["resolution"] in {"direct", "alias", "closest"})
     placeholders = sum(1 for row in report if row.get("resolution") == "placeholder")
+    anchors = sum(1 for row in report if row.get("resolution") == "anchor")
+    quality = review_render_report(report) if args.quality_out or args.fail_on_quality else None
     print(f"Rendered {len({row['page'] for row in report})} page(s) to {args.output}")
     print(f"Official OCI elements: {physical}")
     print(f"Placeholders: {placeholders}")
+    if anchors:
+        print(f"Routing anchors: {anchors}")
     if args.report_out:
         print(f"Report: {args.report_out}")
+    if quality is not None:
+        if args.quality_out:
+            args.quality_out.parent.mkdir(parents=True, exist_ok=True)
+            args.quality_out.write_text(json.dumps(quality, indent=2) + "\n")
+            print(f"Quality report: {args.quality_out}")
+        print(f"Quality issues: {len(quality['issues'])}")
+        if args.fail_on_quality and quality["issues"]:
+            raise SystemExit(2)
 
 
 if __name__ == "__main__":

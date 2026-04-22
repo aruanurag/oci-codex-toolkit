@@ -33,12 +33,14 @@ The skill helps Codex:
 5. render a finalized `.drawio` file
 6. export the physical page to PNG
 7. iterate until lines, arrows, and labels are visually clean
+8. route cross-container traffic through hidden boundary anchors so connectors visibly meet subnet and VCN walls instead of merely approaching them
 
 By default, the skill now produces:
 
 - a physical diagram only
 - public and private subnet structure with CIDRs for networked workloads
 - iterative visual QA focused on traffic-flow arrows, overlaps, and detached-looking connectors
+- boundary-first routing for cross-container traffic, with hidden `*-anchor` shapes on container borders and arrowheads reserved for final destination segments
 
 ## When To Use It
 
@@ -101,6 +103,7 @@ This skill works well with:
 - security and networking constraints
 - Oracle reference images
 - existing `.drawio` or exported PNG/SVG diagrams to compare against
+- bundled Oracle `.drawio` references imported into `assets/reference-architectures/oracle/`
 
 If you provide a reference image, Codex can use it to improve:
 
@@ -148,6 +151,31 @@ It must:
 
 Broken-looking traffic arrows, overlaps, detached-looking arrowheads, and labels on top of lines are treated as blockers.
 
+### Connector Routing Defaults
+
+- physical flows that cross subnet, VCN, tier, or region boundaries route through hidden `*-anchor` shapes on those borders
+- intermediate segments use `endArrow=none;`
+- the final segment into the workload keeps the visible arrowhead
+- a connector that only almost reaches a boundary or target is considered broken and must be rerouted
+
+## Bundled Oracle References
+
+The skill now includes the Oracle `.drawio` files imported from the user-provided zip archives under:
+
+- `.agents/skills/oci-architecture-generator/assets/reference-architectures/oracle`
+
+The selector can now recommend a primary baseline plus supporting references for mixed requests:
+
+```bash
+python3 -B .agents/skills/oci-architecture-generator/scripts/select_reference_architecture.py \
+  --query "OKE SaaS platform with DR and public/private subnets" \
+  --bundle --top 5
+```
+
+Reference details and best-fit use cases are documented in:
+
+- `.agents/skills/oci-architecture-generator/references/reference-architectures.md`
+
 ## Expected Outputs
 
 Typical output package:
@@ -178,17 +206,21 @@ oci-architecture-generator/
 │   └── openai.yaml
 ├── assets/
 │   ├── drawio/
+│   ├── reference-architectures/
 │   └── examples/
 ├── references/
+│   ├── reference-architectures.md
 │   ├── style-guide.md
 │   ├── output-format.md
 │   ├── diagram-spec.md
 │   └── icon-catalog.md
 └── scripts/
     ├── resolve_oci_icon.py
+    ├── select_reference_architecture.py
     ├── render_oci_drawio.py
     ├── build_icon_catalog.py
     ├── test_icon_resolver.py
+    ├── test_reference_selector.py
     └── test_render_oci_drawio.py
 ```
 
@@ -210,9 +242,17 @@ Expected package shape and quality bar.
 
 JSON contract for renderable diagrams.
 
+### `references/reference-architectures.md`
+
+Imported Oracle reference corpus and the best-fit use for each bundled `.drawio`.
+
 ### `scripts/resolve_oci_icon.py`
 
 Resolves requested components to OCI icons or honest placeholders.
+
+### `scripts/select_reference_architecture.py`
+
+Ranks the bundled Oracle references and can recommend one primary plus supporting references.
 
 ### `scripts/render_oci_drawio.py`
 
@@ -285,6 +325,7 @@ The skill specifically checks for:
 - labels sitting on top of lines
 - detached-looking arrowheads
 - awkward bends through subnet or VCN boundaries
+- connectors that visually miss container boundaries or workload icons
 - traffic arrows that look broken or overly busy
 - crowded placements that reduce readability
 
@@ -293,6 +334,7 @@ Preferred line behavior:
 - straight lines where possible
 - reserved horizontal or vertical lanes for major traffic paths
 - minimal bends
+- boundary-to-boundary routing through hidden anchors when a flow crosses containers
 - labels placed near lines instead of directly breaking them
 
 ## Testing The Skill
@@ -301,6 +343,7 @@ If you make changes to the skill or renderer, run:
 
 ```bash
 python3 -B .agents/skills/oci-architecture-generator/scripts/test_icon_resolver.py
+python3 -B .agents/skills/oci-architecture-generator/scripts/test_reference_selector.py
 python3 -B .agents/skills/oci-architecture-generator/scripts/test_render_oci_drawio.py
 ```
 
@@ -372,7 +415,7 @@ Use $oci-architecture-generator ...
 Ask explicitly:
 
 ```text
-Keep iterating until the traffic arrows are clean, labels are off the lines, and no connector looks broken.
+Keep iterating until the traffic arrows are clean, labels are off the lines, every cross-container route uses boundary anchors, and no connector looks broken.
 ```
 
 ## Best Practice Prompt
@@ -384,5 +427,6 @@ Use $oci-architecture-generator to create a finalized physical OCI architecture 
 Follow the OCI style guide strictly.
 Show VCNs, public and private subnets, CIDRs, route tables, security lists, and all major gateways.
 If a direct OCI icon does not exist, use the closest honest placeholder.
+Route cross-container traffic through boundary anchors and keep arrowheads only on final destination segments.
 Export and visually review the result, then keep iterating until the lines, arrows, and labels are clean.
 ```

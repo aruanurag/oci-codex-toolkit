@@ -260,7 +260,21 @@
           "connector": "physical",
           "label": "Primary ingress",
           "source_anchor": "bottom",
-          "target_anchor": "top"
+          "target_anchor": "top",
+          "waypoints": [
+            {
+              "x": 425,
+              "y": 250
+            },
+            {
+              "x": 350,
+              "y": 250
+            },
+            {
+              "x": 350,
+              "y": 430
+            }
+          ]
         },
         {
           "type": "edge",
@@ -268,15 +282,37 @@
           "target": "secondary-lb",
           "connector": "physical",
           "label": "DR ingress",
-          "source_anchor": "bottom",
-          "target_anchor": "top"
+          "source_anchor": "right",
+          "target_anchor": "top",
+          "waypoints": [
+            {
+              "x": 1470,
+              "y": 170
+            },
+            {
+              "x": 1470,
+              "y": 430
+            }
+          ]
         },
         {
           "type": "edge",
           "source": "primary-lb",
           "target": "primary-oke",
           "connector": "physical",
-          "label": "Ingress"
+          "label": "Ingress",
+          "source_anchor": "bottom",
+          "target_anchor": "top",
+          "waypoints": [
+            {
+              "x": 350,
+              "y": 620
+            },
+            {
+              "x": 470,
+              "y": 620
+            }
+          ]
         },
         {
           "type": "edge",
@@ -298,11 +334,11 @@
           "waypoints": [
             {
               "x": 830,
-              "y": 610
+              "y": 745
             },
             {
               "x": 830,
-              "y": 785
+              "y": 1035
             }
           ]
         },
@@ -311,7 +347,19 @@
           "source": "secondary-lb",
           "target": "secondary-oke",
           "connector": "physical",
-          "label": "Ingress"
+          "label": "Ingress",
+          "source_anchor": "bottom",
+          "target_anchor": "top",
+          "waypoints": [
+            {
+              "x": 1470,
+              "y": 620
+            },
+            {
+              "x": 1590,
+              "y": 620
+            }
+          ]
         },
         {
           "type": "edge",
@@ -333,11 +381,11 @@
           "waypoints": [
             {
               "x": 1940,
-              "y": 610
+              "y": 745
             },
             {
               "x": 1940,
-              "y": 785
+              "y": 1035
             }
           ]
         },
@@ -369,12 +417,12 @@
           "target_anchor": "left",
           "waypoints": [
             {
-              "x": 1100,
-              "y": 805
+              "x": 550,
+              "y": 900
             },
             {
-              "x": 1210,
-              "y": 805
+              "x": 1520,
+              "y": 900
             }
           ]
         },
@@ -388,11 +436,11 @@
           "target_anchor": "bottom",
           "waypoints": [
             {
-              "x": 1100,
+              "x": 995,
               "y": 1120
             },
             {
-              "x": 1210,
+              "x": 2115,
               "y": 1120
             }
           ]

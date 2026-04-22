@@ -2,6 +2,10 @@
 
 Use this contract unless the user asks for a different deliverable.
 
+Before authoring a new architecture from scratch, find the closest bundled reference with `python3 scripts/select_reference_architecture.py --query "..." --bundle --top 5` and use the primary reference's layout discipline as the baseline whenever it is a good fit.
+
+If the selector recommends supporting references, use them only to borrow specific patterns such as DR posture, security flow, or networking motifs. Do not let a supporting reference replace the primary topology baseline unless it is clearly the better fit.
+
 ## Default Package
 
 1. Assumptions
@@ -40,8 +44,12 @@ Unless the user says otherwise:
 - include VCN and public/private subnet structure with CIDR labels on physical pages for networked workloads
 - keep public resources visually inside public subnets and private resources inside private subnets
 - enlarge the page or reroute edges before accepting overlapping or crowded connector paths
-- export the physical page to PNG and perform at least two cleanup passes plus one confirmatory visual QA pass before finalizing
-- treat overlapping lines, broken-looking traffic arrows, disconnected-looking attachments, and crowded labels as blockers, not polish items
+- render with the renderer's quality gate enabled and do not accept output while it reports issues
+- pick the closest bundled reference architecture first and preserve its spacing, icon scale, and routing lanes when it is a good fit
+- when a request mixes patterns, keep one primary reference and only borrow targeted details from supporting references
+- perform at least three cleanup passes plus one confirmatory pass after the first clean review
+- export the physical page to PNG and perform one final visual QA pass before finalizing
+- treat overlapping lines, broken-looking traffic arrows, disconnected-looking attachments, stretched icons, and crowded labels as blockers, not polish items
 - note the output path clearly
 
 ## JSON Diagram Spec
@@ -89,13 +97,16 @@ Include:
 
 ## If You Need to Create or Update `.drawio`
 
-- Prefer rendering with `python3 scripts/render_oci_drawio.py`.
+- Prefer rendering with `python3 scripts/render_oci_drawio.py --quality-out ... --fail-on-quality`.
 - Default to a physical page only. Add a logical page only on explicit request.
 - Keep labels concise and service-specific.
 - Keep physical examples network-complete with VCNs and labeled subnets when the workload is deployed in a VCN.
-- Use more whitespace, extra tiers, and waypointed connectors instead of allowing overlapping lines or crowded clusters.
-- Export the rendered page and visually inspect it. If a connector appears detached, partially attached, stacked on another route, broken by labels, or forced through labels or boundaries, reroute and rerender.
+- Let the renderer normalize icon sizes when the spec omits `w` and `h`. Override icon sizes only deliberately.
+- Use more whitespace, extra tiers, explicit anchors, and waypointed connectors instead of allowing overlapping lines or crowded clusters.
+- For physical diagrams, route cross-container traffic boundary-first: use hidden `*-anchor` shapes on subnet or VCN borders, keep intermediate segments arrowless with `endArrow=none;`, and reserve the visible arrowhead for the final segment into the destination workload.
+- Export the rendered page and visually inspect it. If a connector appears detached, partially attached, stacked on another route, broken by labels, forced through labels or boundaries, or shaped by a diagonal segment, reroute and rerender.
+- Treat connectors that only almost reach a subnet wall, VCN wall, or workload icon as defects. The line should visibly terminate on the intended boundary or target.
 - Prioritize traffic-flow arrows during visual QA and assign dedicated routing lanes when they would otherwise overlap.
-- Do one more confirmatory review after the first clean render before delivering the diagram.
+- Require one more confirmatory render and clean quality review after the first clean render before delivering the diagram.
 - Preserve the exact official icon name in your mapping notes, especially for toolkit-only additions.
 - Keep the JSON spec beside the final diagram when repeatability matters.
