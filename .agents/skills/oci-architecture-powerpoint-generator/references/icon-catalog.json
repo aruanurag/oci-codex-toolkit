@@ -1,0 +1,5923 @@
+[
+  {
+    "title": "Analytics and AI - Artificial Intelligence",
+    "category": "Analytics and AI",
+    "name": "Artificial Intelligence",
+    "normalized_title": "analytics and ai artificial intelligence",
+    "normalized_name": "artificial intelligence",
+    "tokens": [
+      "artificial",
+      "intelligence"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8068755,
+      "y": 1543345,
+      "w": 728084,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Big Data",
+    "category": "Analytics and AI",
+    "name": "Big Data",
+    "normalized_title": "analytics and ai big data",
+    "normalized_name": "big data",
+    "tokens": [
+      "big",
+      "data"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      3
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1654050,
+      "y": 1551906,
+      "w": 579005,
+      "h": 552947
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Data Catalog",
+    "category": "Analytics and AI",
+    "name": "Data Catalog",
+    "normalized_title": "analytics and ai data catalog",
+    "normalized_name": "data catalog",
+    "tokens": [
+      "data",
+      "catalog"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      4
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2305661,
+      "y": 1584001,
+      "w": 784189,
+      "h": 520852
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Data Flow",
+    "category": "Analytics and AI",
+    "name": "Data Flow",
+    "normalized_title": "analytics and ai data flow",
+    "normalized_name": "data flow",
+    "tokens": [
+      "data",
+      "flow"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3930624,
+      "y": 1543345,
+      "w": 646331,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Digital Assistant",
+    "category": "Analytics and AI",
+    "name": "Digital Assistant",
+    "normalized_title": "analytics and ai digital assistant",
+    "normalized_name": "digital assistant",
+    "tokens": [
+      "digital",
+      "assistant"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      12
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8859503,
+      "y": 1592538,
+      "w": 612668,
+      "h": 614985
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Document Understanding",
+    "category": "Analytics and AI",
+    "name": "Document Understanding",
+    "normalized_title": "analytics and ai document understanding",
+    "normalized_name": "document understanding",
+    "tokens": [
+      "document",
+      "understanding"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      13
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9546362,
+      "y": 1548696,
+      "w": 886781,
+      "h": 658827
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Essbase",
+    "category": "Analytics and AI",
+    "name": "Essbase",
+    "normalized_title": "analytics and ai essbase",
+    "normalized_name": "essbase",
+    "tokens": [
+      "essbase"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      14
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 855733,
+      "y": 2522823,
+      "w": 559769,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Forecasting",
+    "category": "Analytics and AI",
+    "name": "Forecasting",
+    "normalized_title": "analytics and ai forecasting",
+    "normalized_name": "forecasting",
+    "tokens": [
+      "forecasting"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      17
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2846558,
+      "y": 2522823,
+      "w": 734496,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Machine Learning",
+    "category": "Analytics and AI",
+    "name": "Machine Learning",
+    "normalized_title": "analytics and ai machine learning",
+    "normalized_name": "machine learning",
+    "tokens": [
+      "machine",
+      "learning"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7396398,
+      "y": 1560435,
+      "w": 603050,
+      "h": 647088
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Message Listener",
+    "category": "Analytics and AI",
+    "name": "Message Listener",
+    "normalized_title": "analytics and ai message listener",
+    "normalized_name": "message listener",
+    "tokens": [
+      "message",
+      "listener"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      15
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1492759,
+      "y": 2522823,
+      "w": 601447,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Message Producer",
+    "category": "Analytics and AI",
+    "name": "Message Producer",
+    "normalized_title": "analytics and ai message producer",
+    "normalized_name": "message producer",
+    "tokens": [
+      "message",
+      "producer"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      16
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2166123,
+      "y": 2522823,
+      "w": 612668,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - OCI Data Integration",
+    "category": "Analytics and AI",
+    "name": "OCI Data Integration",
+    "normalized_title": "analytics and ai oci data integration",
+    "normalized_name": "oci data integration",
+    "tokens": [
+      "oci",
+      "data",
+      "integration"
+    ],
+    "acronyms": [
+      "ai",
+      "oci"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3161655,
+      "y": 1543345,
+      "w": 704039,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - OCI Data Science",
+    "category": "Analytics and AI",
+    "name": "OCI Data Science",
+    "normalized_title": "analytics and ai oci data science",
+    "normalized_name": "oci data science",
+    "tokens": [
+      "oci",
+      "data",
+      "science"
+    ],
+    "acronyms": [
+      "ai",
+      "oci"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6541675,
+      "y": 1543345,
+      "w": 785793,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - OCI Generative AI",
+    "category": "Analytics and AI",
+    "name": "OCI Generative AI",
+    "normalized_title": "analytics and ai oci generative ai",
+    "normalized_name": "oci generative ai",
+    "tokens": [
+      "oci",
+      "generative",
+      "ai"
+    ],
+    "acronyms": [
+      "ai",
+      "oci"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      18
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3647213,
+      "y": 2554907,
+      "w": 817853,
+      "h": 632094
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - OCI Language",
+    "category": "Analytics and AI",
+    "name": "OCI Language",
+    "normalized_title": "analytics and ai oci language",
+    "normalized_name": "oci language",
+    "tokens": [
+      "oci",
+      "language"
+    ],
+    "acronyms": [
+      "ai",
+      "oci"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      19
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4528573,
+      "y": 2522823,
+      "w": 849913,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - OCI Speech",
+    "category": "Analytics and AI",
+    "name": "OCI Speech",
+    "normalized_title": "analytics and ai oci speech",
+    "normalized_name": "oci speech",
+    "tokens": [
+      "oci",
+      "speech"
+    ],
+    "acronyms": [
+      "ai",
+      "oci"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      21
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6517828,
+      "y": 2531986,
+      "w": 726481,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - OCI Streaming",
+    "category": "Analytics and AI",
+    "name": "OCI Streaming",
+    "normalized_title": "analytics and ai oci streaming",
+    "normalized_name": "oci streaming",
+    "tokens": [
+      "oci",
+      "streaming"
+    ],
+    "acronyms": [
+      "ai",
+      "oci"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4648861,
+      "y": 1543345,
+      "w": 869149,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - OCI Vision",
+    "category": "Analytics and AI",
+    "name": "OCI Vision",
+    "normalized_title": "analytics and ai oci vision",
+    "normalized_name": "oci vision",
+    "tokens": [
+      "oci",
+      "vision"
+    ],
+    "acronyms": [
+      "ai",
+      "oci"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      22
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7311519,
+      "y": 2522823,
+      "w": 673582,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Oracle Analytics Cloud",
+    "category": "Analytics and AI",
+    "name": "Oracle Analytics Cloud",
+    "normalized_title": "analytics and ai oracle analytics cloud",
+    "normalized_name": "oracle analytics cloud",
+    "tokens": [
+      "oracle",
+      "analytics",
+      "cloud"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      2
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 672222,
+      "y": 1598957,
+      "w": 910827,
+      "h": 608566
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Analytics and AI - Service Connector Hub",
+    "category": "Analytics and AI",
+    "name": "Service Connector Hub",
+    "normalized_title": "analytics and ai service connector hub",
+    "normalized_name": "service connector hub",
+    "tokens": [
+      "service",
+      "connector",
+      "hub"
+    ],
+    "acronyms": [
+      "ai"
+    ],
+    "slide_number": 38,
+    "element_path": [
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5578751,
+      "y": 1543345,
+      "w": 898003,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide38"
+  },
+  {
+    "title": "Applications - BI Cloud Connector",
+    "category": "Applications",
+    "name": "BI Cloud Connector",
+    "normalized_title": "applications bi cloud connector",
+    "normalized_name": "bi cloud connector",
+    "tokens": [
+      "bi",
+      "cloud",
+      "connector"
+    ],
+    "acronyms": [
+      "bi"
+    ],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7945966,
+      "y": 1424898,
+      "w": 676788,
+      "h": 623529
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - CPQ",
+    "category": "Applications",
+    "name": "CPQ",
+    "normalized_title": "applications cpq",
+    "normalized_name": "cpq",
+    "tokens": [
+      "cpq"
+    ],
+    "acronyms": [
+      "cpq"
+    ],
+    "slide_number": 46,
+    "element_path": [
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2509829,
+      "y": 2538913,
+      "w": 391454,
+      "h": 541187
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - CRM",
+    "category": "Applications",
+    "name": "CRM",
+    "normalized_title": "applications crm",
+    "normalized_name": "crm",
+    "tokens": [
+      "crm"
+    ],
+    "acronyms": [
+      "crm"
+    ],
+    "slide_number": 46,
+    "element_path": [
+      15
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7885016,
+      "y": 2595587,
+      "w": 409086,
+      "h": 484513
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Cloud Operations",
+    "category": "Applications",
+    "name": "Cloud Operations",
+    "normalized_title": "applications cloud operations",
+    "normalized_name": "cloud operations",
+    "tokens": [
+      "cloud",
+      "operations"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      12
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8689293,
+      "y": 1421659,
+      "w": 705642,
+      "h": 626768
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Digital Media",
+    "category": "Applications",
+    "name": "Digital Media",
+    "normalized_title": "applications digital media",
+    "normalized_name": "digital media",
+    "tokens": [
+      "digital",
+      "media"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      17
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1446666,
+      "y": 3702005,
+      "w": 484428,
+      "h": 646000
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - E-Business Suite",
+    "category": "Applications",
+    "name": "E-Business Suite",
+    "normalized_title": "applications e business suite",
+    "normalized_name": "e business suite",
+    "tokens": [
+      "e",
+      "business",
+      "suite"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2640848,
+      "y": 1405638,
+      "w": 704039,
+      "h": 642789
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - EPM",
+    "category": "Applications",
+    "name": "EPM",
+    "normalized_title": "applications epm",
+    "normalized_name": "epm",
+    "tokens": [
+      "epm"
+    ],
+    "acronyms": [
+      "epm"
+    ],
+    "slide_number": 46,
+    "element_path": [
+      13
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6451195,
+      "y": 2538918,
+      "w": 401072,
+      "h": 541182
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - ERP",
+    "category": "Applications",
+    "name": "ERP",
+    "normalized_title": "applications erp",
+    "normalized_name": "erp",
+    "tokens": [
+      "erp"
+    ],
+    "acronyms": [
+      "erp"
+    ],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      4
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2087646,
+      "y": 1463411,
+      "w": 385011,
+      "h": 482346
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Engagement",
+    "category": "Applications",
+    "name": "Engagement",
+    "normalized_title": "applications engagement",
+    "normalized_name": "engagement",
+    "tokens": [
+      "engagement"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      13
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9460726,
+      "y": 1404572,
+      "w": 788999,
+      "h": 541185
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Financials",
+    "category": "Applications",
+    "name": "Financials",
+    "normalized_title": "applications financials",
+    "normalized_name": "financials",
+    "tokens": [
+      "financials"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4889727,
+      "y": 2531418,
+      "w": 651140,
+      "h": 548682
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Fusion",
+    "category": "Applications",
+    "name": "Fusion",
+    "normalized_title": "applications fusion",
+    "normalized_name": "fusion",
+    "tokens": [
+      "fusion"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      14
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7115965,
+      "y": 2518591,
+      "w": 500458,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - HCM",
+    "category": "Applications",
+    "name": "HCM",
+    "normalized_title": "applications hcm",
+    "normalized_name": "hcm",
+    "tokens": [
+      "hcm"
+    ],
+    "acronyms": [
+      "hcm"
+    ],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      2
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 712587,
+      "y": 1474067,
+      "w": 418704,
+      "h": 471690
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Healthcare",
+    "category": "Applications",
+    "name": "Healthcare",
+    "normalized_title": "applications healthcare",
+    "normalized_name": "healthcare",
+    "tokens": [
+      "healthcare"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      12
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5608214,
+      "y": 2570497,
+      "w": 692818,
+      "h": 509603
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Innovation Management",
+    "category": "Applications",
+    "name": "Innovation Management",
+    "normalized_title": "applications innovation management",
+    "normalized_name": "innovation management",
+    "tokens": [
+      "innovation",
+      "management"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4288174,
+      "y": 1403507,
+      "w": 814647,
+      "h": 644920
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Inventory Management",
+    "category": "Applications",
+    "name": "Inventory Management",
+    "normalized_title": "applications inventory management",
+    "normalized_name": "inventory management",
+    "tokens": [
+      "inventory",
+      "management"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6187559,
+      "y": 1402442,
+      "w": 814647,
+      "h": 645985
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Manufacturing",
+    "category": "Applications",
+    "name": "Manufacturing",
+    "normalized_title": "applications manufacturing",
+    "normalized_name": "manufacturing",
+    "tokens": [
+      "manufacturing"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3062833,
+      "y": 2538913,
+      "w": 880369,
+      "h": 541187
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Media Flow",
+    "category": "Applications",
+    "name": "Media Flow",
+    "normalized_title": "applications media flow",
+    "normalized_name": "media flow",
+    "tokens": [
+      "media",
+      "flow"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      16
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 728507,
+      "y": 3700940,
+      "w": 474810,
+      "h": 647065
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Media Streams",
+    "category": "Applications",
+    "name": "Media Streams",
+    "normalized_title": "applications media streams",
+    "normalized_name": "media streams",
+    "tokens": [
+      "media",
+      "streams"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      18
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2119964,
+      "y": 3702003,
+      "w": 570990,
+      "h": 646002
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Oracle SOA Suite",
+    "category": "Applications",
+    "name": "Oracle SOA Suite",
+    "normalized_title": "applications oracle soa suite",
+    "normalized_name": "oracle soa suite",
+    "tokens": [
+      "oracle",
+      "soa",
+      "suite"
+    ],
+    "acronyms": [
+      "soa"
+    ],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      3
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1278123,
+      "y": 1384249,
+      "w": 655949,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Order Management",
+    "category": "Applications",
+    "name": "Order Management",
+    "normalized_title": "applications order management",
+    "normalized_name": "order management",
+    "tokens": [
+      "order",
+      "management"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 681234,
+      "y": 2538913,
+      "w": 814647,
+      "h": 643857
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Procurement",
+    "category": "Applications",
+    "name": "Procurement",
+    "normalized_title": "applications procurement",
+    "normalized_name": "procurement",
+    "tokens": [
+      "procurement"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1560137,
+      "y": 2538913,
+      "w": 800219,
+      "h": 541187
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Product Master Data Management",
+    "category": "Applications",
+    "name": "Product Master Data Management",
+    "normalized_title": "applications product master data management",
+    "normalized_name": "product master data management",
+    "tokens": [
+      "product",
+      "master",
+      "data",
+      "management"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7066667,
+      "y": 1400274,
+      "w": 814647,
+      "h": 750822
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Project Financial Managment",
+    "category": "Applications",
+    "name": "Project Financial Managment",
+    "normalized_title": "applications project financial managment",
+    "normalized_name": "project financial managment",
+    "tokens": [
+      "project",
+      "financial",
+      "managment"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5166229,
+      "y": 1404572,
+      "w": 957313,
+      "h": 643855
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Project Management",
+    "category": "Applications",
+    "name": "Project Management",
+    "normalized_title": "applications project management",
+    "normalized_name": "project management",
+    "tokens": [
+      "project",
+      "management"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4011575,
+      "y": 2535678,
+      "w": 814647,
+      "h": 647092
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Applications - Supply Chain Planning",
+    "category": "Applications",
+    "name": "Supply Chain Planning",
+    "normalized_title": "applications supply chain planning",
+    "normalized_name": "supply chain planning",
+    "tokens": [
+      "supply",
+      "chain",
+      "planning"
+    ],
+    "acronyms": [],
+    "slide_number": 46,
+    "element_path": [
+      5,
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3417485,
+      "y": 1405637,
+      "w": 803425,
+      "h": 642790
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide46"
+  },
+  {
+    "title": "Compute - Autoscaling",
+    "category": "Compute",
+    "name": "Autoscaling",
+    "normalized_title": "compute autoscaling",
+    "normalized_name": "autoscaling",
+    "tokens": [
+      "autoscaling"
+    ],
+    "acronyms": [],
+    "slide_number": 34,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3866692,
+      "y": 1527979,
+      "w": 739305,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide34"
+  },
+  {
+    "title": "Compute - Burstable VM",
+    "category": "Compute",
+    "name": "Burstable VM",
+    "normalized_title": "compute burstable vm",
+    "normalized_name": "burstable vm",
+    "tokens": [
+      "burstable",
+      "vm"
+    ],
+    "acronyms": [
+      "vm"
+    ],
+    "slide_number": 34,
+    "element_path": [
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5312388,
+      "y": 1527393,
+      "w": 816249,
+      "h": 562095
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide34"
+  },
+  {
+    "title": "Compute - Flex VM",
+    "category": "Compute",
+    "name": "Flex VM",
+    "normalized_title": "compute flex vm",
+    "normalized_name": "flex vm",
+    "tokens": [
+      "flex",
+      "vm"
+    ],
+    "acronyms": [
+      "vm"
+    ],
+    "slide_number": 34,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4674066,
+      "y": 1527979,
+      "w": 564578,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide34"
+  },
+  {
+    "title": "Compute - Instance Pools",
+    "category": "Compute",
+    "name": "Instance Pools",
+    "normalized_title": "compute instance pools",
+    "normalized_name": "instance pools",
+    "tokens": [
+      "instance",
+      "pools"
+    ],
+    "acronyms": [],
+    "slide_number": 34,
+    "element_path": [
+      3
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1642756,
+      "y": 1527979,
+      "w": 580608,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide34"
+  },
+  {
+    "title": "Compute - OCI Compute",
+    "category": "Compute",
+    "name": "OCI Compute",
+    "normalized_title": "compute oci compute",
+    "normalized_name": "oci compute",
+    "tokens": [
+      "oci",
+      "compute"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 34,
+    "element_path": [
+      2
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 762000,
+      "y": 1527979,
+      "w": 816249,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide34"
+  },
+  {
+    "title": "Compute - OCI Functions",
+    "category": "Compute",
+    "name": "OCI Functions",
+    "normalized_title": "compute oci functions",
+    "normalized_name": "oci functions",
+    "tokens": [
+      "oci",
+      "functions"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 34,
+    "element_path": [
+      4
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2295420,
+      "y": 1527979,
+      "w": 845103,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide34"
+  },
+  {
+    "title": "Compute - Virtual Machine",
+    "category": "Compute",
+    "name": "Virtual Machine",
+    "normalized_title": "compute virtual machine",
+    "normalized_name": "virtual machine",
+    "tokens": [
+      "virtual",
+      "machine"
+    ],
+    "acronyms": [],
+    "slide_number": 34,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3208421,
+      "y": 1527979,
+      "w": 588623,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide34"
+  },
+  {
+    "title": "Compute - Virtual Machine Application",
+    "category": "Compute",
+    "name": "Virtual Machine Application",
+    "normalized_title": "compute virtual machine application",
+    "normalized_name": "virtual machine application",
+    "tokens": [
+      "virtual",
+      "machine",
+      "application"
+    ],
+    "acronyms": [],
+    "slide_number": 34,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6857069,
+      "y": 1527979,
+      "w": 716863,
+      "h": 766848
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide34"
+  },
+  {
+    "title": "Compute - Virtual Machine GPU",
+    "category": "Compute",
+    "name": "Virtual Machine GPU",
+    "normalized_title": "compute virtual machine gpu",
+    "normalized_name": "virtual machine gpu",
+    "tokens": [
+      "virtual",
+      "machine",
+      "gpu"
+    ],
+    "acronyms": [
+      "gpu"
+    ],
+    "slide_number": 34,
+    "element_path": [
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6198637,
+      "y": 1541254,
+      "w": 588623,
+      "h": 753573
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide34"
+  },
+  {
+    "title": "Compute - Virtual Machine generic",
+    "category": "Compute",
+    "name": "Virtual Machine generic",
+    "normalized_title": "compute virtual machine generic",
+    "normalized_name": "virtual machine generic",
+    "tokens": [
+      "virtual",
+      "machine",
+      "generic"
+    ],
+    "acronyms": [],
+    "slide_number": 34,
+    "element_path": [
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7642427,
+      "y": 1576045,
+      "w": 588623,
+      "h": 718782
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide34"
+  },
+  {
+    "title": "Database - ADB Exadata Cloud@Customer",
+    "category": "Database",
+    "name": "ADB Exadata Cloud@Customer",
+    "normalized_title": "database adb exadata cloud customer",
+    "normalized_name": "adb exadata cloud customer",
+    "tokens": [
+      "adb",
+      "exadata",
+      "cloud",
+      "customer"
+    ],
+    "acronyms": [
+      "adb"
+    ],
+    "slide_number": 37,
+    "element_path": [
+      18
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1338014,
+      "y": 2867182,
+      "w": 1023037,
+      "h": 654554
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - ADB-D",
+    "category": "Database",
+    "name": "ADB-D",
+    "normalized_title": "database adb d",
+    "normalized_name": "adb d",
+    "tokens": [
+      "adb",
+      "d"
+    ],
+    "acronyms": [
+      "adb-d"
+    ],
+    "slide_number": 37,
+    "element_path": [
+      17
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 728067,
+      "y": 2857558,
+      "w": 508473,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - ADW-D",
+    "category": "Database",
+    "name": "ADW-D",
+    "normalized_title": "database adw d",
+    "normalized_name": "adw d",
+    "tokens": [
+      "adw",
+      "d"
+    ],
+    "acronyms": [
+      "adw-d"
+    ],
+    "slide_number": 37,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5129418,
+      "y": 1497188,
+      "w": 535724,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - ATP-D",
+    "category": "Database",
+    "name": "ATP-D",
+    "normalized_title": "database atp d",
+    "normalized_name": "atp d",
+    "tokens": [
+      "atp",
+      "d"
+    ],
+    "acronyms": [
+      "atp-d"
+    ],
+    "slide_number": 37,
+    "element_path": [
+      12
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6982333,
+      "y": 1515363,
+      "w": 497252,
+      "h": 543333
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Data Guard",
+    "category": "Database",
+    "name": "Data Guard",
+    "normalized_title": "database data guard",
+    "normalized_name": "data guard",
+    "tokens": [
+      "data",
+      "guard"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      25
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1626072,
+      "y": 4217929,
+      "w": 471604,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Data Guard Recovery",
+    "category": "Database",
+    "name": "Data Guard Recovery",
+    "normalized_title": "database data guard recovery",
+    "normalized_name": "data guard recovery",
+    "tokens": [
+      "data",
+      "guard",
+      "recovery"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      26
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2219027,
+      "y": 4217929,
+      "w": 619080,
+      "h": 766847
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Data Lake",
+    "category": "Database",
+    "name": "Data Lake",
+    "normalized_title": "database data lake",
+    "normalized_name": "data lake",
+    "tokens": [
+      "data",
+      "lake"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      29
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4399451,
+      "y": 4217929,
+      "w": 649537,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Data Lakehouse",
+    "category": "Database",
+    "name": "Data Lakehouse",
+    "normalized_title": "database data lakehouse",
+    "normalized_name": "data lakehouse",
+    "tokens": [
+      "data",
+      "lakehouse"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      28
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3637348,
+      "y": 4301354,
+      "w": 696024,
+      "h": 580753
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Data Safe",
+    "category": "Database",
+    "name": "Data Safe",
+    "normalized_title": "database data safe",
+    "normalized_name": "data safe",
+    "tokens": [
+      "data",
+      "safe"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      19
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2422011,
+      "y": 2860767,
+      "w": 633507,
+      "h": 558300
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Database",
+    "category": "Database",
+    "name": "Database",
+    "normalized_title": "database database",
+    "normalized_name": "database",
+    "tokens": [
+      "database"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1499539,
+      "y": 1497188,
+      "w": 619080,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Database Flashback",
+    "category": "Database",
+    "name": "Database Flashback",
+    "normalized_title": "database database flashback",
+    "normalized_name": "database flashback",
+    "tokens": [
+      "database",
+      "flashback"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      31
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6005670,
+      "y": 4217929,
+      "w": 651140,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Database Management",
+    "category": "Database",
+    "name": "Database Management",
+    "normalized_title": "database database management",
+    "normalized_name": "database management",
+    "tokens": [
+      "database",
+      "management"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      24
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 697035,
+      "y": 4236379,
+      "w": 814647,
+      "h": 645728
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Estate Explorer",
+    "category": "Database",
+    "name": "Estate Explorer",
+    "normalized_title": "database estate explorer",
+    "normalized_name": "estate explorer",
+    "tokens": [
+      "estate",
+      "explorer"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      33
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7513711,
+      "y": 4228625,
+      "w": 579005,
+      "h": 653482
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Exadata Cloud@Customer",
+    "category": "Database",
+    "name": "Exadata Cloud@Customer",
+    "normalized_title": "database exadata cloud customer",
+    "normalized_name": "exadata cloud customer",
+    "tokens": [
+      "exadata",
+      "cloud",
+      "customer"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      15
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9718409,
+      "y": 1497188,
+      "w": 1023037,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Exadata Fleet Update",
+    "category": "Database",
+    "name": "Exadata Fleet Update",
+    "normalized_title": "database exadata fleet update",
+    "normalized_name": "exadata fleet update",
+    "tokens": [
+      "exadata",
+      "fleet",
+      "update"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      16
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 10802535,
+      "y": 1497188,
+      "w": 782587,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate",
+    "category": "Database",
+    "name": "GoldenGate",
+    "normalized_title": "database goldengate",
+    "normalized_name": "goldengate",
+    "tokens": [
+      "goldengate"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      37
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1558092,
+      "y": 5670323,
+      "w": 740908,
+      "h": 469485
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate Application Adapter",
+    "category": "Database",
+    "name": "GoldenGate Application Adapter",
+    "normalized_title": "database goldengate application adapter",
+    "normalized_name": "goldengate application adapter",
+    "tokens": [
+      "goldengate",
+      "application",
+      "adapter"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      40
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3983659,
+      "y": 5625360,
+      "w": 740908,
+      "h": 719787
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate Director",
+    "category": "Database",
+    "name": "GoldenGate Director",
+    "normalized_title": "database goldengate director",
+    "normalized_name": "goldengate director",
+    "tokens": [
+      "goldengate",
+      "director"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      38
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2366614,
+      "y": 5623217,
+      "w": 740908,
+      "h": 619260
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate Free",
+    "category": "Database",
+    "name": "GoldenGate Free",
+    "normalized_title": "database goldengate free",
+    "normalized_name": "goldengate free",
+    "tokens": [
+      "goldengate",
+      "free"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      46
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8898979,
+      "y": 5621080,
+      "w": 740908,
+      "h": 621397
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate HP Non-Stop Guardian",
+    "category": "Database",
+    "name": "GoldenGate HP Non-Stop Guardian",
+    "normalized_title": "database goldengate hp non stop guardian",
+    "normalized_name": "goldengate hp non stop guardian",
+    "tokens": [
+      "goldengate",
+      "hp",
+      "non",
+      "stop",
+      "guardian"
+    ],
+    "acronyms": [
+      "hp"
+    ],
+    "slide_number": 37,
+    "element_path": [
+      45
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8025390,
+      "y": 5623221,
+      "w": 806631,
+      "h": 721926
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate Monitor",
+    "category": "Database",
+    "name": "GoldenGate Monitor",
+    "normalized_title": "database goldengate monitor",
+    "normalized_name": "goldengate monitor",
+    "tokens": [
+      "goldengate",
+      "monitor"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      44
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7217766,
+      "y": 5623217,
+      "w": 740908,
+      "h": 619260
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate On-Premises",
+    "category": "Database",
+    "name": "GoldenGate On-Premises",
+    "normalized_title": "database goldengate on premises",
+    "normalized_name": "goldengate on premises",
+    "tokens": [
+      "goldengate",
+      "on",
+      "premises"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      36
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 695932,
+      "y": 5741929,
+      "w": 798617,
+      "h": 500548
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate Plug-in",
+    "category": "Database",
+    "name": "GoldenGate Plug-in",
+    "normalized_title": "database goldengate plug in",
+    "normalized_name": "goldengate plug in",
+    "tokens": [
+      "goldengate",
+      "plug",
+      "in"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      41
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4792181,
+      "y": 5624289,
+      "w": 740908,
+      "h": 618188
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate Stream Analytics",
+    "category": "Database",
+    "name": "GoldenGate Stream Analytics",
+    "normalized_title": "database goldengate stream analytics",
+    "normalized_name": "goldengate stream analytics",
+    "tokens": [
+      "goldengate",
+      "stream",
+      "analytics"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      42
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5600703,
+      "y": 5621080,
+      "w": 740908,
+      "h": 724067
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate Studio",
+    "category": "Database",
+    "name": "GoldenGate Studio",
+    "normalized_title": "database goldengate studio",
+    "normalized_name": "goldengate studio",
+    "tokens": [
+      "goldengate",
+      "studio"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      39
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3175136,
+      "y": 5623217,
+      "w": 740908,
+      "h": 619260
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - GoldenGate Veridata",
+    "category": "Database",
+    "name": "GoldenGate Veridata",
+    "normalized_title": "database goldengate veridata",
+    "normalized_name": "goldengate veridata",
+    "tokens": [
+      "goldengate",
+      "veridata"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      43
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6409244,
+      "y": 5622145,
+      "w": 740908,
+      "h": 620332
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Migration Workbench",
+    "category": "Database",
+    "name": "Migration Workbench",
+    "normalized_title": "database migration workbench",
+    "normalized_name": "migration workbench",
+    "tokens": [
+      "migration",
+      "workbench"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      32
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6728097,
+      "y": 4217929,
+      "w": 721672,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - MySQL Database System",
+    "category": "Database",
+    "name": "MySQL Database System",
+    "normalized_title": "database mysql database system",
+    "normalized_name": "mysql database system",
+    "tokens": [
+      "mysql",
+      "database",
+      "system"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      21
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3816019,
+      "y": 2857558,
+      "w": 619080,
+      "h": 766848
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - MySQL HeatWave",
+    "category": "Database",
+    "name": "MySQL HeatWave",
+    "normalized_title": "database mysql heatwave",
+    "normalized_name": "mysql heatwave",
+    "tokens": [
+      "mysql",
+      "heatwave"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      27
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2905680,
+      "y": 4243609,
+      "w": 662361,
+      "h": 638498
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - NoSQL Database",
+    "category": "Database",
+    "name": "NoSQL Database",
+    "normalized_title": "database nosql database",
+    "normalized_name": "nosql database",
+    "tokens": [
+      "nosql",
+      "database"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      20
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3123000,
+      "y": 2857558,
+      "w": 619080,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - OCI Database with PostgreSQL",
+    "category": "Database",
+    "name": "OCI Database with PostgreSQL",
+    "normalized_title": "database oci database with postgresql",
+    "normalized_name": "oci database with postgresql",
+    "tokens": [
+      "oci",
+      "database",
+      "with",
+      "postgresql"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 37,
+    "element_path": [
+      35
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9233103,
+      "y": 4217929,
+      "w": 966931,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - OCI Migrate Autonomous Database",
+    "category": "Database",
+    "name": "OCI Migrate Autonomous Database",
+    "normalized_title": "database oci migrate autonomous database",
+    "normalized_name": "oci migrate autonomous database",
+    "tokens": [
+      "oci",
+      "migrate",
+      "autonomous",
+      "database"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 37,
+    "element_path": [
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3060185,
+      "y": 1497188,
+      "w": 800219,
+      "h": 766847
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - OpenSearch",
+    "category": "Database",
+    "name": "OpenSearch",
+    "normalized_title": "database opensearch",
+    "normalized_name": "opensearch",
+    "tokens": [
+      "opensearch"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      23
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5150375,
+      "y": 2857558,
+      "w": 763351,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Oracle Autonomous Data Warehouse",
+    "category": "Database",
+    "name": "Oracle Autonomous Data Warehouse",
+    "normalized_title": "database oracle autonomous data warehouse",
+    "normalized_name": "oracle autonomous data warehouse",
+    "tokens": [
+      "oracle",
+      "autonomous",
+      "data",
+      "warehouse"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3926311,
+      "y": 1497188,
+      "w": 1128835,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Oracle Autonomous Database",
+    "category": "Database",
+    "name": "Oracle Autonomous Database",
+    "normalized_title": "database oracle autonomous database",
+    "normalized_name": "oracle autonomous database",
+    "tokens": [
+      "oracle",
+      "autonomous",
+      "database"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2193911,
+      "y": 1548551,
+      "w": 800219,
+      "h": 715484
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Oracle Autonomous Transaction Processing ATP",
+    "category": "Database",
+    "name": "Oracle Autonomous Transaction Processing ATP",
+    "normalized_title": "database oracle autonomous transaction processing atp",
+    "normalized_name": "oracle autonomous transaction processing atp",
+    "tokens": [
+      "oracle",
+      "autonomous",
+      "transaction",
+      "processing",
+      "atp"
+    ],
+    "acronyms": [
+      "atp"
+    ],
+    "slide_number": 37,
+    "element_path": [
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5755111,
+      "y": 1531421,
+      "w": 1128835,
+      "h": 732614
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Oracle Base Database",
+    "category": "Database",
+    "name": "Oracle Base Database",
+    "normalized_title": "database oracle base database",
+    "normalized_name": "oracle base database",
+    "tokens": [
+      "oracle",
+      "base",
+      "database"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 697035,
+      "y": 1518585,
+      "w": 737702,
+      "h": 642781
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Oracle Compute Cloud@Customer",
+    "category": "Database",
+    "name": "Oracle Compute Cloud@Customer",
+    "normalized_title": "database oracle compute cloud customer",
+    "normalized_name": "oracle compute cloud customer",
+    "tokens": [
+      "oracle",
+      "compute",
+      "cloud",
+      "customer"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      14
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8633963,
+      "y": 1497188,
+      "w": 1023037,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Oracle Database Migration Service",
+    "category": "Database",
+    "name": "Oracle Database Migration Service",
+    "normalized_title": "database oracle database migration service",
+    "normalized_name": "oracle database migration service",
+    "tokens": [
+      "oracle",
+      "database",
+      "migration",
+      "service"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      34
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8160593,
+      "y": 4217929,
+      "w": 1005403,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Oracle Exadata Database Service",
+    "category": "Database",
+    "name": "Oracle Exadata Database Service",
+    "normalized_title": "database oracle exadata database service",
+    "normalized_name": "oracle exadata database service",
+    "tokens": [
+      "oracle",
+      "exadata",
+      "database",
+      "service"
+    ],
+    "acronyms": [],
+    "slide_number": 37,
+    "element_path": [
+      13
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7581601,
+      "y": 1497188,
+      "w": 982961,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - Oracle REST Data Services",
+    "category": "Database",
+    "name": "Oracle REST Data Services",
+    "normalized_title": "database oracle rest data services",
+    "normalized_name": "oracle rest data services",
+    "tokens": [
+      "oracle",
+      "rest",
+      "data",
+      "services"
+    ],
+    "acronyms": [
+      "rest"
+    ],
+    "slide_number": 37,
+    "element_path": [
+      30
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5117835,
+      "y": 4217929,
+      "w": 813043,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Database - RAC",
+    "category": "Database",
+    "name": "RAC",
+    "normalized_title": "database rac",
+    "normalized_name": "rac",
+    "tokens": [
+      "rac"
+    ],
+    "acronyms": [
+      "rac"
+    ],
+    "slide_number": 37,
+    "element_path": [
+      22
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4601382,
+      "y": 2857558,
+      "w": 386644,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide37"
+  },
+  {
+    "title": "Developer Services - APEX",
+    "category": "Developer Services",
+    "name": "APEX",
+    "normalized_title": "developer services apex",
+    "normalized_name": "apex",
+    "tokens": [
+      "apex"
+    ],
+    "acronyms": [
+      "apex"
+    ],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6291110,
+      "y": 2440806,
+      "w": 442750,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - API Gateway",
+    "category": "Developer Services",
+    "name": "API Gateway",
+    "normalized_title": "developer services api gateway",
+    "normalized_name": "api gateway",
+    "tokens": [
+      "api",
+      "gateway"
+    ],
+    "acronyms": [
+      "api"
+    ],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7665944,
+      "y": 2440806,
+      "w": 772969,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - API Service",
+    "category": "Developer Services",
+    "name": "API Service",
+    "normalized_title": "developer services api service",
+    "normalized_name": "api service",
+    "tokens": [
+      "api",
+      "service"
+    ],
+    "acronyms": [
+      "api"
+    ],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8504433,
+      "y": 2440806,
+      "w": 708848,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Application Dependency Management",
+    "category": "Developer Services",
+    "name": "Application Dependency Management",
+    "normalized_title": "developer services application dependency management",
+    "normalized_name": "application dependency management",
+    "tokens": [
+      "application",
+      "dependency",
+      "management"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6101415,
+      "y": 2614123,
+      "w": 814647,
+      "h": 766848
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Container",
+    "category": "Developer Services",
+    "name": "Container",
+    "normalized_title": "developer services container",
+    "normalized_name": "container",
+    "tokens": [
+      "container"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      4
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3158793,
+      "y": 2440806,
+      "w": 646331,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Container Instances",
+    "category": "Developer Services",
+    "name": "Container Instances",
+    "normalized_title": "developer services container instances",
+    "normalized_name": "container instances",
+    "tokens": [
+      "container",
+      "instances"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4634666,
+      "y": 2483824,
+      "w": 646331,
+      "h": 621160
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Content Management",
+    "category": "Developer Services",
+    "name": "Content Management",
+    "normalized_title": "developer services content management",
+    "normalized_name": "content management",
+    "tokens": [
+      "content",
+      "management"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2225643,
+      "y": 2613706,
+      "w": 814647,
+      "h": 664595
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - DevOps",
+    "category": "Developer Services",
+    "name": "DevOps",
+    "normalized_title": "developer services devops",
+    "normalized_name": "devops",
+    "tokens": [
+      "devops"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      4
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1592878,
+      "y": 2614122,
+      "w": 553357,
+      "h": 561510
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Email Delivery",
+    "category": "Developer Services",
+    "name": "Email Delivery",
+    "normalized_title": "developer services email delivery",
+    "normalized_name": "email delivery",
+    "tokens": [
+      "email",
+      "delivery"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3791500,
+      "y": 2734920,
+      "w": 853119,
+      "h": 440712
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Integration",
+    "category": "Developer Services",
+    "name": "Integration",
+    "normalized_title": "developer services integration",
+    "normalized_name": "integration",
+    "tokens": [
+      "integration"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      12
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9282924,
+      "y": 2475020,
+      "w": 704039,
+      "h": 527294
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Jet",
+    "category": "Developer Services",
+    "name": "Jet",
+    "normalized_title": "developer services jet",
+    "normalized_name": "jet",
+    "tokens": [
+      "jet"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4799245,
+      "y": 2614123,
+      "w": 385011,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Logic Flow",
+    "category": "Developer Services",
+    "name": "Logic Flow",
+    "normalized_title": "developer services logic flow",
+    "normalized_name": "logic flow",
+    "tokens": [
+      "logic",
+      "flow"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5349791,
+      "y": 2614123,
+      "w": 684803,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Multiple Containers",
+    "category": "Developer Services",
+    "name": "Multiple Containers",
+    "normalized_title": "developer services multiple containers",
+    "normalized_name": "multiple containers",
+    "tokens": [
+      "multiple",
+      "containers"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3872814,
+      "y": 2508748,
+      "w": 694421,
+      "h": 596236
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Notifications",
+    "category": "Developer Services",
+    "name": "Notifications",
+    "normalized_title": "developer services notifications",
+    "normalized_name": "notifications",
+    "tokens": [
+      "notifications"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      13
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 10051405,
+      "y": 2442941,
+      "w": 780983,
+      "h": 559373
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - OCI Container Engine for Kubernetes",
+    "category": "Developer Services",
+    "name": "OCI Container Engine for Kubernetes",
+    "normalized_title": "developer services oci container engine for kubernetes",
+    "normalized_name": "oci container engine for kubernetes",
+    "tokens": [
+      "oci",
+      "container",
+      "engine",
+      "for",
+      "kubernetes"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      2
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 991453,
+      "y": 2440806,
+      "w": 1197764,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - OCI Container Registry",
+    "category": "Developer Services",
+    "name": "OCI Container Registry",
+    "normalized_title": "developer services oci container registry",
+    "normalized_name": "oci container registry",
+    "tokens": [
+      "oci",
+      "container",
+      "registry"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      3
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2250604,
+      "y": 2440806,
+      "w": 843501,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - OCI Process Automation",
+    "category": "Developer Services",
+    "name": "OCI Process Automation",
+    "normalized_title": "developer services oci process automation",
+    "normalized_name": "oci process automation",
+    "tokens": [
+      "oci",
+      "process",
+      "automation"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 39,
+    "element_path": [
+      12
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7775185,
+      "y": 2614123,
+      "w": 746101,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - OKE Virtual Node",
+    "category": "Developer Services",
+    "name": "OKE Virtual Node",
+    "normalized_title": "developer services oke virtual node",
+    "normalized_name": "oke virtual node",
+    "tokens": [
+      "oke",
+      "virtual",
+      "node"
+    ],
+    "acronyms": [
+      "oke"
+    ],
+    "slide_number": 39,
+    "element_path": [
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6981036,
+      "y": 2614123,
+      "w": 724878,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Private Endpoint IP",
+    "category": "Developer Services",
+    "name": "Private Endpoint IP",
+    "normalized_title": "developer services private endpoint ip",
+    "normalized_name": "private endpoint ip",
+    "tokens": [
+      "private",
+      "endpoint",
+      "ip"
+    ],
+    "acronyms": [
+      "ip"
+    ],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6868908,
+      "y": 2440806,
+      "w": 729687,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Resource Manager",
+    "category": "Developer Services",
+    "name": "Resource Manager",
+    "normalized_title": "developer services resource manager",
+    "normalized_name": "resource manager",
+    "tokens": [
+      "resource",
+      "manager"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3105347,
+      "y": 2651533,
+      "w": 620683,
+      "h": 626768
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Service Mesh",
+    "category": "Developer Services",
+    "name": "Service Mesh",
+    "normalized_title": "developer services service mesh",
+    "normalized_name": "service mesh",
+    "tokens": [
+      "service",
+      "mesh"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      2,
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5348989,
+      "y": 2440806,
+      "w": 808235,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Developer Services - Visual Builder",
+    "category": "Developer Services",
+    "name": "Visual Builder",
+    "normalized_title": "developer services visual builder",
+    "normalized_name": "visual builder",
+    "tokens": [
+      "visual",
+      "builder"
+    ],
+    "acronyms": [],
+    "slide_number": 39,
+    "element_path": [
+      3
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 691260,
+      "y": 2633380,
+      "w": 827471,
+      "h": 542252
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide39"
+  },
+  {
+    "title": "Governance and Administration - Cloud Advisor",
+    "category": "Governance and Administration",
+    "name": "Cloud Advisor",
+    "normalized_title": "governance and administration cloud advisor",
+    "normalized_name": "cloud advisor",
+    "tokens": [
+      "cloud",
+      "advisor"
+    ],
+    "acronyms": [],
+    "slide_number": 44,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 757960,
+      "y": 1512227,
+      "w": 542136,
+      "h": 659898
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide44"
+  },
+  {
+    "title": "Governance and Administration - Cloud Migrations",
+    "category": "Governance and Administration",
+    "name": "Cloud Migrations",
+    "normalized_title": "governance and administration cloud migrations",
+    "normalized_name": "cloud migrations",
+    "tokens": [
+      "cloud",
+      "migrations"
+    ],
+    "acronyms": [],
+    "slide_number": 44,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4415207,
+      "y": 1534682,
+      "w": 689612,
+      "h": 637443
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide44"
+  },
+  {
+    "title": "Governance and Administration - License Manager",
+    "category": "Governance and Administration",
+    "name": "License Manager",
+    "normalized_title": "governance and administration license manager",
+    "normalized_name": "license manager",
+    "tokens": [
+      "license",
+      "manager"
+    ],
+    "acronyms": [],
+    "slide_number": 44,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2245968,
+      "y": 1507947,
+      "w": 604653,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide44"
+  },
+  {
+    "title": "Governance and Administration - Oracle Cloud Identifier",
+    "category": "Governance and Administration",
+    "name": "Oracle Cloud Identifier",
+    "normalized_title": "governance and administration oracle cloud identifier",
+    "normalized_name": "oracle cloud identifier",
+    "tokens": [
+      "oracle",
+      "cloud",
+      "identifier"
+    ],
+    "acronyms": [],
+    "slide_number": 44,
+    "element_path": [
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2920789,
+      "y": 1690823,
+      "w": 787395,
+      "h": 481302
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide44"
+  },
+  {
+    "title": "Governance and Administration - Organization",
+    "category": "Governance and Administration",
+    "name": "Organization",
+    "normalized_title": "governance and administration organization",
+    "normalized_name": "organization",
+    "tokens": [
+      "organization"
+    ],
+    "acronyms": [],
+    "slide_number": 44,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1386862,
+      "y": 1507947,
+      "w": 793807,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide44"
+  },
+  {
+    "title": "Governance and Administration - Tagging",
+    "category": "Governance and Administration",
+    "name": "Tagging",
+    "normalized_title": "governance and administration tagging",
+    "normalized_name": "tagging",
+    "tokens": [
+      "tagging"
+    ],
+    "acronyms": [],
+    "slide_number": 44,
+    "element_path": [
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3777585,
+      "y": 1507947,
+      "w": 574196,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide44"
+  },
+  {
+    "title": "Hybrid - Dedicated Region",
+    "category": "Hybrid",
+    "name": "Dedicated Region",
+    "normalized_title": "hybrid dedicated region",
+    "normalized_name": "dedicated region",
+    "tokens": [
+      "dedicated",
+      "region"
+    ],
+    "acronyms": [],
+    "slide_number": 42,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4129216,
+      "y": 1377823,
+      "w": 655949,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide42"
+  },
+  {
+    "title": "Hybrid - Roving Edge Device (RED)",
+    "category": "Hybrid",
+    "name": "Roving Edge Device (RED)",
+    "normalized_title": "hybrid roving edge device red",
+    "normalized_name": "roving edge device red",
+    "tokens": [
+      "roving",
+      "edge",
+      "device",
+      "red"
+    ],
+    "acronyms": [
+      "red"
+    ],
+    "slide_number": 42,
+    "element_path": [
+      3
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1543479,
+      "y": 1380495,
+      "w": 788999,
+      "h": 661506
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide42"
+  },
+  {
+    "title": "Hybrid - Roving Edge Infrastructure",
+    "category": "Hybrid",
+    "name": "Roving Edge Infrastructure",
+    "normalized_title": "hybrid roving edge infrastructure",
+    "normalized_name": "roving edge infrastructure",
+    "tokens": [
+      "roving",
+      "edge",
+      "infrastructure"
+    ],
+    "acronyms": [],
+    "slide_number": 42,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3237929,
+      "y": 1390643,
+      "w": 827471,
+      "h": 651358
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide42"
+  },
+  {
+    "title": "Hybrid - Roving Edge Service",
+    "category": "Hybrid",
+    "name": "Roving Edge Service",
+    "normalized_title": "hybrid roving edge service",
+    "normalized_name": "roving edge service",
+    "tokens": [
+      "roving",
+      "edge",
+      "service"
+    ],
+    "acronyms": [],
+    "slide_number": 42,
+    "element_path": [
+      2
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 702725,
+      "y": 1425949,
+      "w": 777777,
+      "h": 616052
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide42"
+  },
+  {
+    "title": "Hybrid - Roving Edge Ultra",
+    "category": "Hybrid",
+    "name": "Roving Edge Ultra",
+    "normalized_title": "hybrid roving edge ultra",
+    "normalized_name": "roving edge ultra",
+    "tokens": [
+      "roving",
+      "edge",
+      "ultra"
+    ],
+    "acronyms": [],
+    "slide_number": 42,
+    "element_path": [
+      4
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2396771,
+      "y": 1383171,
+      "w": 777777,
+      "h": 658830
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide42"
+  },
+  {
+    "title": "Identity and Security - Active Directory",
+    "category": "Identity and Security",
+    "name": "Active Directory",
+    "normalized_title": "identity and security active directory",
+    "normalized_name": "active directory",
+    "tokens": [
+      "active",
+      "directory"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      31
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3591309,
+      "y": 3721652,
+      "w": 615874,
+      "h": 653482
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Bastion",
+    "category": "Identity and Security",
+    "name": "Bastion",
+    "normalized_title": "identity and security bastion",
+    "normalized_name": "bastion",
+    "tokens": [
+      "bastion"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      23
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5916714,
+      "y": 2526056,
+      "w": 537327,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Certificates",
+    "category": "Identity and Security",
+    "name": "Certificates",
+    "normalized_title": "identity and security certificates",
+    "normalized_name": "certificates",
+    "tokens": [
+      "certificates"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      20
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3636432,
+      "y": 2526170,
+      "w": 712054,
+      "h": 561394
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Cloud Guard",
+    "category": "Identity and Security",
+    "name": "Cloud Guard",
+    "normalized_title": "identity and security cloud guard",
+    "normalized_name": "cloud guard",
+    "tokens": [
+      "cloud",
+      "guard"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      15
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8115619,
+      "y": 1415727,
+      "w": 771365,
+      "h": 522992
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Compartments",
+    "category": "Identity and Security",
+    "name": "Compartments",
+    "normalized_title": "identity and security compartments",
+    "normalized_name": "compartments",
+    "tokens": [
+      "compartments"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      14
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7157135,
+      "y": 1454244,
+      "w": 891591,
+      "h": 484475
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - DDoS Protection",
+    "category": "Identity and Security",
+    "name": "DDoS Protection",
+    "normalized_title": "identity and security ddos protection",
+    "normalized_name": "ddos protection",
+    "tokens": [
+      "ddos",
+      "protection"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      25
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7183315,
+      "y": 2557075,
+      "w": 671979,
+      "h": 633159
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Encryption",
+    "category": "Identity and Security",
+    "name": "Encryption",
+    "normalized_title": "identity and security encryption",
+    "normalized_name": "encryption",
+    "tokens": [
+      "encryption"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      28
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1543238,
+      "y": 3710956,
+      "w": 696024,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Firewall",
+    "category": "Identity and Security",
+    "name": "Firewall",
+    "normalized_title": "identity and security firewall",
+    "normalized_name": "firewall",
+    "tokens": [
+      "firewall"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      18
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2366500,
+      "y": 2557063,
+      "w": 543739,
+      "h": 530501
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - IAM",
+    "category": "Identity and Security",
+    "name": "IAM",
+    "normalized_title": "identity and security iam",
+    "normalized_name": "iam",
+    "tokens": [
+      "iam"
+    ],
+    "acronyms": [
+      "iam"
+    ],
+    "slide_number": 40,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1691525,
+      "y": 1399670,
+      "w": 385010,
+      "h": 539049
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Key Management",
+    "category": "Identity and Security",
+    "name": "Key Management",
+    "normalized_title": "identity and security key management",
+    "normalized_name": "key management",
+    "tokens": [
+      "key",
+      "management"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      27
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 664381,
+      "y": 3710956,
+      "w": 814647,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Key Vault",
+    "category": "Identity and Security",
+    "name": "Key Vault",
+    "normalized_title": "identity and security key vault",
+    "normalized_name": "key vault",
+    "tokens": [
+      "key",
+      "vault"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      26
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7994790,
+      "y": 2561335,
+      "w": 429926,
+      "h": 628899
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Maximum Security Zone",
+    "category": "Identity and Security",
+    "name": "Maximum Security Zone",
+    "normalized_title": "identity and security maximum security zone",
+    "normalized_name": "maximum security zone",
+    "tokens": [
+      "maximum",
+      "security",
+      "zone"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      16
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 663226,
+      "y": 2526056,
+      "w": 833883,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - NSG",
+    "category": "Identity and Security",
+    "name": "NSG",
+    "normalized_title": "identity and security nsg",
+    "normalized_name": "nsg",
+    "tokens": [
+      "nsg"
+    ],
+    "acronyms": [
+      "nsg"
+    ],
+    "slide_number": 40,
+    "element_path": [
+      30
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3037907,
+      "y": 3710956,
+      "w": 391454,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Oracle Identity Cloud Service",
+    "category": "Identity and Security",
+    "name": "Oracle Identity Cloud Service",
+    "normalized_title": "identity and security oracle identity cloud service",
+    "normalized_name": "oracle identity cloud service",
+    "tokens": [
+      "oracle",
+      "identity",
+      "cloud",
+      "service"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 666287,
+      "y": 1413559,
+      "w": 870751,
+      "h": 627830
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Policies",
+    "category": "Identity and Security",
+    "name": "Policies",
+    "normalized_title": "identity and security policies",
+    "normalized_name": "policies",
+    "tokens": [
+      "policies"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      13
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6534316,
+      "y": 1377211,
+      "w": 538930,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Security Lists",
+    "category": "Identity and Security",
+    "name": "Security Lists",
+    "normalized_title": "identity and security security lists",
+    "normalized_name": "security lists",
+    "tokens": [
+      "security",
+      "lists"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      24
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6544839,
+      "y": 2526056,
+      "w": 564578,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Threat Defense",
+    "category": "Identity and Security",
+    "name": "Threat Defense",
+    "normalized_title": "identity and security threat defense",
+    "normalized_name": "threat defense",
+    "tokens": [
+      "threat",
+      "defense"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      29
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2309448,
+      "y": 3725933,
+      "w": 572593,
+      "h": 649201
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Threat Intelligence",
+    "category": "Identity and Security",
+    "name": "Threat Intelligence",
+    "normalized_title": "identity and security threat intelligence",
+    "normalized_name": "threat intelligence",
+    "tokens": [
+      "threat",
+      "intelligence"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      17
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1562335,
+      "y": 2526056,
+      "w": 728084,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - User",
+    "category": "Identity and Security",
+    "name": "User",
+    "normalized_title": "identity and security user",
+    "normalized_name": "user",
+    "tokens": [
+      "user"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2327742,
+      "y": 1377211,
+      "w": 401072,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - User Group",
+    "category": "Identity and Security",
+    "name": "User Group",
+    "normalized_title": "identity and security user group",
+    "normalized_name": "user group",
+    "tokens": [
+      "user",
+      "group"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4166873,
+      "y": 1477725,
+      "w": 720069,
+      "h": 460994
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Vault",
+    "category": "Identity and Security",
+    "name": "Vault",
+    "normalized_title": "identity and security vault",
+    "normalized_name": "vault",
+    "tokens": [
+      "vault"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      22
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5331781,
+      "y": 2541020,
+      "w": 429926,
+      "h": 546544
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - Vulnerability Scanning",
+    "category": "Identity and Security",
+    "name": "Vulnerability Scanning",
+    "normalized_title": "identity and security vulnerability scanning",
+    "normalized_name": "vulnerability scanning",
+    "tokens": [
+      "vulnerability",
+      "scanning"
+    ],
+    "acronyms": [],
+    "slide_number": 40,
+    "element_path": [
+      21
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4419132,
+      "y": 2526056,
+      "w": 777777,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Identity and Security - WAF",
+    "category": "Identity and Security",
+    "name": "WAF",
+    "normalized_title": "identity and security waf",
+    "normalized_name": "waf",
+    "tokens": [
+      "waf"
+    ],
+    "acronyms": [
+      "waf"
+    ],
+    "slide_number": 40,
+    "element_path": [
+      19
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3077512,
+      "y": 2536753,
+      "w": 405880,
+      "h": 550811
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide40"
+  },
+  {
+    "title": "Marketplace - Marketplace",
+    "category": "Marketplace",
+    "name": "Marketplace",
+    "normalized_title": "marketplace marketplace",
+    "normalized_name": "marketplace",
+    "tokens": [
+      "marketplace"
+    ],
+    "acronyms": [],
+    "slide_number": 45,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 999653,
+      "y": 1582905,
+      "w": 760395,
+      "h": 699056
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide45"
+  },
+  {
+    "title": "Migration - Data Transfer",
+    "category": "Migration",
+    "name": "Data Transfer",
+    "normalized_title": "migration data transfer",
+    "normalized_name": "data transfer",
+    "tokens": [
+      "data",
+      "transfer"
+    ],
+    "acronyms": [],
+    "slide_number": 43,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 868665,
+      "y": 1589201,
+      "w": 583814,
+      "h": 480186
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide43"
+  },
+  {
+    "title": "Migration - Database Migration",
+    "category": "Migration",
+    "name": "Database Migration",
+    "normalized_title": "migration database migration",
+    "normalized_name": "database migration",
+    "tokens": [
+      "database",
+      "migration"
+    ],
+    "acronyms": [],
+    "slide_number": 43,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1603674,
+      "y": 1433035,
+      "w": 641522,
+      "h": 636352
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide43"
+  },
+  {
+    "title": "Migration - Oracle Cloud Migration Advisor",
+    "category": "Migration",
+    "name": "Oracle Cloud Migration Advisor",
+    "normalized_title": "migration oracle cloud migration advisor",
+    "normalized_name": "oracle cloud migration advisor",
+    "tokens": [
+      "oracle",
+      "cloud",
+      "migration",
+      "advisor"
+    ],
+    "acronyms": [],
+    "slide_number": 43,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2344252,
+      "y": 1390565,
+      "w": 1024639,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide43"
+  },
+  {
+    "title": "Networking - BYOIP",
+    "category": "Networking",
+    "name": "BYOIP",
+    "normalized_title": "networking byoip",
+    "normalized_name": "byoip",
+    "tokens": [
+      "byoip"
+    ],
+    "acronyms": [
+      "byoip"
+    ],
+    "slide_number": 36,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4290535,
+      "y": 1515781,
+      "w": 484428,
+      "h": 417145
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Backbone",
+    "category": "Networking",
+    "name": "Backbone",
+    "normalized_title": "networking backbone",
+    "normalized_name": "backbone",
+    "tokens": [
+      "backbone"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7792272,
+      "y": 1383001,
+      "w": 647934,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - CDN",
+    "category": "Networking",
+    "name": "CDN",
+    "normalized_title": "networking cdn",
+    "normalized_name": "cdn",
+    "tokens": [
+      "cdn"
+    ],
+    "acronyms": [
+      "cdn"
+    ],
+    "slide_number": 36,
+    "element_path": [
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6359140,
+      "y": 1405795,
+      "w": 397866,
+      "h": 533689
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Customer Premises Equipment",
+    "category": "Networking",
+    "name": "Customer Premises Equipment",
+    "normalized_title": "networking customer premises equipment",
+    "normalized_name": "customer premises equipment",
+    "tokens": [
+      "customer",
+      "premises",
+      "equipment"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3371249,
+      "y": 1386930,
+      "w": 702436,
+      "h": 766847
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - DNS",
+    "category": "Networking",
+    "name": "DNS",
+    "normalized_title": "networking dns",
+    "normalized_name": "dns",
+    "tokens": [
+      "dns"
+    ],
+    "acronyms": [
+      "dns"
+    ],
+    "slide_number": 36,
+    "element_path": [
+      4
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2668924,
+      "y": 1406162,
+      "w": 391454,
+      "h": 540156
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - DRG",
+    "category": "Networking",
+    "name": "DRG",
+    "normalized_title": "networking drg",
+    "normalized_name": "drg",
+    "tokens": [
+      "drg"
+    ],
+    "acronyms": [
+      "drg"
+    ],
+    "slide_number": 36,
+    "element_path": [
+      20
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3580590,
+      "y": 2497529,
+      "w": 256672,
+      "h": 396663
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Flexible Load Balancer",
+    "category": "Networking",
+    "name": "Flexible Load Balancer",
+    "normalized_title": "networking flexible load balancer",
+    "normalized_name": "flexible load balancer",
+    "tokens": [
+      "flexible",
+      "load",
+      "balancer"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      3
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1708378,
+      "y": 1388399,
+      "w": 803425,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - IP Pools",
+    "category": "Networking",
+    "name": "IP Pools",
+    "normalized_title": "networking ip pools",
+    "normalized_name": "ip pools",
+    "tokens": [
+      "ip",
+      "pools"
+    ],
+    "acronyms": [
+      "ip"
+    ],
+    "slide_number": 36,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4919478,
+      "y": 1484211,
+      "w": 558166,
+      "h": 445987
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Inter-Region Latency",
+    "category": "Networking",
+    "name": "Inter-Region Latency",
+    "normalized_title": "networking inter region latency",
+    "normalized_name": "inter region latency",
+    "tokens": [
+      "inter",
+      "region",
+      "latency"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      27
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8467515,
+      "y": 2417628,
+      "w": 779381,
+      "h": 651479
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Internet Gateway",
+    "category": "Networking",
+    "name": "Internet Gateway",
+    "normalized_title": "networking internet gateway",
+    "normalized_name": "internet gateway",
+    "tokens": [
+      "internet",
+      "gateway"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      22
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4975662,
+      "y": 2498111,
+      "w": 404261,
+      "h": 499333
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Load Balancer",
+    "category": "Networking",
+    "name": "Load Balancer",
+    "normalized_title": "networking load balancer",
+    "normalized_name": "load balancer",
+    "tokens": [
+      "load",
+      "balancer"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      2
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 903223,
+      "y": 1388399,
+      "w": 591829,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Local Peering Gateway",
+    "category": "Networking",
+    "name": "Local Peering Gateway",
+    "normalized_title": "networking local peering gateway",
+    "normalized_name": "local peering gateway",
+    "tokens": [
+      "local",
+      "peering",
+      "gateway"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      24
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6223690,
+      "y": 2488573,
+      "w": 641684,
+      "h": 499333
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - NAT Gateway",
+    "category": "Networking",
+    "name": "NAT Gateway",
+    "normalized_title": "networking nat gateway",
+    "normalized_name": "nat gateway",
+    "tokens": [
+      "nat",
+      "gateway"
+    ],
+    "acronyms": [
+      "nat"
+    ],
+    "slide_number": 36,
+    "element_path": [
+      23
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5648585,
+      "y": 2493063,
+      "w": 404261,
+      "h": 499333
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Network Path Analyzer",
+    "category": "Networking",
+    "name": "Network Path Analyzer",
+    "normalized_title": "networking network path analyzer",
+    "normalized_name": "network path analyzer",
+    "tokens": [
+      "network",
+      "path",
+      "analyzer"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      28
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9309642,
+      "y": 2410184,
+      "w": 821059,
+      "h": 658923
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Network Performance Inspector",
+    "category": "Networking",
+    "name": "Network Performance Inspector",
+    "normalized_title": "networking network performance inspector",
+    "normalized_name": "network performance inspector",
+    "tokens": [
+      "network",
+      "performance",
+      "inspector"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      26
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7800600,
+      "y": 2236248,
+      "w": 616016,
+      "h": 858677
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Network Switch",
+    "category": "Networking",
+    "name": "Network Switch",
+    "normalized_title": "networking network switch",
+    "normalized_name": "network switch",
+    "tokens": [
+      "network",
+      "switch"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      12
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8531438,
+      "y": 1384655,
+      "w": 580608,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Network Visualizer",
+    "category": "Networking",
+    "name": "Network Visualizer",
+    "normalized_title": "networking network visualizer",
+    "normalized_name": "network visualizer",
+    "tokens": [
+      "network",
+      "visualizer"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      29
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 10200620,
+      "y": 2405032,
+      "w": 638316,
+      "h": 664075
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - On-premises data center",
+    "category": "Networking",
+    "name": "On-premises data center",
+    "normalized_title": "networking on premises data center",
+    "normalized_name": "on premises data center",
+    "tokens": [
+      "on",
+      "premises",
+      "data",
+      "center"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6864501,
+      "y": 1386845,
+      "w": 797013,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Oracle Services Network",
+    "category": "Networking",
+    "name": "Oracle Services Network",
+    "normalized_title": "networking oracle services network",
+    "normalized_name": "oracle services network",
+    "tokens": [
+      "oracle",
+      "services",
+      "network"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      25
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7053753,
+      "y": 2520517,
+      "w": 391427,
+      "h": 585602
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Route Table",
+    "category": "Networking",
+    "name": "Route Table",
+    "normalized_title": "networking route table",
+    "normalized_name": "route table",
+    "tokens": [
+      "route",
+      "table"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      18
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1961796,
+      "y": 2506812,
+      "w": 269507,
+      "h": 499333
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Route Table and Security List",
+    "category": "Networking",
+    "name": "Route Table and Security List",
+    "normalized_title": "networking route table and security list",
+    "normalized_name": "route table and security list",
+    "tokens": [
+      "route",
+      "table",
+      "and",
+      "security",
+      "list"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      19
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2585212,
+      "y": 2497216,
+      "w": 559920,
+      "h": 602003
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - Service Gateway",
+    "category": "Networking",
+    "name": "Service Gateway",
+    "normalized_title": "networking service gateway",
+    "normalized_name": "service gateway",
+    "tokens": [
+      "service",
+      "gateway"
+    ],
+    "acronyms": [],
+    "slide_number": 36,
+    "element_path": [
+      21
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4331022,
+      "y": 2505971,
+      "w": 404261,
+      "h": 497910
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - VCN (Region Identifier)",
+    "category": "Networking",
+    "name": "VCN (Region Identifier)",
+    "normalized_title": "networking vcn region identifier",
+    "normalized_name": "vcn region identifier",
+    "tokens": [
+      "vcn",
+      "region",
+      "identifier"
+    ],
+    "acronyms": [
+      "vcn"
+    ],
+    "slide_number": 36,
+    "element_path": [
+      17
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 768502,
+      "y": 2509685,
+      "w": 834189,
+      "h": 488648
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - VNIC",
+    "category": "Networking",
+    "name": "VNIC",
+    "normalized_title": "networking vnic",
+    "normalized_name": "vnic",
+    "tokens": [
+      "vnic"
+    ],
+    "acronyms": [
+      "vnic"
+    ],
+    "slide_number": 36,
+    "element_path": [
+      13
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9414738,
+      "y": 1384656,
+      "w": 421910,
+      "h": 558309
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Networking - VTAP",
+    "category": "Networking",
+    "name": "VTAP",
+    "normalized_title": "networking vtap",
+    "normalized_name": "vtap",
+    "tokens": [
+      "vtap"
+    ],
+    "acronyms": [
+      "vtap"
+    ],
+    "slide_number": 36,
+    "element_path": [
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5638874,
+      "y": 1382464,
+      "w": 450764,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide36"
+  },
+  {
+    "title": "Observability and Management - Alarms",
+    "category": "Observability and Management",
+    "name": "Alarms",
+    "normalized_title": "observability and management alarms",
+    "normalized_name": "alarms",
+    "tokens": [
+      "alarms"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4284076,
+      "y": 1556425,
+      "w": 516488,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Application Performance Monitoring",
+    "category": "Observability and Management",
+    "name": "Application Performance Monitoring",
+    "normalized_title": "observability and management application performance monitoring",
+    "normalized_name": "application performance monitoring",
+    "tokens": [
+      "application",
+      "performance",
+      "monitoring"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      2
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 683573,
+      "y": 1643052,
+      "w": 795411,
+      "h": 680221
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Auditing",
+    "category": "Observability and Management",
+    "name": "Auditing",
+    "normalized_title": "observability and management auditing",
+    "normalized_name": "auditing",
+    "tokens": [
+      "auditing"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2824642,
+      "y": 1556425,
+      "w": 587020,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Events",
+    "category": "Observability and Management",
+    "name": "Events",
+    "normalized_title": "observability and management events",
+    "normalized_name": "events",
+    "tokens": [
+      "events"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6256061,
+      "y": 1561755,
+      "w": 500458,
+      "h": 556179
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Full Stack Disaster Recovery",
+    "category": "Observability and Management",
+    "name": "Full Stack Disaster Recovery",
+    "normalized_title": "observability and management full stack disaster recovery",
+    "normalized_name": "full stack disaster recovery",
+    "tokens": [
+      "full",
+      "stack",
+      "disaster",
+      "recovery"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      15
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9788918,
+      "y": 1556425,
+      "w": 633507,
+      "h": 766848
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Health Checks",
+    "category": "Observability and Management",
+    "name": "Health Checks",
+    "normalized_title": "observability and management health checks",
+    "normalized_name": "health checks",
+    "tokens": [
+      "health",
+      "checks"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4923103,
+      "y": 1556425,
+      "w": 521297,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Logging",
+    "category": "Observability and Management",
+    "name": "Logging",
+    "normalized_title": "observability and management logging",
+    "normalized_name": "logging",
+    "tokens": [
+      "logging"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      3
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1541774,
+      "y": 1559624,
+      "w": 574196,
+      "h": 558310
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Logging Analytics",
+    "category": "Observability and Management",
+    "name": "Logging Analytics",
+    "normalized_title": "observability and management logging analytics",
+    "normalized_name": "logging analytics",
+    "tokens": [
+      "logging",
+      "analytics"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5538665,
+      "y": 1597034,
+      "w": 611065,
+      "h": 623569
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Monitoring",
+    "category": "Observability and Management",
+    "name": "Monitoring",
+    "normalized_title": "observability and management monitoring",
+    "normalized_name": "monitoring",
+    "tokens": [
+      "monitoring"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3480116,
+      "y": 1556425,
+      "w": 710451,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - OCI Queue",
+    "category": "Observability and Management",
+    "name": "OCI Queue",
+    "normalized_title": "observability and management oci queue",
+    "normalized_name": "oci queue",
+    "tokens": [
+      "oci",
+      "queue"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 41,
+    "element_path": [
+      13
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8336273,
+      "y": 1559624,
+      "w": 694421,
+      "h": 558310
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Operations Insights",
+    "category": "Observability and Management",
+    "name": "Operations Insights",
+    "normalized_title": "observability and management operations insights",
+    "normalized_name": "operations insights",
+    "tokens": [
+      "operations",
+      "insights"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6860656,
+      "y": 1570321,
+      "w": 705642,
+      "h": 650282
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Search",
+    "category": "Observability and Management",
+    "name": "Search",
+    "normalized_title": "observability and management search",
+    "normalized_name": "search",
+    "tokens": [
+      "search"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      4
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2217352,
+      "y": 1579946,
+      "w": 505267,
+      "h": 537988
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - VCN Flow Logs",
+    "category": "Observability and Management",
+    "name": "VCN Flow Logs",
+    "normalized_title": "observability and management vcn flow logs",
+    "normalized_name": "vcn flow logs",
+    "tokens": [
+      "vcn",
+      "flow",
+      "logs"
+    ],
+    "acronyms": [
+      "vcn"
+    ],
+    "slide_number": 41,
+    "element_path": [
+      12
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7631512,
+      "y": 1556425,
+      "w": 639919,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Observability and Management - Workflow",
+    "category": "Observability and Management",
+    "name": "Workflow",
+    "normalized_title": "observability and management workflow",
+    "normalized_name": "workflow",
+    "tokens": [
+      "workflow"
+    ],
+    "acronyms": [],
+    "slide_number": 41,
+    "element_path": [
+      14
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9094552,
+      "y": 1556425,
+      "w": 630301,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide41"
+  },
+  {
+    "title": "Other Oracle Services - Blockchain",
+    "category": "Other Oracle Services",
+    "name": "Blockchain",
+    "normalized_title": "other oracle services blockchain",
+    "normalized_name": "blockchain",
+    "tokens": [
+      "blockchain"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3690538,
+      "y": 1402850,
+      "w": 696024,
+      "h": 550813
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - Cloud Native Environment",
+    "category": "Other Oracle Services",
+    "name": "Cloud Native Environment",
+    "normalized_title": "other oracle services cloud native environment",
+    "normalized_name": "cloud native environment",
+    "tokens": [
+      "cloud",
+      "native",
+      "environment"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      2
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 670464,
+      "y": 1392155,
+      "w": 797013,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - Content Delivery Network Service",
+    "category": "Other Oracle Services",
+    "name": "Content Delivery Network Service",
+    "normalized_title": "other oracle services content delivery network service",
+    "normalized_name": "content delivery network service",
+    "tokens": [
+      "content",
+      "delivery",
+      "network",
+      "service"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      12
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8210754,
+      "y": 1413544,
+      "w": 970137,
+      "h": 642789
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - Cross Domain",
+    "category": "Other Oracle Services",
+    "name": "Cross Domain",
+    "normalized_title": "other oracle services cross domain",
+    "normalized_name": "cross domain",
+    "tokens": [
+      "cross",
+      "domain"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      14
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 10418597,
+      "y": 1477712,
+      "w": 554960,
+      "h": 578621
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - Data Integrator",
+    "category": "Other Oracle Services",
+    "name": "Data Integrator",
+    "normalized_title": "other oracle services data integrator",
+    "normalized_name": "data integrator",
+    "tokens": [
+      "data",
+      "integrator"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2974110,
+      "y": 1392155,
+      "w": 654346,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - Internet",
+    "category": "Other Oracle Services",
+    "name": "Internet",
+    "normalized_title": "other oracle services internet",
+    "normalized_name": "internet",
+    "tokens": [
+      "internet"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7576064,
+      "y": 1392155,
+      "w": 558166,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - IoT",
+    "category": "Other Oracle Services",
+    "name": "IoT",
+    "normalized_title": "other oracle services iot",
+    "normalized_name": "iot",
+    "tokens": [
+      "iot"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5180849,
+      "y": 1392154,
+      "w": 385013,
+      "h": 561509
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - OCI Multicloud",
+    "category": "Other Oracle Services",
+    "name": "OCI Multicloud",
+    "normalized_title": "other oracle services oci multicloud",
+    "normalized_name": "oci multicloud",
+    "tokens": [
+      "oci",
+      "multicloud"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 47,
+    "element_path": [
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5731646,
+      "y": 1484093,
+      "w": 880369,
+      "h": 469570
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - Other Oracle Cloud Service",
+    "category": "Other Oracle Services",
+    "name": "Other Oracle Cloud Service",
+    "normalized_title": "other oracle services other oracle cloud service",
+    "normalized_name": "other oracle cloud service",
+    "tokens": [
+      "other",
+      "oracle",
+      "cloud",
+      "service"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6675653,
+      "y": 1576095,
+      "w": 822661,
+      "h": 480238
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - Private Cloud",
+    "category": "Other Oracle Services",
+    "name": "Private Cloud",
+    "normalized_title": "other oracle services private cloud",
+    "normalized_name": "private cloud",
+    "tokens": [
+      "private",
+      "cloud"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      3
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1559947,
+      "y": 1392155,
+      "w": 510076,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - Remote Agent",
+    "category": "Other Oracle Services",
+    "name": "Remote Agent",
+    "normalized_title": "other oracle services remote agent",
+    "normalized_name": "remote agent",
+    "tokens": [
+      "remote",
+      "agent"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4461008,
+      "y": 1392155,
+      "w": 553357,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - Transaction Manager",
+    "category": "Other Oracle Services",
+    "name": "Transaction Manager",
+    "normalized_title": "other oracle services transaction manager",
+    "normalized_name": "transaction manager",
+    "tokens": [
+      "transaction",
+      "manager"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      4
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2170446,
+      "y": 1469149,
+      "w": 740908,
+      "h": 587184
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Other Oracle Services - Zero Data Loss Recovery Appliance",
+    "category": "Other Oracle Services",
+    "name": "Zero Data Loss Recovery Appliance",
+    "normalized_title": "other oracle services zero data loss recovery appliance",
+    "normalized_name": "zero data loss recovery appliance",
+    "tokens": [
+      "zero",
+      "data",
+      "loss",
+      "recovery",
+      "appliance"
+    ],
+    "acronyms": [],
+    "slide_number": 47,
+    "element_path": [
+      13
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9241941,
+      "y": 1392155,
+      "w": 1111202,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide47"
+  },
+  {
+    "title": "Physical - Grouping - Availability Domain",
+    "category": "Physical",
+    "name": "Grouping - Availability Domain",
+    "normalized_title": "physical grouping availability domain",
+    "normalized_name": "grouping availability domain",
+    "tokens": [
+      "grouping",
+      "availability",
+      "domain"
+    ],
+    "acronyms": [],
+    "slide_number": 27,
+    "element_path": [
+      8
+    ],
+    "kind": "sp",
+    "bbox_emu": {
+      "x": 4173278,
+      "y": 1721760,
+      "w": 5008433,
+      "h": 4406303
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide27"
+  },
+  {
+    "title": "Physical - Grouping - Fault Domain",
+    "category": "Physical",
+    "name": "Grouping - Fault Domain",
+    "normalized_title": "physical grouping fault domain",
+    "normalized_name": "grouping fault domain",
+    "tokens": [
+      "grouping",
+      "fault",
+      "domain"
+    ],
+    "acronyms": [],
+    "slide_number": 27,
+    "element_path": [
+      9
+    ],
+    "kind": "sp",
+    "bbox_emu": {
+      "x": 4262815,
+      "y": 1943391,
+      "w": 1554480,
+      "h": 4091415
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide27"
+  },
+  {
+    "title": "Physical - Grouping - Metro Area or Realm",
+    "category": "Physical",
+    "name": "Grouping - Metro Area or Realm",
+    "normalized_title": "physical grouping metro area or realm",
+    "normalized_name": "grouping metro area or realm",
+    "tokens": [
+      "grouping",
+      "metro",
+      "area",
+      "or",
+      "realm"
+    ],
+    "acronyms": [],
+    "slide_number": 19,
+    "element_path": [
+      23
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4466496,
+      "y": 3455025,
+      "w": 3038475,
+      "h": 655156
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide19"
+  },
+  {
+    "title": "Physical - Grouping - OCI Region",
+    "category": "Physical",
+    "name": "Grouping - OCI Region",
+    "normalized_title": "physical grouping oci region",
+    "normalized_name": "grouping oci region",
+    "tokens": [
+      "grouping",
+      "oci",
+      "region"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 27,
+    "element_path": [
+      4
+    ],
+    "kind": "sp",
+    "bbox_emu": {
+      "x": 3092705,
+      "y": 1646583,
+      "w": 6778681,
+      "h": 4572000
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide27"
+  },
+  {
+    "title": "Physical - Grouping - Optional",
+    "category": "Physical",
+    "name": "Grouping - Optional",
+    "normalized_title": "physical grouping optional",
+    "normalized_name": "grouping optional",
+    "tokens": [
+      "grouping",
+      "optional"
+    ],
+    "acronyms": [],
+    "slide_number": 19,
+    "element_path": [
+      16
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4456971,
+      "y": 4780790,
+      "w": 3038475,
+      "h": 652917
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide19"
+  },
+  {
+    "title": "Physical - Grouping - Oracle Services Network",
+    "category": "Physical",
+    "name": "Grouping - Oracle Services Network",
+    "normalized_title": "physical grouping oracle services network",
+    "normalized_name": "grouping oracle services network",
+    "tokens": [
+      "grouping",
+      "oracle",
+      "services",
+      "network"
+    ],
+    "acronyms": [],
+    "slide_number": 19,
+    "element_path": [
+      17
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4441731,
+      "y": 1842522,
+      "w": 3053715,
+      "h": 798192
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide19"
+  },
+  {
+    "title": "Physical - Grouping - Subnet",
+    "category": "Physical",
+    "name": "Grouping - Subnet",
+    "normalized_title": "physical grouping subnet",
+    "normalized_name": "grouping subnet",
+    "tokens": [
+      "grouping",
+      "subnet"
+    ],
+    "acronyms": [],
+    "slide_number": 27,
+    "element_path": [
+      13
+    ],
+    "kind": "sp",
+    "bbox_emu": {
+      "x": 3485523,
+      "y": 2501975,
+      "w": 6259546,
+      "h": 1571757
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide27"
+  },
+  {
+    "title": "Physical - Grouping - VCN",
+    "category": "Physical",
+    "name": "Grouping - VCN",
+    "normalized_title": "physical grouping vcn",
+    "normalized_name": "grouping vcn",
+    "tokens": [
+      "grouping",
+      "vcn"
+    ],
+    "acronyms": [
+      "vcn"
+    ],
+    "slide_number": 27,
+    "element_path": [
+      12
+    ],
+    "kind": "sp",
+    "bbox_emu": {
+      "x": 3292972,
+      "y": 2206576,
+      "w": 6513465,
+      "h": 3755791
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide27"
+  },
+  {
+    "title": "Physical - Location - 3rd Party Cloud",
+    "category": "Physical",
+    "name": "Location - 3rd Party Cloud",
+    "normalized_title": "physical location 3rd party cloud",
+    "normalized_name": "location 3rd party cloud",
+    "tokens": [
+      "location",
+      "3rd",
+      "party",
+      "cloud"
+    ],
+    "acronyms": [],
+    "slide_number": 27,
+    "element_path": [
+      7
+    ],
+    "kind": "sp",
+    "bbox_emu": {
+      "x": 9964108,
+      "y": 3978303,
+      "w": 1371600,
+      "h": 2240280
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide27"
+  },
+  {
+    "title": "Physical - Location - Internet",
+    "category": "Physical",
+    "name": "Location - Internet",
+    "normalized_title": "physical location internet",
+    "normalized_name": "location internet",
+    "tokens": [
+      "location",
+      "internet"
+    ],
+    "acronyms": [],
+    "slide_number": 27,
+    "element_path": [
+      6
+    ],
+    "kind": "sp",
+    "bbox_emu": {
+      "x": 9965478,
+      "y": 1646583,
+      "w": 1371600,
+      "h": 2240280
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide27"
+  },
+  {
+    "title": "Physical - Location - On-Premises",
+    "category": "Physical",
+    "name": "Location - On-Premises",
+    "normalized_title": "physical location on premises",
+    "normalized_name": "location on premises",
+    "tokens": [
+      "location",
+      "on",
+      "premises"
+    ],
+    "acronyms": [],
+    "slide_number": 27,
+    "element_path": [
+      5
+    ],
+    "kind": "sp",
+    "bbox_emu": {
+      "x": 854922,
+      "y": 1646583,
+      "w": 1371600,
+      "h": 4572000
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide27"
+  },
+  {
+    "title": "Storage - Back Up/ Restore",
+    "category": "Storage",
+    "name": "Back Up/ Restore",
+    "normalized_title": "storage back up restore",
+    "normalized_name": "back up restore",
+    "tokens": [
+      "back",
+      "up",
+      "restore"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      4
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2626084,
+      "y": 1511627,
+      "w": 623889,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - Block Storage",
+    "category": "Storage",
+    "name": "Block Storage",
+    "normalized_title": "storage block storage",
+    "normalized_name": "block storage",
+    "tokens": [
+      "block",
+      "storage"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      2
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 840752,
+      "y": 1511627,
+      "w": 832279,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - Block Storage Cloning",
+    "category": "Storage",
+    "name": "Block Storage Cloning",
+    "normalized_title": "storage block storage cloning",
+    "normalized_name": "block storage cloning",
+    "tokens": [
+      "block",
+      "storage",
+      "cloning"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      5
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3317653,
+      "y": 1511627,
+      "w": 832279,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - Block Storage Multiple",
+    "category": "Storage",
+    "name": "Block Storage Multiple",
+    "normalized_title": "storage block storage multiple",
+    "normalized_name": "block storage multiple",
+    "tokens": [
+      "block",
+      "storage",
+      "multiple"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      3
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1732693,
+      "y": 1578358,
+      "w": 832279,
+      "h": 597447
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - Elastic Performance",
+    "category": "Storage",
+    "name": "Elastic Performance",
+    "normalized_title": "storage elastic performance",
+    "normalized_name": "elastic performance",
+    "tokens": [
+      "elastic",
+      "performance"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      16
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 3322901,
+      "y": 2491987,
+      "w": 795411,
+      "h": 664179
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - File Storage",
+    "category": "Storage",
+    "name": "File Storage",
+    "normalized_title": "storage file storage",
+    "normalized_name": "file storage",
+    "tokens": [
+      "file",
+      "storage"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      6
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4209542,
+      "y": 1511627,
+      "w": 740908,
+      "h": 561508
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - File Storage Clone",
+    "category": "Storage",
+    "name": "File Storage Clone",
+    "normalized_title": "storage file storage clone",
+    "normalized_name": "file storage clone",
+    "tokens": [
+      "file",
+      "storage",
+      "clone"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      8
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6012675,
+      "y": 1526604,
+      "w": 740908,
+      "h": 649201
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - File Storage Cloning Process",
+    "category": "Storage",
+    "name": "File Storage Cloning Process",
+    "normalized_title": "storage file storage cloning process",
+    "normalized_name": "file storage cloning process",
+    "tokens": [
+      "file",
+      "storage",
+      "cloning",
+      "process"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      7
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5012899,
+      "y": 1512542,
+      "w": 938077,
+      "h": 663263
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - File Storage Mount Target",
+    "category": "Storage",
+    "name": "File Storage Mount Target",
+    "normalized_title": "storage file storage mount target",
+    "normalized_name": "file storage mount target",
+    "tokens": [
+      "file",
+      "storage",
+      "mount",
+      "target"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      12
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 9222341,
+      "y": 1522320,
+      "w": 832279,
+      "h": 653485
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - File Storage Replica",
+    "category": "Storage",
+    "name": "File Storage Replica",
+    "normalized_title": "storage file storage replica",
+    "normalized_name": "file storage replica",
+    "tokens": [
+      "file",
+      "storage",
+      "replica"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      9
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 6814806,
+      "y": 1511627,
+      "w": 740908,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - File Storage Replication Process",
+    "category": "Storage",
+    "name": "File Storage Replication Process",
+    "normalized_title": "storage file storage replication process",
+    "normalized_name": "file storage replication process",
+    "tokens": [
+      "file",
+      "storage",
+      "replication",
+      "process"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      10
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 7616911,
+      "y": 1511627,
+      "w": 740908,
+      "h": 766847
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - File Storage Snapshots",
+    "category": "Storage",
+    "name": "File Storage Snapshots",
+    "normalized_title": "storage file storage snapshots",
+    "normalized_name": "file storage snapshots",
+    "tokens": [
+      "file",
+      "storage",
+      "snapshots"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      11
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 8419016,
+      "y": 1511627,
+      "w": 740908,
+      "h": 664178
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - Local Storage",
+    "category": "Storage",
+    "name": "Local Storage",
+    "normalized_title": "storage local storage",
+    "normalized_name": "local storage",
+    "tokens": [
+      "local",
+      "storage"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      17
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 4298137,
+      "y": 2491987,
+      "w": 550151,
+      "h": 664179
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - OCI Object Storage",
+    "category": "Storage",
+    "name": "OCI Object Storage",
+    "normalized_title": "storage oci object storage",
+    "normalized_name": "oci object storage",
+    "tokens": [
+      "oci",
+      "object",
+      "storage"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 35,
+    "element_path": [
+      13
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 903450,
+      "y": 2491987,
+      "w": 686406,
+      "h": 664179
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - OCI Object Storage Buckets",
+    "category": "Storage",
+    "name": "OCI Object Storage Buckets",
+    "normalized_title": "storage oci object storage buckets",
+    "normalized_name": "oci object storage buckets",
+    "tokens": [
+      "oci",
+      "object",
+      "storage",
+      "buckets"
+    ],
+    "acronyms": [
+      "oci"
+    ],
+    "slide_number": 35,
+    "element_path": [
+      14
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 1660939,
+      "y": 2491987,
+      "w": 946093,
+      "h": 664179
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - Persistent Volume",
+    "category": "Storage",
+    "name": "Persistent Volume",
+    "normalized_title": "storage persistent volume",
+    "normalized_name": "persistent volume",
+    "tokens": [
+      "persistent",
+      "volume"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      18
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 5155191,
+      "y": 2656692,
+      "w": 652743,
+      "h": 505888
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  },
+  {
+    "title": "Storage - Storage Gateway",
+    "category": "Storage",
+    "name": "Storage Gateway",
+    "normalized_title": "storage storage gateway",
+    "normalized_name": "storage gateway",
+    "tokens": [
+      "storage",
+      "gateway"
+    ],
+    "acronyms": [],
+    "slide_number": 35,
+    "element_path": [
+      15
+    ],
+    "kind": "grpSp",
+    "bbox_emu": {
+      "x": 2666478,
+      "y": 2541160,
+      "w": 587020,
+      "h": 615006
+    },
+    "source": "oracle-oci-architecture-toolkit-v24.1.pptx:slide35"
+  }
+]

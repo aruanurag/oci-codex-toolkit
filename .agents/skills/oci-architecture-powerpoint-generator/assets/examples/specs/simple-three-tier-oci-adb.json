@@ -1,0 +1,183 @@
+{
+  "title": "Simple Three-Tier OCI App",
+  "pages": [
+    {
+      "name": "Physical - Simple Three-Tier OCI App",
+      "page_type": "physical",
+      "width": 1600,
+      "height": 900,
+      "elements": [
+        {
+          "id": "internet-box",
+          "query": "internet",
+          "x": 20,
+          "y": 159,
+          "w": 220,
+          "h": 190
+        },
+        {
+          "id": "browser",
+          "type": "shape",
+          "shape": "rounded-rectangle",
+          "parent": "internet-box",
+          "x": 45,
+          "y": 58,
+          "w": 120,
+          "h": 72,
+          "label": "Clients"
+        },
+        {
+          "id": "region",
+          "query": "region",
+          "x": 280,
+          "y": 45,
+          "w": 1240,
+          "h": 760,
+          "value": "<b>OCI Region</b>"
+        },
+        {
+          "id": "vcn",
+          "query": "VCN",
+          "parent": "region",
+          "x": 70,
+          "y": 70,
+          "w": 1070,
+          "h": 600,
+          "value": "<b>Application VCN</b><br/>10.0.0.0/16"
+        },
+        {
+          "id": "public-subnet",
+          "query": "subnet",
+          "parent": "vcn",
+          "x": 40,
+          "y": 80,
+          "w": 990,
+          "h": 130,
+          "value": "<b>Public Web Subnet</b><br/>10.0.1.0/24"
+        },
+        {
+          "id": "app-subnet",
+          "query": "subnet",
+          "parent": "vcn",
+          "x": 40,
+          "y": 250,
+          "w": 500,
+          "h": 180,
+          "value": "<b>Private App Subnet</b><br/>10.0.2.0/24"
+        },
+        {
+          "id": "db-subnet",
+          "query": "subnet",
+          "parent": "vcn",
+          "x": 610,
+          "y": 250,
+          "w": 400,
+          "h": 180,
+          "value": "<b>Private DB Subnet</b><br/>10.0.3.0/24"
+        },
+        {
+          "id": "igw",
+          "query": "internet gateway",
+          "parent": "region",
+          "boundary_parent": "vcn",
+          "boundary_side": "right",
+          "y": 110,
+          "w": 95,
+          "h": 78
+        },
+        {
+          "id": "nat",
+          "query": "nat gateway",
+          "parent": "region",
+          "boundary_parent": "vcn",
+          "boundary_side": "right",
+          "y": 325,
+          "w": 95,
+          "h": 78
+        },
+        {
+          "id": "service-gateway",
+          "query": "service gateway",
+          "parent": "region",
+          "boundary_parent": "vcn",
+          "boundary_side": "right",
+          "y": 430,
+          "w": 95,
+          "h": 78
+        },
+        {
+          "id": "lb",
+          "query": "load balancer",
+          "parent": "public-subnet",
+          "x": 430,
+          "y": 12,
+          "w": 160,
+          "h": 92,
+          "external_label": "Public Load Balancer"
+        },
+        {
+          "id": "vm1",
+          "query": "virtual machine",
+          "parent": "app-subnet",
+          "x": 65,
+          "y": 22,
+          "w": 130,
+          "h": 110,
+          "external_label": "App VM 1"
+        },
+        {
+          "id": "vm2",
+          "query": "virtual machine",
+          "parent": "app-subnet",
+          "x": 260,
+          "y": 22,
+          "w": 130,
+          "h": 110,
+          "external_label": "App VM 2"
+        },
+        {
+          "id": "adb",
+          "query": "adb",
+          "parent": "db-subnet",
+          "x": 135,
+          "y": 18,
+          "w": 160,
+          "h": 118,
+          "external_label": "Autonomous Database"
+        },
+        {
+          "type": "edge",
+          "source": "browser",
+          "target": "lb",
+          "label": "HTTPS",
+          "source_anchor": "right",
+          "target_anchor": "left"
+        },
+        {
+          "type": "edge",
+          "source": "lb",
+          "target": "vm1",
+          "label": "HTTPS",
+          "source_anchor": "bottom",
+          "target_anchor": "top"
+        },
+        {
+          "type": "edge",
+          "source": "lb",
+          "target": "vm2",
+          "label": "HTTPS",
+          "source_anchor": "bottom",
+          "target_anchor": "top"
+        },
+        {
+          "type": "edge",
+          "source": "vm2",
+          "target": "adb",
+          "label": "SQL",
+          "source_anchor": "right",
+          "target_anchor": "left"
+        }
+      ]
+    }
+  ]
+}
