@@ -98,6 +98,8 @@ The `style` field supports a small useful subset:
 - `fontSize=<number>`
 - `fontStyle=1` for bold
 
+Single-line `text` elements are automatically rendered with `wrap="none"` and PowerPoint auto-fit so short headings stay on one line when possible. If a heading still feels crowded, shorten it before increasing complexity elsewhere.
+
 ## Placeholder Shapes
 
 ```json
@@ -151,6 +153,7 @@ Supported fields:
 - `source`: required element id.
 - `target`: required element id.
 - `label`: optional connector label.
+- `semantic`: optional flow intent hint such as `publish`, `fanout`, `enqueue`, `consume`, `request`, or `read`. The renderer defaults async publish-style semantics to dashed lines when no explicit `style.dashed` override is supplied.
 - `source_anchor`: `left`, `right`, `top`, or `bottom`.
 - `target_anchor`: `left`, `right`, `top`, or `bottom`.
 - `waypoints`: optional explicit route control points.
@@ -162,6 +165,8 @@ The renderer orthogonalizes explicit waypoint routes so the final connector stay
 
 Connector labels render in transparent text boxes by default. Keep labels short enough to stay single-line when possible.
 Avoid manual `waypoints` unless they materially improve the route. The renderer will prefer the simpler automatic orthogonal route when explicit waypoints add unnecessary bends.
+When two connector families move in opposite directions, prefer using `semantic` so publish/fanout/enqueue lines can be dashed while consume/request/read lines remain solid.
+When a topology repeats paired stages such as queues and consumers, align those rows or columns symmetrically before fine-tuning connector routes.
 
 ## Recommended Workflow
 

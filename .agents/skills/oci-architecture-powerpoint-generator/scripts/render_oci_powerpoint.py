@@ -52,6 +52,8 @@ PAGE_MARGIN_RIGHT = 40.0
 PAGE_MARGIN_TOP = 48.0
 PAGE_MARGIN_BOTTOM = 52.0
 MAX_CONNECTOR_BENDS = 2
+MIN_GROUPING_INSET = 8.0
+SIBLING_OVERLAP_TOLERANCE = 2.0
 
 STYLE_KV_RE = re.compile(r"([A-Za-z][A-Za-z0-9]*)=([^;]+)")
 TAG_RE = re.compile(r"<[^>]+>")
@@ -106,6 +108,11 @@ def build_empty_tx_body(
         ET.SubElement(body_pr, qn(A_NS, "spAutoFit"))
     ET.SubElement(tx_body, qn(A_NS, "lstStyle"))
     return tx_body
+
+
+def ensure_tx_body(shape: ET.Element) -> ET.Element:
+    """Ensure placeholder shapes still carry a valid empty text body."""
+    return build_empty_tx_body(shape)
 
 
 def clone_text_template(shape: ET.Element) -> tuple[ET.Element | None, ET.Element | None, ET.Element | None, ET.Element | None]:
@@ -319,7 +326,7 @@ class IdAllocator:
     def assign(self, element: ET.Element) -> None:
         for node in element.iter():
             tag = local_name(node)
-            if tag.startswith("cNv"):
+            if tag == "cNvPr":
                 node.attrib["id"] = str(self.next_id)
                 if "name" in node.attrib and not node.attrib["name"]:
                     node.attrib["name"] = f"Generated {self.next_id}"
@@ -757,6 +764,8 @@ def create_placeholder_shape(
 ) -> ET.Element:
     style = style or {}
     preset = SHAPE_PRESETS.get(shape_name, "rect")
+    fill_token = (style.get("fillColor") or "").strip().lower()
+    stroke_token = (style.get("strokeColor") or "").strip().lower()
     fill_color = (style.get("fillColor") or "").replace("#", "") or COLOR_AIR
     stroke_color = (style.get("strokeColor") or "").replace("#", "") or COLOR_NEUTRAL3
     dashed = style.get("dashed") == "1"
@@ -776,11 +785,17 @@ def create_placeholder_shape(
     ET.SubElement(xfrm, qn(A_NS, "ext"), {"cx": str(w), "cy": str(h)})
     prst_geom = ET.SubElement(sp_pr, qn(A_NS, "prstGeom"), {"prst": preset})
     ET.SubElement(prst_geom, qn(A_NS, "avLst"))
-    fill = ET.SubElement(sp_pr, qn(A_NS, "solidFill"))
-    ET.SubElement(fill, qn(A_NS, "srgbClr"), {"val": fill_color})
+    if fill_token == "none":
+        ET.SubElement(sp_pr, qn(A_NS, "noFill"))
+    else:
+        fill = ET.SubElement(sp_pr, qn(A_NS, "solidFill"))
+        ET.SubElement(fill, qn(A_NS, "srgbClr"), {"val": fill_color})
     line = ET.SubElement(sp_pr, qn(A_NS, "ln"), {"w": str(int(stroke_width * EMU_PER_PT))})
-    line_fill = ET.SubElement(line, qn(A_NS, "solidFill"))
-    ET.SubElement(line_fill, qn(A_NS, "srgbClr"), {"val": stroke_color})
+    if stroke_token == "none":
+        ET.SubElement(line, qn(A_NS, "noFill"))
+    else:
+        line_fill = ET.SubElement(line, qn(A_NS, "solidFill"))
+        ET.SubElement(line_fill, qn(A_NS, "srgbClr"), {"val": stroke_color})
     if dashed:
         ET.SubElement(line, qn(A_NS, "prstDash"), {"val": "sysDot"})
     ET.SubElement(line, qn(A_NS, "miter"), {"lim": "800000"})
@@ -1027,6 +1042,26 @@ def overlap_length(a_start: float, a_end: float, b_start: float, b_end: float) -
     return max(high - low, 0.0)
 
 
+def is_grouping_item(item: dict[str, Any]) -> bool:
+    resolution = item.get("resolution") or {}
+    icon_title = str(resolution.get("icon_title", ""))
+    return icon_title.startswith("Physical - Grouping -")
+
+
+def grouping_insets(child_bbox: dict[str, float], parent_bbox: dict[str, float]) -> tuple[float, float, float, float]:
+    left = child_bbox["x"] - parent_bbox["x"]
+    top = child_bbox["y"] - parent_bbox["y"]
+    right = (parent_bbox["x"] + parent_bbox["w"]) - (child_bbox["x"] + child_bbox["w"])
+    bottom = (parent_bbox["y"] + parent_bbox["h"]) - (child_bbox["y"] + child_bbox["h"])
+    return (left, top, right, bottom)
+
+
+def bboxes_overlap(a: dict[str, float], b: dict[str, float], tolerance: float = 0.0) -> bool:
+    overlap_x = overlap_length(a["x"], a["x"] + a["w"], b["x"], b["x"] + b["w"])
+    overlap_y = overlap_length(a["y"], a["y"] + a["h"], b["y"], b["y"] + b["h"])
+    return overlap_x > tolerance and overlap_y > tolerance
+
+
 def segment_rides_bbox_edge(
     start: tuple[float, float],
     end: tuple[float, float],
@@ -1256,6 +1291,15 @@ def validate_geometry(
                     "message": f"{item['id']} spills outside parent {parent_id}.",
                 }
             )
+        if is_grouping_item(item) and is_grouping_item(parent) and not item.get("boundary_parent"):
+            if min(grouping_insets(child_bbox, parent_bbox)) < MIN_GROUPING_INSET:
+                issues.append(
+                    {
+                        "severity": "warning",
+                        "type": "grouping-inset",
+                        "message": f"{item['id']} sits too close to the border of {parent_id}.",
+                    }
+                )
         boundary_parent_id = item.get("boundary_parent")
         boundary_side = item.get("boundary_side")
         if boundary_parent_id and boundary_side:
@@ -1276,6 +1320,35 @@ def validate_geometry(
                         "message": f"{item['id']} is not centered on the {boundary_side} boundary of {boundary_parent_id}.",
                     }
                 )
+
+    siblings_by_parent: dict[str, list[dict[str, Any]]] = {}
+    for item in placed_elements:
+        parent_id = item.get("parent")
+        if not parent_id or not item.get("visible"):
+            continue
+        if item["kind"] in {"text", "hidden-anchor"}:
+            continue
+        if item.get("boundary_parent"):
+            continue
+        siblings_by_parent.setdefault(parent_id, []).append(item)
+
+    for parent_id, siblings in siblings_by_parent.items():
+        for index, left in enumerate(siblings):
+            left_id = left.get("id")
+            if not left_id:
+                continue
+            for right in siblings[index + 1 :]:
+                right_id = right.get("id")
+                if not right_id:
+                    continue
+                if bboxes_overlap(left["bbox"], right["bbox"], tolerance=SIBLING_OVERLAP_TOLERANCE):
+                    issues.append(
+                        {
+                            "severity": "warning",
+                            "type": "sibling-overlap",
+                            "message": f"{left_id} overlaps {right_id} inside {parent_id}.",
+                        }
+                    )
 
     for edge in edges:
         points = edge["points"]
@@ -1442,16 +1515,21 @@ def render_slide(
             align = {"left": "l", "center": "ctr", "right": "r"}.get(style.get("align", "center"), "ctr")
             font_size = int(float(style.get("fontSize", "11")))
             bold = style.get("fontStyle") == "1"
+            text_value = item.get("text", "")
+            single_line_text = "\n" not in text_value
             render_element = create_textbox(
                 allocator,
                 x=to_emu(abs_x, scale_x),
                 y=to_emu(abs_y, scale_y),
                 w=to_emu(width, scale_x),
                 h=to_emu(height, scale_y),
-                text=item.get("text", ""),
+                text=text_value,
                 font_size_pt=font_size,
                 bold=bold,
                 align=align,
+                wrap="none" if single_line_text else None,
+                zero_margins=single_line_text,
+                auto_fit=single_line_text,
             )
             kind = "text"
         elif kind == "shape":
@@ -1562,7 +1640,9 @@ def render_slide(
         points_emu = [(to_emu(px, scale_x), to_emu(py, scale_y)) for px, py in points]
         style = parse_style(raw.get("style"))
         end_arrow = style.get("endArrow", "arrow") != "none"
-        dashed = style.get("dashed") == "1"
+        semantic = str(raw.get("semantic", "")).strip().lower()
+        semantic_dashed = semantic in {"publish", "fanout", "enqueue", "async", "event", "emit"}
+        dashed = style.get("dashed") == "1" if "dashed" in style else semantic_dashed
         connector = create_polyline_shape(
             allocator,
             points_emu,
@@ -1609,6 +1689,7 @@ def render_slide(
                 "route_mode": route_mode,
                 "route_score": explicit_eval["score"],
                 "straight_route_available": straight_route_available,
+                "semantic": semantic,
             }
         )
 

@@ -23,6 +23,13 @@ This reference distills the Oracle-provided files bundled in `assets/drawio/`.
 - Use `oci-library.xml` as the machine-readable library for scripted icon lookup.
 - Remember that the toolkit is newer than the standalone library. The local catalog merges the library titles with a curated supplement for newer toolkit-only icons.
 
+## Planning And Clarification
+
+- Before drafting the actual diagram, do a short plan pass.
+- Always ask 2 to 4 targeted clarification questions before authoring unless the user explicitly waives questions or the current thread already answered them.
+- Treat symmetry and stage-alignment preferences as layout-affecting inputs when the topology is staged, mirrored, or fanout-based.
+- Treat icon uncertainty as a blocker when it could make the diagram misleading.
+
 ## Logical Diagram Guidance
 
 Use logical pages only when the user explicitly requests them.
@@ -49,6 +56,8 @@ Use physical pages for deployable infrastructure layout.
 - Increase the canvas and route connectors with waypoints before letting lines pile up on top of each other.
 - Keep icon labels close to the icon by default. Only open up extra vertical gap when a multi-line label or crossing connector needs the room.
 - Reserve dedicated traffic lanes when multiple arrows traverse the same area of the page.
+- Keep mirrored or repeated stages visually balanced. When queue and consumer tiers repeat, align them symmetrically before hand-tuning connectors.
+- Treat shared or nearly collinear lanes between different semantic flows as overlaps even if the automated quality checker does not flag them.
 - Represent one flow as one visible connector. Use waypointed routes and tiny hidden attach anchors instead of splitting the same relationship into several stitched connector objects.
 - Do not let a connector visually sit on top of a VCN, subnet, or dashed workload-container border. Use a dedicated lane instead of sharing the boundary line.
 - Do not layer standalone `Route Table` or `Security List` icons on top of subnet groupings that already render those markers on the subnet boundary. Duplicate `RT` or `SL` visuals are blockers.

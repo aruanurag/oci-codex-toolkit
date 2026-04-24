@@ -12,23 +12,26 @@ Use this skill to keep OCI architecture work disciplined and honest:
 - Use Oracle-provided draw.io assets first.
 - Prefer the closest bundled Oracle reference architecture before inventing a layout from scratch.
 - Default to physical diagrams only. Add a logical view only when the user explicitly asks for one.
+- Run a mandatory clarification gate before authoring any new diagram: ask a short set of targeted questions unless the user explicitly says not to ask questions or the current thread already answered them.
 - Resolve every component to an official icon, an official logical generic, or a clearly labeled similar placeholder shape.
 - Never claim a direct official mapping when the result is really a placeholder or a non-direct fallback.
 - Do not stop after the first render. Render, review, reroute, and rerender until the geometry review passes cleanly twice in a row.
 - Treat broken-looking traffic-flow arrows, overlapping line segments, and labels sitting on top of arrows as blockers, not polish items.
 - Treat stretched icons, inconsistent default icon sizing, diagonal edge segments, and shared connector lanes as blockers too.
+- Treat shared or nearly collinear lanes between different semantic flows, such as publish, consume, and database-write paths, as overlap even when the automated checker passes.
+- Preserve symmetry when the topology is staged, mirrored, or fanout-based by aligning repeated blocks and balancing whitespace before optimizing for the shortest route.
 
 ## Workflow
 
 1. Read [references/style-guide.md](references/style-guide.md) before producing diagram guidance.
 2. Read [references/output-format.md](references/output-format.md) to shape the final package.
 3. Read [references/diagram-spec.md](references/diagram-spec.md) before authoring a renderable JSON spec.
-4. Start with a short planning pass before generating the diagram. Summarize the inferred topology, network shape, DR or HA posture, likely reference baseline, and any assumptions that would materially affect layout quality.
+4. Start with a short planning pass and share it before generating the diagram. Summarize the inferred topology, network shape, DR or HA posture, likely reference baseline, and any assumptions that would materially affect layout quality.
 5. Run `python3 scripts/select_reference_architecture.py --query "user request" --bundle --top 5` and inspect the strongest bundled reference in `assets/reference-architectures/oracle/`, plus any supporting references suggested for DR, security, or workload-specific details.
 6. Compare the user request against the likely reference baseline and identify the few uncertainties that would change topology, subnet framing, region layout, service selection, or icon mapping.
-7. If the request is materially ambiguous, ask concise clarification questions before authoring the spec. Keep this to the smallest useful set, usually no more than three questions, and prioritize questions whose answers would visibly change the diagram.
+7. After the planning pass, always ask 2 to 4 concise clarification questions before authoring the spec unless the user explicitly says not to ask questions or the current thread already answered them. Prioritize questions whose answers would visibly change topology, subnet framing, region layout, service selection, icon mapping, or symmetry and stage alignment.
 8. Treat a request that is only a short service list, such as "Functions, Queue, Object Storage, NoSQL", as materially ambiguous by default unless ingress, region posture, HA or DR expectations, and managed-service placement are already obvious from context. In that case, ask at least two targeted follow-up questions before drafting.
-9. If the user explicitly says not to ask questions, or if the remaining ambiguity is minor, proceed with reasonable assumptions and state them clearly before rendering.
+9. If answers are already present in the current thread, or if the user explicitly says not to ask questions, say that the clarification gate is satisfied and then proceed with reasonable assumptions stated clearly before rendering.
 10. If a strong reference exists, preserve the primary reference's page geometry, subnet framing, icon scale, whitespace, and routing lanes as the starting baseline. Borrow only the specific DR, security, or traffic-flow ideas that the supporting references cover better.
 11. Use `python3 scripts/resolve_oci_icon.py --page physical --query "OKE"` or `--page logical` when you need explicit icon resolution, browsing, or fallback evidence.
 12. Author a physical page spec by default. Add a logical page only when the user explicitly requests it.
@@ -50,6 +53,7 @@ Ask only the questions that are most likely to improve the actual diagram. Prior
 2. Network completeness gaps, such as whether to show separate app, data, management, or observability subnets, gateway types, CIDRs, and on-premises connectivity.
 3. Service-resolution gaps, such as whether a workload should be shown with OKE, Compute, API Gateway, Functions, ADB, Exadata, or a placeholder.
 4. Visual-baseline gaps, such as whether the user wants the output to follow a specific Oracle reference or sample diagram.
+5. Layout-discipline gaps, such as whether repeated stages should align symmetrically, whether fanout branches should use one block or many, and whether paired tiers should read as rows or columns.
 
 Do not ask questions whose answers are unlikely to change geometry, routing lanes, subnet structure, region layout, or icon choice.
 
@@ -77,7 +81,9 @@ When you use step 3, 4, 5, or 6, say so explicitly in the icon mapping table.
 - Place public-facing resources inside public subnets and application or data resources inside private subnets. Add more private subnets when the design needs a separate data, cache, or observability tier.
 - Increase canvas size, spread resources out, and use explicit waypoints so connectors do not stack on top of one another or overcrowd the page.
 - Reserve separate routing lanes for major north-south and east-west traffic flows when that reduces broken-looking or stacked arrows.
+- Do not let different semantic connector families share the same visible lane for convenience. If publish, consume, or database-write paths look stacked or ambiguous, reroute them onto distinct lanes or a dedicated bus.
 - When adapting a bundled reference architecture, preserve its lane structure and icon scale unless the new workload forces a different layout.
+- When the topology repeats paired stages such as queues and consumers, preserve symmetry by aligning the repeated rows or columns when that keeps the diagram honest and easier to scan.
 - Use explicit anchors and waypoints for physical traffic arrows instead of relying on default routing for anything more complex than a straight single-lane connection.
 - Prefer a single physical connector with orthogonal waypoints when it can cross boundaries cleanly and still look attached, straight, and machine-generated.
 - Use tiny invisible shape elements with ids ending in `-anchor` as routing primitives on subnet, VCN, tier, or region boundaries only when a single connector cannot stay clean, straight, and unambiguous without them.
@@ -119,12 +125,13 @@ Only produce a logical page when the user explicitly asks for one.
 Default to producing:
 
 1. A short planning summary.
-2. A short assumption list.
-3. A brief architecture summary.
-4. A renderable JSON page spec when the user wants the intermediate source.
-5. A finalized `.drawio` file with a physical page by default. Add a logical page only when the user explicitly asks for one.
-6. An icon mapping table with `Requested Component`, `Resolved Icon`, `Resolution Type`, and `Notes`.
-7. A placeholder list when any geometry fallback is required.
+2. Clarifying questions and answers, or a note that the answers were already provided earlier in the thread.
+3. A short assumption list.
+4. A brief architecture summary.
+5. A renderable JSON page spec when the user wants the intermediate source.
+6. A finalized `.drawio` file with a physical page by default. Add a logical page only when the user explicitly asks for one.
+7. An icon mapping table with `Requested Component`, `Resolved Icon`, `Resolution Type`, and `Notes`.
+8. A placeholder list when any geometry fallback is required.
 
 ## Resources
 

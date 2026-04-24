@@ -170,6 +170,7 @@ Supported edge fields:
 - `waypoints`: optional list of `[x, y]` pairs or `{"x": ..., "y": ...}` objects.
 
 For traffic-flow arrows on physical diagrams, use anchors and waypoints deliberately to reserve clean lanes. Do not accept a route that looks detached, overlaps another major arrow, forces the label through a boundary or icon, or relies on an uncontrolled diagonal segment.
+When a physical topology repeats paired stages such as queues and consumers, align those rows or columns symmetrically before fine-tuning connectors.
 
 Do not accept a child container or icon whose center point falls outside its intended parent boundary, or whose rendered bounds spill outside that parent. Parent-relative placement should remain visually contained.
 

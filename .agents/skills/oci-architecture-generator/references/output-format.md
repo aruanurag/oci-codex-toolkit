@@ -9,12 +9,13 @@ If the selector recommends supporting references, use them only to borrow specif
 ## Default Package
 
 1. Planning Summary
-2. Assumptions
-3. Architecture Summary
-4. Final `.drawio` Diagram
-5. JSON Diagram Spec
-6. Icon Mapping Table
-7. Placeholder and Gap Notes
+2. Clarifying Questions and Answers
+3. Assumptions
+4. Architecture Summary
+5. Final `.drawio` Diagram
+6. JSON Diagram Spec
+7. Icon Mapping Table
+8. Placeholder and Gap Notes
 
 ## Planning Summary
 
@@ -29,6 +30,18 @@ Before generating the diagram, briefly summarize:
 If important gaps remain, ask the user the smallest useful set of clarification questions before generating the diagram. Favor questions whose answers change layout, topology, subnet structure, region usage, gateway placement, or service/icon selection.
 
 When the request is primarily a list of OCI services rather than a full architecture description, ask follow-up questions by default before generating. At minimum, clarify ingress or exposure, single-region vs multi-region or HA posture, and any service-placement or icon-resolution choice that would visibly change the diagram.
+
+Even when the request seems mostly clear, still ask 2 to 4 targeted clarification questions that lock in the intended visual pattern unless the user explicitly waives questions or the current thread already answered them.
+
+## Clarifying Questions and Answers
+
+Before authoring the diagram:
+
+- always ask 2 to 4 targeted questions that lock in topology, ingress, HA or DR posture, subnet framing, service meaning, icon choice, or symmetry and stage-alignment intent
+- keep questions focused on what would materially change the diagram
+- if icon meaning is uncertain or a requested component maps only weakly to the catalog, ask for confirmation and present the most honest recommendation first
+
+If the current thread already answered those questions, say that the clarification gate is satisfied and summarize the answers you are using.
 
 ## Assumptions
 
@@ -121,6 +134,7 @@ Include:
 - Keep physical examples network-complete with VCNs and labeled subnets when the workload is deployed in a VCN.
 - Let the renderer normalize icon sizes when the spec omits `w` and `h`. Override icon sizes only deliberately.
 - Use more whitespace, extra tiers, explicit anchors, and waypointed connectors instead of allowing overlapping lines or crowded clusters.
+- Keep repeated queues, consumers, or mirrored stages symmetrically aligned when that improves scanability without misleading the architecture.
 - For physical diagrams, prefer one clean orthogonal connector for cross-container traffic when it can stay visually attached and readable. Use hidden `*-anchor` shapes on subnet or VCN borders only when the direct connector would otherwise create broken-looking, crowded, or diagonal routing.
 - Export the rendered page and visually inspect it. If a connector appears detached, partially attached, stacked on another route, broken by labels, forced through labels or boundaries, or shaped by a diagonal segment, reroute and rerender.
 - Treat connectors that only almost reach a subnet wall, VCN wall, or workload icon as defects. The line should visibly terminate on the intended boundary or target.
