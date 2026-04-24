@@ -29,7 +29,7 @@ Use this skill to keep OCI architecture work disciplined and honest:
 4. Start with a short planning pass and share it before generating the diagram. Summarize the inferred topology, network shape, DR or HA posture, likely reference baseline, and any assumptions that would materially affect layout quality.
 5. Run `python3 scripts/select_reference_architecture.py --query "user request" --bundle --top 5` and inspect the strongest bundled reference in `assets/reference-architectures/oracle/`, plus any supporting references suggested for DR, security, or workload-specific details.
 6. Compare the user request against the likely reference baseline and identify the few uncertainties that would change topology, subnet framing, region layout, service selection, or icon mapping.
-7. After the planning pass, always ask 2 to 4 concise clarification questions before authoring the spec unless the user explicitly says not to ask questions or the current thread already answered them. Prioritize questions whose answers would visibly change topology, subnet framing, region layout, service selection, icon mapping, or symmetry and stage alignment.
+7. After the planning pass, always ask 2 to 4 concise clarification questions before authoring the spec unless the user explicitly says not to ask questions or the current thread already answered them. Prioritize questions whose answers would visibly change topology, subnet framing including regional vs AD-specific scope, region layout, service selection, icon mapping, or symmetry and stage alignment.
 8. Treat a request that is only a short service list, such as "Functions, Queue, Object Storage, NoSQL", as materially ambiguous by default unless ingress, region posture, HA or DR expectations, and managed-service placement are already obvious from context. In that case, ask at least two targeted follow-up questions before drafting.
 9. If answers are already present in the current thread, or if the user explicitly says not to ask questions, say that the clarification gate is satisfied and then proceed with reasonable assumptions stated clearly before rendering.
 10. If a strong reference exists, preserve the primary reference's page geometry, subnet framing, icon scale, whitespace, and routing lanes as the starting baseline. Borrow only the specific DR, security, or traffic-flow ideas that the supporting references cover better.
@@ -50,7 +50,7 @@ Use this skill to keep OCI architecture work disciplined and honest:
 Ask only the questions that are most likely to improve the actual diagram. Prioritize:
 
 1. Topology-defining gaps, such as single-region vs multi-region, active-active vs active-standby, public vs private exposure, and hub-spoke vs flat VCN structure.
-2. Network completeness gaps, such as whether to show separate app, data, management, or observability subnets, gateway types, CIDRs, and on-premises connectivity.
+2. Network completeness gaps, such as whether to show separate app, data, management, or observability subnets, whether subnet scope should be regional or AD-specific, gateway types, CIDRs, and on-premises connectivity.
 3. Service-resolution gaps, such as whether a workload should be shown with OKE, Compute, API Gateway, Functions, ADB, Exadata, or a placeholder.
 4. Visual-baseline gaps, such as whether the user wants the output to follow a specific Oracle reference or sample diagram.
 5. Layout-discipline gaps, such as whether repeated stages should align symmetrically, whether fanout branches should use one block or many, and whether paired tiers should read as rows or columns.
@@ -78,7 +78,9 @@ When you use step 3, 4, 5, or 6, say so explicitly in the icon mapping table.
 - Never use pink or Courier New in final diagrams. Those appear only as instructional annotations inside Oracle's source files.
 - Treat Oracle example pages as layout guidance, not as technically verified solutions.
 - On physical diagrams for networked workloads, show OCI Region, VCN, and clearly labeled public and private subnets with CIDRs unless the user explicitly wants a looser view.
+- Default OCI subnet boundaries to regional scope unless the user explicitly asks for AD-specific subnets or the architecture genuinely depends on AD-specific framing.
 - Place public-facing resources inside public subnets and application or data resources inside private subnets. Add more private subnets when the design needs a separate data, cache, or observability tier.
+- For single-region multi-AD HA, let a regional subnet span the ADs by default and show AD placement with the official Oracle `Availability Domain` grouping shapes as tall vertical containers inside the VCN, while the regional subnets span horizontally across them. Match the Oracle sample treatment used for HA layouts in the OCI icon deck, with repeated workloads, AD or FD grouping cues, or database role markers instead of duplicating one subnet per AD.
 - Increase canvas size, spread resources out, and use explicit waypoints so connectors do not stack on top of one another or overcrowd the page.
 - Reserve separate routing lanes for major north-south and east-west traffic flows when that reduces broken-looking or stacked arrows.
 - Do not let different semantic connector families share the same visible lane for convenience. If publish, consume, or database-write paths look stacked or ambiguous, reroute them onto distinct lanes or a dedicated bus.
@@ -108,6 +110,8 @@ Only produce a logical page when the user explicitly asks for one.
 - Use service icons for OCI infrastructure and managed services.
 - Use clearly labeled similar placeholder shapes when no direct OCI icon exists.
 - Default to public and private subnet structure with CIDR labels on bundled examples and final physical diagrams unless the user asks for a different level of detail.
+- Default those OCI subnet boundaries to regional scope unless the user explicitly asks for AD-specific subnets.
+- For HA layouts across multiple ADs, keep the Oracle-style composition explicit: `Availability Domain` groupings should read as vertical columns inside the VCN, and the regional subnets should read as horizontal bands crossing those AD containers.
 - Keep traffic-flow arrows simple and intentional. Prefer a clear dedicated lane and fewer bends over a compact but broken-looking route.
 - Keep service labels visually snug to their icons. Default external labels to a minimal vertical gap and only add extra spacing when a multi-line label or nearby connector would otherwise collide.
 - For flows that cross subnet or VCN boundaries, prefer one clean orthogonal connector first. Use hidden `*-anchor` shapes only when the direct connector would otherwise look broken, crowded, diagonal, or ambiguous.

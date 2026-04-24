@@ -38,6 +38,7 @@ Even when the request seems mostly clear, still ask 2 to 4 targeted clarificatio
 Before authoring the diagram:
 
 - always ask 2 to 4 targeted questions that lock in topology, ingress, HA or DR posture, subnet framing, service meaning, icon choice, or symmetry and stage-alignment intent
+- clarify whether OCI subnets should be treated as regional or AD-specific when that choice would change the diagram
 - keep questions focused on what would materially change the diagram
 - if icon meaning is uncertain or a requested component maps only weakly to the catalog, ask for confirmation and present the most honest recommendation first
 
@@ -69,7 +70,8 @@ Unless the user says otherwise:
 
 - include a physical page by default
 - include a logical page only when the user explicitly requests one
-- include VCN and public/private subnet structure with CIDR labels on physical pages for networked workloads
+- include VCN and public/private subnet structure with CIDR labels on physical pages for networked workloads, defaulting OCI subnets to regional scope unless the user explicitly asks for AD-specific subnets
+- when HA spans multiple ADs inside one region, keep the Oracle-style framing explicit: `Availability Domain` grouping shapes should form vertical columns inside the VCN, and the regional subnets should span horizontally across them
 - keep public resources visually inside public subnets and private resources inside private subnets
 - when gateways such as `IGW`, `NAT`, or `SGW` are shown, attach them to the VCN edge by default unless the user explicitly requests a subnet-edge style
 - enlarge the page or reroute edges before accepting overlapping or crowded connector paths
@@ -132,6 +134,7 @@ Include:
 - Default to a physical page only. Add a logical page only on explicit request.
 - Keep labels concise and service-specific.
 - Keep physical examples network-complete with VCNs and labeled subnets when the workload is deployed in a VCN.
+- For multi-AD HA, prefer official `Availability Domain` grouping shapes over improvised darker boxes, and preserve the regional-subnet-as-horizontal-band framing.
 - Let the renderer normalize icon sizes when the spec omits `w` and `h`. Override icon sizes only deliberately.
 - Use more whitespace, extra tiers, explicit anchors, and waypointed connectors instead of allowing overlapping lines or crowded clusters.
 - Keep repeated queues, consumers, or mirrored stages symmetrically aligned when that improves scanability without misleading the architecture.

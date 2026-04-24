@@ -106,6 +106,62 @@ def main() -> None:
             }
         ]
     }
+    unrelated_overlap_spec = {
+        "title": "Unrelated Overlap Guardrail",
+        "pages": [
+            {
+                "name": "Physical - Unrelated Overlap Guardrail",
+                "page_type": "physical",
+                "width": 900,
+                "height": 500,
+                "elements": [
+                    {
+                        "id": "left",
+                        "type": "shape",
+                        "shape": "rounded-rectangle",
+                        "x": 120,
+                        "y": 170,
+                        "w": 140,
+                        "h": 80,
+                        "label": "",
+                        "style": "fillColor=none;strokeColor=#312D2A;"
+                    },
+                    {
+                        "id": "right",
+                        "type": "shape",
+                        "shape": "rounded-rectangle",
+                        "x": 220,
+                        "y": 190,
+                        "w": 140,
+                        "h": 80,
+                        "label": "",
+                        "style": "fillColor=none;strokeColor=#312D2A;"
+                    }
+                ]
+            }
+        ]
+    }
+    icon_guardrail_spec = {
+        "title": "Icon Resolution Guardrail",
+        "pages": [
+            {
+                "name": "Physical - Icon Resolution Guardrail",
+                "page_type": "physical",
+                "width": 900,
+                "height": 500,
+                "elements": [
+                    {
+                        "id": "missing-icon",
+                        "query": "compute instance",
+                        "x": 160,
+                        "y": 150,
+                        "w": 120,
+                        "h": 90
+                    }
+                ]
+            }
+        ]
+    }
     semantic_spec = {
         "title": "Semantic Connectors and Text Autofit",
         "pages": [
@@ -178,6 +234,12 @@ def main() -> None:
         guardrail_output_path = tmp / "guardrail.pptx"
         guardrail_report_path = tmp / "guardrail.report.json"
         guardrail_quality_path = tmp / "guardrail.quality.json"
+        unrelated_overlap_output_path = tmp / "unrelated-overlap.pptx"
+        unrelated_overlap_report_path = tmp / "unrelated-overlap.report.json"
+        unrelated_overlap_quality_path = tmp / "unrelated-overlap.quality.json"
+        icon_guardrail_output_path = tmp / "icon-guardrail.pptx"
+        icon_guardrail_report_path = tmp / "icon-guardrail.report.json"
+        icon_guardrail_quality_path = tmp / "icon-guardrail.quality.json"
         semantic_output_path = tmp / "semantic.pptx"
         semantic_report_path = tmp / "semantic.report.json"
         semantic_quality_path = tmp / "semantic.quality.json"
@@ -202,11 +264,13 @@ def main() -> None:
 
         with zipfile.ZipFile(output_path) as archive:
             slide_xml = archive.read("ppt/slides/slide1.xml").decode("utf-8")
+            notes_slides = [name for name in archive.namelist() if name.startswith("ppt/notesSlides/")]
         assert "<a:tailEnd" in slide_xml, slide_xml
         assert "<a:headEnd" not in slide_xml, slide_xml
         assert 'wrap="none"' in slide_xml, slide_xml
         assert "<p:cNvSpPr id=" not in slide_xml, slide_xml
         assert "<p:cNvGrpSpPr id=" not in slide_xml, slide_xml
+        assert not notes_slides, notes_slides
 
         render_presentation(
             placeholder_spec,
@@ -237,6 +301,32 @@ def main() -> None:
         assert "sibling-overlap" in guardrail_issue_types, guardrail_quality
 
         render_presentation(
+            unrelated_overlap_spec,
+            template_pptx=template_pptx,
+            output_path=unrelated_overlap_output_path,
+            report_out=unrelated_overlap_report_path,
+            quality_out=unrelated_overlap_quality_path,
+            fail_on_quality=False,
+        )
+
+        unrelated_overlap_quality = json.loads(unrelated_overlap_quality_path.read_text())
+        unrelated_overlap_issue_types = {issue["type"] for issue in unrelated_overlap_quality["pages"][0]["issues"]}
+        assert "element-overlap" in unrelated_overlap_issue_types, unrelated_overlap_quality
+
+        render_presentation(
+            icon_guardrail_spec,
+            template_pptx=template_pptx,
+            output_path=icon_guardrail_output_path,
+            report_out=icon_guardrail_report_path,
+            quality_out=icon_guardrail_quality_path,
+            fail_on_quality=False,
+        )
+
+        icon_guardrail_quality = json.loads(icon_guardrail_quality_path.read_text())
+        icon_guardrail_issue_types = {issue["type"] for issue in icon_guardrail_quality["pages"][0]["issues"]}
+        assert "icon-missing" in icon_guardrail_issue_types, icon_guardrail_quality
+
+        render_presentation(
             semantic_spec,
             template_pptx=template_pptx,
             output_path=semantic_output_path,
@@ -250,6 +340,9 @@ def main() -> None:
         assert semantic_slide_xml.count('<a:prstDash val="sysDot"') == 1, semantic_slide_xml
         assert 'wrap="none"' in semantic_slide_xml, semantic_slide_xml
         assert "spAutoFit" in semantic_slide_xml, semantic_slide_xml
+        semantic_quality = json.loads(semantic_quality_path.read_text())
+        semantic_issue_types = {issue["type"] for issue in semantic_quality["pages"][0]["issues"]}
+        assert "connector-elbows" in semantic_issue_types, semantic_quality
 
     print("PowerPoint render tests passed.")
 

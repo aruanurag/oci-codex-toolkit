@@ -16,13 +16,16 @@ Keep the same standards we established in the draw.io skill:
 - run a mandatory clarification gate before authoring any new diagram: ask a short set of targeted questions unless the user explicitly says not to ask questions or the current thread already answered them
 - prefer the closest bundled Oracle PowerPoint reference layout before inventing a layout from scratch
 - show VCNs, public and private subnets, CIDRs, and major gateways on networked physical diagrams
+- default subnet scope to regional unless the user explicitly asks for AD-specific subnets or the workload genuinely needs AD-specific framing
 - run an explicit architectural review before final delivery so public/private placement, HA or DR posture, ingress security, and tier isolation are correct instead of only visually tidy
 - place gateways such as `Internet Gateway`, `NAT Gateway`, and `Service Gateway` directly on the VCN border
 - place connector labels in transparent text boxes with no opaque mask over the line
 - use one visible connector per semantic relationship
 - do not accept stepped, stitched, diagonal, detached, or overlapping traffic arrows
+- treat any connector elbow as a blocker unless the user explicitly accepts a bent route for that relationship
 - treat shared or nearly collinear lanes between different semantic flows, such as publish, consume, and database-write paths, as overlap even when the renderer's quality checker passes
 - keep icons centered, contained inside their parent boundaries, and scaled honestly
+- treat missing direct icons, unofficial fallbacks, and placeholders as review findings that must be surfaced explicitly before sign-off
 - keep sibling containers visibly separated and keep nested grouping boxes inset from their parent borders
 - preserve symmetry when the architecture is staged, mirrored, or fanout-based by aligning repeated blocks and balancing whitespace before optimizing for the shortest connector
 - shorten headings and reduce font size before accepting crowded or awkwardly wrapped labels
@@ -47,7 +50,7 @@ This skill is PowerPoint-native:
    - uncertainties that would visibly change the slide
 5. Use `python3 scripts/select_reference_architecture.py --query "user request" --bundle --top 5` to find the closest Oracle PowerPoint baseline slide from the uploaded OCI toolkit deck.
 6. If the PowerPoint selector does not return a strong enough baseline, optionally consult the sibling draw.io references as a secondary architecture-pattern source.
-7. After the planning pass, always ask 2 to 4 targeted clarification questions before authoring the slide spec unless the user explicitly says not to ask questions or the current thread already answered them. Focus on region count, HA or DR posture, ingress, subnet structure, icon choice, service meaning, and any symmetry or stage-alignment preference that would change the slide.
+7. After the planning pass, always ask 2 to 4 targeted clarification questions before authoring the slide spec unless the user explicitly says not to ask questions or the current thread already answered them. Focus on region count, HA or DR posture, ingress, subnet structure including regional vs AD-specific scope, icon choice, service meaning, and any symmetry or stage-alignment preference that would change the slide.
 8. If answers are already present in the current thread, say that the clarification gate is satisfied and name the layout-affecting choices you are carrying forward before authoring.
 9. Resolve icons with `python3 scripts/resolve_oci_powerpoint_icon.py --query "OKE"`.
 10. If icon resolution returns `closest` or `placeholder`, or if you do not fully understand the requested component, pause before drafting the slide and confirm with the user when possible. Present one to three recommended icon choices or fallback shapes, explain the tradeoff briefly, and identify the most honest recommendation first.
@@ -56,15 +59,28 @@ This skill is PowerPoint-native:
 13. Author the JSON slide spec only after the planning and clarification gate is complete.
 14. Render with `python3 scripts/render_oci_powerpoint.py --spec ... --output ... --report-out ... --quality-out ... --fail-on-quality`.
 15. Export a preview image of the rendered `.pptx` and inspect it visually before delivery. Prefer `python3 scripts/export_powerpoint_preview.py --input ... --image-out ...` because it uses PowerPoint for the render pass before generating the image.
-16. Run an architectural review against the request before sign-off:
+16. Run a dedicated spacing and overlap review against the preview before sign-off:
+   - verify every requested service resolved to an official OCI icon; treat `closest` and `placeholder` outcomes as blockers until they are disclosed and intentionally accepted
+   - check spacing between external location groups, ingress services, and the first OCI boundary so `Internet`, `Clients`, `WAF`, and similar entry elements do not crowd each other
+   - check spacing between icons and their labels, especially when Oracle icon groups have native labels that can drift into nearby lines or containers
+   - check spacing between subnet labels, AD background lanes, cluster containers, and service icons so background structure does not visually consume foreground labels
+   - treat any overlap between unrelated icons, labels, grouping boxes, connectors, arrowheads, or location boundaries as a blocker even if the renderer quality checker passes
+   - treat top-level overlaps between separate icons or location groups as blockers even when the elements are not siblings in the JSON spec
+   - treat clipped labels, near-touches that read like overlap, and obviously stretched icons caused by over-tight spacing as blockers
+17. Run an architectural review against the request before sign-off:
    - only ingress services belong in public subnets for internet-facing patterns unless the user explicitly wants public compute
    - web, app, and data tiers should be isolated honestly when a 3-tier pattern is requested
+   - regional subnets are the default OCI assumption when subnet scope is unspecified; do not duplicate one subnet per AD unless the user explicitly asked for AD-specific subnets or the architecture requires them
    - HA or DR claims must be explicit in the diagram through ADs, FDs, instance pools, standby regions, or similarly honest constructs
    - ingress protection, egress pattern, and management path should be present when they materially affect whether the design reads as production-ready
    - do not let labels such as `2x VM`, `HA`, or `DR` imply resilience that the drawing does not actually show
-17. If the architectural review finds a gap, fix the spec and rerender before visual polish sign-off.
-18. Do at least three cleanup passes after the first render, even if the first quality pass is already clean.
-19. Require an architectural-review pass plus two consecutive clean quality reviews before sharing the final deck.
+18. If the spacing and overlap review finds a gap, fix the spec and rerender before architectural sign-off.
+19. If the architectural review finds a gap, fix the spec and rerender before visual polish sign-off.
+20. Do at least three cleanup passes after the first render, even if the first quality pass is already clean.
+21. Treat two consecutive clean quality reviews as the minimum bar, not the default stopping point.
+22. Increase the number of review and rerender passes whenever the recent passes found icon-resolution issues, overlaps, avoidable elbows, package-integrity issues such as PowerPoint repair prompts, or any visually obvious regression.
+23. After any material fix, require fresh clean passes again instead of counting earlier clean reviews toward sign-off.
+24. Require a spacing-and-overlap review pass, an architectural-review pass, and at least two consecutive clean quality reviews before sharing the final deck, increasing to three or more consecutive clean passes when the slide was unstable in the prior review cycle.
 
 ## Clarification Priorities
 
@@ -72,7 +88,7 @@ Ask only the questions that are likely to improve the actual slide:
 
 1. Single-region vs multi-region or DR posture.
 2. Public vs private exposure and ingress path.
-3. VCN and subnet structure, including whether separate app, data, cache, management, or observability subnets should appear.
+3. VCN and subnet structure, including whether separate app, data, cache, management, or observability subnets should appear and whether subnet scope should be regional or AD-specific.
 4. Service-resolution questions such as `OKE` vs `Compute`, `ADB` vs `Base Database`, or whether a missing icon should use a closest official fallback or a placeholder.
 5. Whether the user wants the slide to follow a specific Oracle reference pattern.
 6. Layout-discipline preferences such as symmetry, one block vs multiple blocks, paired rows or columns, and whether repeated stages should align vertically or horizontally.
@@ -94,6 +110,7 @@ Apply this order strictly:
 5. If you are not confident that the requested component and the resolved icon mean the same thing, confirm with the user before rendering whenever possible and offer recommendations in descending honesty.
 
 Never pretend a placeholder is an official OCI icon.
+Do not let `closest` or `placeholder` resolutions silently pass the quality gate; they must appear in the review notes and be treated as blockers until intentionally accepted.
 
 ## Diagram Rules
 
@@ -103,6 +120,7 @@ Never pretend a placeholder is an official OCI icon.
 - Keep labels visually snug to icons.
 - Keep icons centered inside their parent subnet, tier, or container.
 - Keep subnets and other grouping boxes visibly inset from their parent boundaries instead of letting borders touch.
+- Default OCI subnet containers to regional scope when the request does not say otherwise. For multi-AD HA, let a regional subnet span the VCN or region and show AD placement with the official Oracle `Availability Domain` grouping boxes arranged as tall vertical background containers inside the VCN but outside the subnet boundaries, matching the bundled sample-slide treatment on toolkit slides 31 and 32, plus duplicated workloads, AD or FD labels, or database role markers instead of cloning the subnet once per AD.
 - Keep sibling containers separated by a visible gap; treat overlapping app, queue, or data boxes as blockers.
 - When a flow is expressed as repeated paired stages such as queue-to-consumer or publisher-to-fanout branches, prefer symmetrical rows or columns when that keeps the diagram honest and easier to scan.
 - Keep gateways centered on the VCN boundary line, not floating inside the subnet and not stuck on a corner.
@@ -113,12 +131,15 @@ Never pretend a placeholder is an official OCI icon.
 - Prefer shorter container headings such as `Publisher`, `Processors`, or `Queue A` when the longer service name creates wrap noise.
 - Do not let connectors run on top of container borders when a clean nearby lane is available.
 - For OKE clusters, use the official `Container Engine for Kubernetes` icon as the cluster’s identifying icon instead of a generic compute placeholder.
+- When OKE spans multiple ADs, represent it as a cluster-level container in the application subnet and place worker-node constructs inside that container with one worker grouping per AD.
+- Keep worker-node and similar compute icons at an honest, unstretched aspect ratio; if the icon starts looking wider or flatter than the Oracle original, reduce the width before increasing the height.
 
 ## Architectural Review
 
 - Treat architecture review as a required gate, not an optional afterthought.
 - Check whether public subnets contain only components that genuinely need public exposure.
-- For 3-tier web apps, default to `public ingress`, `private web`, `private app`, and `private data` placement unless the user explicitly asks for another pattern.
+- For 3-tier web apps, default to regional `public ingress`, `private web`, `private app`, and `private data` subnets unless the user explicitly asks for AD-specific subnets or another pattern.
+- If multi-AD HA is shown inside one region, prefer regional subnets that span the ADs and show resilience with Oracle-style vertical `Availability Domain` background grouping boxes plus per-AD placement of compute or database roles instead of implying each AD needs its own subnet.
 - If the diagram implies high availability, show it explicitly with ADs, FDs, instance pools, multiple nodes, or equivalent honest OCI constructs.
 - If the workload is internet-facing, review whether WAF, DNS or certificate flow, and egress controls should appear. Include them when they materially improve correctness or the user asked for production-style posture.
 - Avoid claiming production readiness with a diagram that omits the security or resilience elements needed to support that claim.
@@ -137,8 +158,9 @@ Never pretend a placeholder is an official OCI icon.
 - Use orthogonal routing only.
 - Keep connector lines Bark-colored and visually simple.
 - Use one visible connector per semantic relationship.
+- Prefer straight connectors first. If a route can be drawn straight, do not accept an elbowed alternative.
 - Do not compose one logical flow out of several tiny visible connector fragments.
-- If a connector needs elbows, keep them intentional and aligned.
+- If a connector truly must use elbows, keep them intentional and aligned and document why a straight route was not honest or feasible.
 - Prefer removing manual waypoints when the renderer's default orthogonal route is cleaner.
 - Arrange external clients, ingress tiers, application tiers, and data tiers so the dominant flows can stay straight or use the fewest possible bends.
 - When opposite-direction flows coexist, differentiate them visually by semantic class. Default to dashed lines for async publish, fanout, event, or enqueue flows, and solid lines for consume, request, read, or synchronous service-to-service flows.
@@ -155,12 +177,13 @@ Default to producing:
 2. Clarifying questions and answers, or a note that the answers were already provided earlier in the thread
 3. Assumptions
 4. Architecture summary
-5. Architectural review findings and applied fixes
-6. Final `.pptx`
-7. JSON slide spec
-8. Preview image for visual review
-9. Icon mapping table
-10. Placeholder notes
+5. Spacing and overlap review findings and applied fixes
+6. Architectural review findings and applied fixes
+7. Final `.pptx`
+8. JSON slide spec
+9. Preview image for visual review
+10. Icon mapping table
+11. Placeholder notes
 
 Use the repo-level `output/` directory for generated architecture files during testing unless the user asks for another location.
 

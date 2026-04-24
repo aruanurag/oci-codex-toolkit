@@ -27,6 +27,7 @@ This reference distills the Oracle-provided files bundled in `assets/drawio/`.
 
 - Before drafting the actual diagram, do a short plan pass.
 - Always ask 2 to 4 targeted clarification questions before authoring unless the user explicitly waives questions or the current thread already answered them.
+- Treat regional vs AD-specific subnet scope as a layout-affecting input for OCI networked workloads.
 - Treat symmetry and stage-alignment preferences as layout-affecting inputs when the topology is staged, mirrored, or fanout-based.
 - Treat icon uncertainty as a blocker when it could make the diagram misleading.
 
@@ -50,9 +51,12 @@ Use physical pages for deployable infrastructure layout.
 - Use special connector shapes for FastConnect, Site-to-site VPN, and Remote Peering.
 - Use service icons for OCI products and managed services.
 - Use public and private subnet boundaries with CIDR labels on networked workloads.
+- Default OCI subnet boundaries to regional scope unless the user explicitly requests AD-specific subnets.
 - Attach `Internet Gateway`, `NAT Gateway`, and `Service Gateway` to the VCN edge by default, even when subnet boundaries are also shown. Let the VCN border line pass through the gateway icon center instead of leaving the icon fully inside the VCN.
 - Keep public-facing resources inside public subnets and application or data tiers inside private subnets.
+- For single-region multi-AD HA, let one regional subnet span the ADs by default and show AD placement with the official Oracle `Availability Domain` grouping shapes as tall vertical containers inside the VCN, while the regional subnets span horizontally across them. Match the Oracle HA sample treatment rather than drawing one subnet per AD.
 - Add extra private subnets for data, cache, or observability tiers when that reduces crowding and makes the network clearer.
+- In HA layouts, leave a visible left-side label gutter so subnet names and CIDRs stay readable before the AD grouping columns begin.
 - Increase the canvas and route connectors with waypoints before letting lines pile up on top of each other.
 - Keep icon labels close to the icon by default. Only open up extra vertical gap when a multi-line label or crossing connector needs the room.
 - Reserve dedicated traffic lanes when multiple arrows traverse the same area of the page.

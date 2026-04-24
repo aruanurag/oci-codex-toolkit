@@ -54,6 +54,7 @@ PAGE_MARGIN_BOTTOM = 52.0
 MAX_CONNECTOR_BENDS = 2
 MIN_GROUPING_INSET = 8.0
 SIBLING_OVERLAP_TOLERANCE = 2.0
+UNRELATED_OVERLAP_TOLERANCE = 2.0
 
 STYLE_KV_RE = re.compile(r"([A-Za-z][A-Za-z0-9]*)=([^;]+)")
 TAG_RE = re.compile(r"<[^>]+>")
@@ -945,6 +946,32 @@ def update_content_types(contents: dict[str, bytes], slide_count: int) -> bytes:
     return serialize_xml(root)
 
 
+def prune_unused_parts(contents: dict[str, bytes], slide_count: int) -> None:
+    note_prefixes = (
+        "ppt/notesSlides/notesSlide",
+        "ppt/notesSlides/_rels/notesSlide",
+    )
+    for name in list(contents):
+        if name.startswith(note_prefixes):
+            del contents[name]
+
+    prefixes = (
+        "ppt/slides/slide",
+        "ppt/slides/_rels/slide",
+    )
+    for name in list(contents):
+        if not name.startswith(prefixes):
+            continue
+        match = re.search(r"slide(\d+)\.xml(?:\.rels)?$", name)
+        if not match:
+            continue
+        number_text = match.group(1)
+        if number_text is None:
+            continue
+        if int(number_text) > slide_count:
+            del contents[name]
+
+
 def strip_confidential_markings(contents: dict[str, bytes]) -> None:
     phrases = {
         "Confidential - Oracle Restricted Employees Only",
@@ -1098,13 +1125,39 @@ def ancestor_chain(element_id: str, placed_by_id: dict[str, dict[str, Any]]) -> 
     return ancestors
 
 
+def has_expected_spatial_overlap(
+    left: dict[str, Any],
+    right: dict[str, Any],
+    placed_by_id: dict[str, dict[str, Any]],
+) -> bool:
+    left_id = left.get("id")
+    right_id = right.get("id")
+    if not left_id or not right_id:
+        return False
+    left_ancestors = ancestor_chain(left_id, placed_by_id)
+    right_ancestors = ancestor_chain(right_id, placed_by_id)
+    if left_id in right_ancestors or right_id in left_ancestors:
+        return True
+    if left.get("boundary_parent") == right_id or right.get("boundary_parent") == left_id:
+        return True
+    left_boundary_parent = left.get("boundary_parent")
+    right_boundary_parent = right.get("boundary_parent")
+    if left_boundary_parent and (left_boundary_parent == right_id or left_boundary_parent in right_ancestors):
+        return True
+    if right_boundary_parent and (right_boundary_parent == left_id or right_boundary_parent in left_ancestors):
+        return True
+    return False
+
+
 def route_context(
     placed_elements: list[dict[str, Any]],
 ) -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
     placed_by_id = {item["id"]: item for item in placed_elements if item.get("id")}
     container_ids = {item.get("parent") for item in placed_elements if item.get("parent")}
     visible_boxes = [
-        item for item in placed_elements if item["kind"] not in {"text", "hidden-anchor"} and item["visible"]
+        item
+        for item in placed_elements
+        if item["kind"] not in {"text", "hidden-anchor"} and item["visible"] and not item.get("qa_ignore")
     ]
     container_boxes = [
         item
@@ -1217,6 +1270,28 @@ def validate_geometry(
     placed_by_id, visible_boxes, container_boxes = route_context(placed_elements)
 
     for item in placed_elements:
+        resolution = item.get("resolution") or {}
+        resolution_type = str(resolution.get("resolution", ""))
+        item_id = item.get("id") or "element"
+        query = resolution.get("query") or item_id
+        if resolution_type == "placeholder":
+            issues.append(
+                {
+                    "severity": "error",
+                    "type": "icon-missing",
+                    "message": f"{query} does not have a direct official icon in the deck and is using a placeholder.",
+                }
+            )
+        elif resolution_type == "closest":
+            issues.append(
+                {
+                    "severity": "warning",
+                    "type": "icon-fallback",
+                    "message": f"{query} is using the closest available official icon instead of a direct match.",
+                }
+            )
+
+    for item in placed_elements:
         parent_id = item.get("parent")
         if not parent_id or parent_id not in placed_by_id:
             if should_review_page_margin(item, page_width, page_height):
@@ -1326,6 +1401,8 @@ def validate_geometry(
         parent_id = item.get("parent")
         if not parent_id or not item.get("visible"):
             continue
+        if item.get("qa_ignore"):
+            continue
         if item["kind"] in {"text", "hidden-anchor"}:
             continue
         if item.get("boundary_parent"):
@@ -1349,6 +1426,27 @@ def validate_geometry(
                             "message": f"{left_id} overlaps {right_id} inside {parent_id}.",
                         }
                     )
+
+    for index, left in enumerate(visible_boxes):
+        left_id = left.get("id")
+        if not left_id:
+            continue
+        for right in visible_boxes[index + 1 :]:
+            right_id = right.get("id")
+            if not right_id:
+                continue
+            if has_expected_spatial_overlap(left, right, placed_by_id):
+                continue
+            if is_grouping_item(left) and is_grouping_item(right):
+                continue
+            if bboxes_overlap(left["bbox"], right["bbox"], tolerance=UNRELATED_OVERLAP_TOLERANCE):
+                issues.append(
+                    {
+                        "severity": "warning",
+                        "type": "element-overlap",
+                        "message": f"{left_id} overlaps unrelated element {right_id}.",
+                    }
+                )
 
     for edge in edges:
         points = edge["points"]
@@ -1374,6 +1472,14 @@ def validate_geometry(
                     "severity": "warning",
                     "type": "connector-bends",
                     "message": f"{edge['id']} uses too many turns ({edge['bend_count']}).",
+                }
+            )
+        elif edge.get("bend_count", 0) > 0:
+            issues.append(
+                {
+                    "severity": "warning",
+                    "type": "connector-elbows",
+                    "message": f"{edge['id']} uses elbows ({edge['bend_count']} bend(s)).",
                 }
             )
         auto_bends = edge.get("auto_bend_count")
@@ -1580,6 +1686,7 @@ def render_slide(
             "bbox": bbox,
             "kind": kind,
             "visible": visible,
+            "qa_ignore": bool(item.get("qa_ignore")),
             "resolution": resolution,
             "category": resolution.get("category") if resolution else None,
             "boundary_parent": boundary_parent_id,
@@ -1747,6 +1854,7 @@ def render_presentation(
         slide_reports.append(report)
         slide_qualities.append(quality)
 
+    prune_unused_parts(contents, len(pages))
     contents["ppt/presentation.xml"] = update_presentation_xml(contents, len(pages))
     contents["ppt/_rels/presentation.xml.rels"] = update_presentation_rels(contents, len(pages))
     contents["[Content_Types].xml"] = update_content_types(contents, len(pages))

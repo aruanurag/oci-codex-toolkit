@@ -60,6 +60,7 @@ Supported fields:
 - `label`: plain-text internal label override.
 - `external_label`: preferred service label override. The renderer replaces the native icon-group label when possible instead of adding a detached label.
 - `hide_internal_label`: blank the copied native label.
+- `qa_ignore`: optional boolean for decorative background elements that should render normally but be ignored by overlap-based geometry QA. Use this sparingly for intentional AD shading blocks or similar background treatments, not to hide real layout problems.
 
 Typical gateway pattern:
 
