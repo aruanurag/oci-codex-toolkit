@@ -85,11 +85,16 @@ Check:
 - whether external location groups, clients, WAF, and first-hop OCI ingress services have visible separation
 - whether icons and labels have enough spacing to avoid crowding, clipping, or misleading associations
 - whether subnet labels still read cleanly when AD background lanes, cluster containers, or other large grouping boxes sit behind them
+- whether public ingress visually traverses the Internet Gateway before entering the VCN when an Internet Gateway is shown
+- whether gateway icons are mounted on the VCN boundary instead of floating decoratively
+- whether AD grouping lanes avoid swallowing the private data tier or implying a regional database is single-AD scoped
+- whether support, security, observability, or operations panels overlap the VCN, subnet, or AD boundaries
+- whether native OCI labels are hidden when a custom side label repeats the same service name
 - whether any unrelated icons, labels, grouping boxes, connectors, arrowheads, or boundaries overlap or nearly touch in a way that reads as overlap
 - whether any separate top-level icons or location groups overlap even if they are not siblings in the spec
 - whether any icon was stretched to solve spacing instead of moving the surrounding layout
 
-If the review finds an issue, update the slide spec and rerender before final delivery.
+Run `python3 scripts/review_visual_preview.py --preview ... --report ... --spec ... --output ...visual-review.json --fail-on-issues` as the exported-preview gate. If the gate or the manual review finds an issue, update the slide spec, rerender, re-export, and rerun the gate before final delivery.
 
 When recent passes found material issues such as missing icons, overlap, avoidable elbows, or package-repair warnings, increase the number of review passes and require fresh clean passes after the fix instead of stopping at the minimum review count.
 
@@ -120,6 +125,7 @@ Unless the user says otherwise:
 - render to a finished `.pptx`, not just prose
 - use the repo-level `output/` directory during testing
 - visually review the exported preview and keep iterating until the diagram is clean
+- run the exported-preview visual gate with `--fail-on-issues` and do not accept output while it reports issues
 - when presenter-only guidance is needed, store it in PowerPoint presenter notes instead of visible footer bars or summary strips
 
 ## JSON Slide Spec
@@ -148,12 +154,16 @@ Export a preview image from the rendered `.pptx` and inspect:
 - whether the subnet framing truthfully reflects regional vs AD-specific scope
 - visual distinction between opposing connector flows
 - gateway placement on the VCN boundary
+- public ingress traversal through the Internet Gateway when shown
+- support/ops panel separation from network boundaries
+- duplicate native/custom service labels
 - avoidable connector bends
 - top-level canvas margin
 
 Do not treat a clean preview as sufficient if the architecture review still finds a design problem.
 
 Prefer `python3 scripts/export_powerpoint_preview.py --input ... --image-out ...` so the preview goes through Microsoft PowerPoint before becoming an image.
+Run `python3 scripts/review_visual_preview.py --preview ... --report ... --spec ... --output ...visual-review.json --fail-on-issues` after export and treat every finding as a blocker until the spec is fixed and the preview gate passes.
 
 If the slide intentionally includes presenter notes, confirm they stay in PowerPoint notes and do not leak onto the visible preview canvas.
 

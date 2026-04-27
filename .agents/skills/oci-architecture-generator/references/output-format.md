@@ -97,11 +97,16 @@ Check:
 - whether external location groups, clients, WAF, and first-hop OCI ingress services have visible separation
 - whether icons and labels have enough spacing to avoid crowding, clipping, or misleading associations
 - whether subnet labels still read cleanly when AD background lanes, cluster containers, or other large grouping boxes sit behind them
+- whether public ingress visually traverses the Internet Gateway before entering the VCN when an Internet Gateway is shown
+- whether gateway icons are mounted on the VCN boundary instead of floating decoratively
+- whether AD grouping lanes avoid swallowing the private data tier or implying a regional database is single-AD scoped
+- whether support, security, observability, or operations panels overlap the VCN, subnet, or AD boundaries
+- whether native OCI labels are hidden when a custom side label repeats the same service name
 - whether any unrelated icons, labels, grouping boxes, connectors, arrowheads, or boundaries overlap or nearly touch in a way that reads as overlap
 - whether any separate top-level icons or location groups overlap even if they are not siblings in the spec
 - whether any icon was stretched to solve spacing instead of moving the surrounding layout
 
-If the review finds an issue, update the diagram spec and rerender before final delivery.
+Run `python3 scripts/review_visual_preview.py --preview ... --report ... --spec ... --output ...visual-review.json --fail-on-issues` as the exported-preview gate. If the gate or the manual review finds an issue, update the diagram spec, rerender, re-export, and rerun the gate before final delivery.
 
 ## Architectural Review and Applied Fixes
 
@@ -133,6 +138,7 @@ Unless the user says otherwise:
 - when gateways such as `IGW`, `NAT`, or `SGW` are shown, attach them to the VCN edge by default unless the user explicitly requests a subnet-edge style
 - enlarge the page or reroute edges before accepting overlapping or crowded connector paths
 - render with the renderer's quality gate enabled and do not accept output while it reports issues
+- run the exported-preview visual gate with `--fail-on-issues` and do not accept output while it reports issues
 - pick the closest bundled reference architecture first and preserve its spacing, icon scale, and routing lanes when it is a good fit
 - when a request mixes patterns, keep one primary reference and only borrow targeted details from supporting references
 - run a dedicated spacing and overlap review before sign-off
@@ -204,6 +210,7 @@ Include:
 - Prefer straight connectors first. If a route can be drawn straight, do not accept an elbowed alternative.
 - If a connector truly must bend, keep the elbows orthogonal, aligned, and easy to justify.
 - Export the rendered page and visually inspect it. If a connector appears detached, partially attached, stacked on another route, broken by labels, forced through labels or boundaries, or shaped by a diagonal segment, reroute and rerender.
+- Run `python3 scripts/review_visual_preview.py --preview ... --report ... --spec ... --output ...visual-review.json --fail-on-issues` after export and treat every finding as a blocker until the spec is fixed and the preview gate passes.
 - Treat connectors that only almost reach a subnet wall, VCN wall, or workload icon as defects. The line should visibly terminate on the intended boundary or target.
 - Prioritize traffic-flow arrows during visual QA and assign dedicated routing lanes when they would otherwise overlap.
 - Perform spacing and overlap review separately from the renderer quality check and the architecture review.

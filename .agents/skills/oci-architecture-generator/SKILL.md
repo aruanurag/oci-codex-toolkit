@@ -18,6 +18,7 @@ Use this skill to keep OCI architecture work disciplined and honest:
 - When the user provides a specific Oracle solution link or asks for near-exact replication, switch into reference replication mode and treat that reference as the source of truth for the component set, topology, and primary flows.
 - Run an explicit architectural review before final delivery so public or private placement, HA or DR posture, ingress security, and tier isolation are correct instead of only visually tidy.
 - Run a dedicated spacing and overlap review on the rendered export before sign-off.
+- Run the exported-preview audit with `--fail-on-issues` after every PNG export and treat its findings as blockers equal to renderer quality failures.
 - Treat sparse, wireframe-looking, or text-only output as a blocker even when the topology is technically correct.
 - Do not stop after the first render. Render, review, reroute, and rerender until the geometry review passes cleanly twice in a row.
 - Treat broken-looking traffic-flow arrows, overlapping line segments, and labels sitting on top of arrows as blockers, not polish items.
@@ -54,29 +55,35 @@ Use this skill to keep OCI architecture work disciplined and honest:
 18. Use `style: "endArrow=none;"` on intermediate boundary-to-boundary or icon-to-boundary segments. Keep the visible arrowhead only on the final segment that enters the destination workload or endpoint icon.
 19. If the renderer exits non-zero because the quality review found issues, update anchors, waypoints, spacing, sizes, or canvas dimensions and rerender. Do not share the output yet.
 20. Export the rendered physical page to PNG and inspect it visually before sign-off.
-21. Run a dedicated spacing and overlap review against the export before sign-off:
+21. Run `python3 scripts/review_visual_preview.py --preview ... --report ... --spec ... --output ...visual-review.json --fail-on-issues` against the exported PNG. If it reports any issue, fix the spec, rerender, re-export, and rerun the visual gate before continuing.
+22. Run a dedicated spacing and overlap review against the export before sign-off:
    - verify every requested service resolved to an official OCI icon and treat `closest` and `placeholder` outcomes as blockers until they are disclosed and intentionally accepted
    - reject any `PLACEHOLDER:` card whose service name resolves to a direct or alias OCI icon in the local catalog
    - check spacing between external location groups, ingress services, and the first OCI boundary so `Internet`, `Clients`, `WAF`, and similar entry elements do not crowd each other
    - check spacing between icons and their labels so native snippet text, external labels, and connector routes do not collide
    - check spacing between subnet labels, AD background lanes, cluster containers, and service icons so the background structure stays visually behind the foreground content
+   - check that public ingress visually traverses the Internet Gateway before entering the public subnet or load balancer whenever an Internet Gateway is shown
+   - check that `Internet Gateway`, `NAT Gateway`, and `Service Gateway` icons straddle the VCN boundary and do not read as floating decorative services
+   - check that AD grouping lanes do not swallow the private data tier or imply a regional database is scoped to a single AD
+   - check that security, observability, support, or operations panels sit beside the VCN and subnets instead of overlapping network boundaries
+   - check that native OCI icon labels are hidden when a custom side label repeats the same service name
    - check that expected icon regions still contain visible icon content in the exported preview instead of blank areas, clipped fragments, or detached labels
    - reject layouts that still read like a sparse scaffold with oversized empty regions and too little foreground weight for the claimed workload
    - reject any label card, external label, or title box that rests directly on a primary connector lane when a clean nearby lane exists
    - treat any overlap between unrelated icons, labels, grouping boxes, connectors, arrowheads, or location boundaries as a blocker even if the automated quality checker passes
-22. Run an architectural review against the request before sign-off:
+23. Run an architectural review against the request before sign-off:
    - only ingress services belong in public subnets for internet-facing patterns unless the user explicitly wants public compute
    - keep regional OCI ingress or edge services such as `WAF`, `API Gateway`, and similar regional controls inside the `OCI Region` boundary but outside the `VCN` unless the service genuinely belongs on a network edge or the user asked for a different framing
    - web, app, and data tiers should be isolated honestly when a 3-tier pattern is requested
    - regional subnets are the default OCI assumption when subnet scope is unspecified; do not duplicate one subnet per AD unless the user explicitly asked for AD-specific subnets or the architecture requires them
    - HA or DR claims must be explicit in the diagram through ADs, FDs, instance pools, standby regions, or similarly honest constructs
    - ingress protection, egress pattern, and management path should be present when they materially affect whether the design reads as production-ready
-23. If the spacing and overlap review finds a gap, fix the spec and rerender before architectural sign-off.
-24. If the architectural review finds a gap, fix the spec and rerender before visual polish sign-off.
-25. Run at least three repair passes after the first render, even if the first quality review is already clean.
-26. After the first passing quality review, do one more rerender and require a second clean quality review before delivering the diagram.
-27. Treat a connector that stops just outside a subnet wall, VCN wall, or workload icon as broken even if the automated quality review does not flag it yet.
-28. Use the bundled draw.io assets in `assets/drawio/` and `assets/reference-architectures/oracle/` instead of relying on external copies.
+24. If the spacing and overlap review finds a gap, fix the spec and rerender before architectural sign-off.
+25. If the architectural review finds a gap, fix the spec and rerender before visual polish sign-off.
+26. Run at least three repair passes after the first render, even if the first quality review is already clean.
+27. After the first passing quality review, do one more rerender and require a second clean quality review before delivering the diagram.
+28. Treat a connector that stops just outside a subnet wall, VCN wall, or workload icon as broken even if the automated quality review does not flag it yet.
+29. Use the bundled draw.io assets in `assets/drawio/` and `assets/reference-architectures/oracle/` instead of relying on external copies.
 
 ## Reference Replication Mode
 
@@ -218,7 +225,7 @@ Default to producing:
 - Run `python3 scripts/select_reference_architecture.py --query "request text" --bundle --top 5` to find the closest imported Oracle reference architecture and any supporting references before laying out a new design.
 - Run `python3 scripts/resolve_oci_icon.py --query "service name"` to resolve icon mappings.
 - Run `python3 scripts/render_oci_drawio.py --spec ... --output ... --report-out ... --quality-out ... --fail-on-quality` to generate the finished `.drawio` and fail fast on bad geometry.
-- Run `python3 scripts/review_visual_preview.py --preview ... --report ... --spec ...` after exporting a PNG whenever you need preview-based visual QA for icon visibility, sparse layouts, or labels sitting on connector lanes.
+- Run `python3 scripts/review_visual_preview.py --preview ... --report ... --spec ... --output ...visual-review.json --fail-on-issues` after exporting a PNG; this is the required visual gate for icon visibility, sparse layouts, ingress-gateway bypass, decorative gateway placement, AD/data-tier framing, support-panel overlap, duplicate native/custom labels, labels on connector lanes, gateway label wrapping, and connectors riding container borders.
 - Run `python3 scripts/test_icon_resolver.py` before trusting resolver changes.
 - Run `python3 scripts/test_reference_selector.py` before trusting reference-selection changes.
 - Run `python3 scripts/test_render_oci_drawio.py` before trusting renderer changes.

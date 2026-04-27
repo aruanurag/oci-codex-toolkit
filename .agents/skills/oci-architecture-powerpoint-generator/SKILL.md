@@ -19,6 +19,7 @@ Keep the same standards we established in the draw.io skill:
 - default subnet scope to regional unless the user explicitly asks for AD-specific subnets or the workload genuinely needs AD-specific framing
 - when the user provides a specific Oracle solution link or asks for near-exact replication, switch into reference replication mode and treat that reference as the source of truth for the component set, topology, and primary flows
 - run an explicit architectural review before final delivery so public/private placement, HA or DR posture, ingress security, and tier isolation are correct instead of only visually tidy
+- run the exported-preview audit with `--fail-on-issues` after every preview export and treat its findings as blockers equal to renderer quality failures
 - place gateways such as `Internet Gateway`, `NAT Gateway`, and `Service Gateway` directly on the VCN border
 - place connector labels in transparent text boxes with no opaque mask over the line
 - do not run vertical connectors through native or external icon captions in stacked service columns; reroute along a side lane or add spacing first, and drop nonessential internal connector labels before crowding the slide
@@ -76,12 +77,18 @@ This skill is PowerPoint-native:
 18. Export a preview image of the rendered `.pptx` and inspect it visually before delivery. Prefer `python3 scripts/export_powerpoint_preview.py --input ... --image-out ...` because it tries a PowerPoint-native PDF render first before falling back to a direct `.pptx` thumbnail when automation is unavailable.
 18a. Treat a PowerPoint repair prompt, an automation timeout, or a `quicklook-pptx` fallback on a deck that previously exported via PowerPoint as a package-integrity blocker, not just a preview inconvenience.
 18b. When a connector-heavy slide triggers that blocker, first remove or externalize custom text rewrites inside grouped OCI icons and retest before changing the topology or the connector routing.
+18c. Run `python3 scripts/review_visual_preview.py --preview ... --report ... --spec ... --output ...visual-review.json --fail-on-issues` against the exported preview. If it reports any issue, fix the spec, rerender, re-export, and rerun the visual gate before continuing.
 19. Run a dedicated spacing and overlap review against the preview before sign-off:
    - verify every requested service resolved to an official OCI icon; treat `closest` and `placeholder` outcomes as blockers until they are disclosed and intentionally accepted
    - reject any `PLACEHOLDER:` card whose service name resolves to a direct or alias OCI icon in the local PowerPoint catalog
    - check spacing between external location groups, ingress services, and the first OCI boundary so `Internet`, `Clients`, `WAF`, and similar entry elements do not crowd each other
    - check spacing between icons and their labels, especially when Oracle icon groups have native labels that can drift into nearby lines or containers
    - check spacing between subnet labels, AD background lanes, cluster containers, and service icons so background structure does not visually consume foreground labels
+   - check that public ingress visually traverses the Internet Gateway before entering the public subnet or load balancer whenever an Internet Gateway is shown
+   - check that `Internet Gateway`, `NAT Gateway`, and `Service Gateway` icons straddle the VCN boundary and do not read as floating decorative services
+   - check that AD grouping lanes do not swallow the private data tier or imply a regional database is scoped to a single AD
+   - check that security, observability, support, or operations panels sit beside the VCN and subnets instead of overlapping network boundaries
+   - check that native OCI icon labels are hidden when a custom side label repeats the same service name
    - check that expected icon regions still show visible icon content in the preview instead of blank areas, clipped fragments, or detached text cards
    - if the exporter reports `Backend: quicklook-pptx`, treat icon-visibility findings as lower-confidence for nested Oracle vector groups and pair them with the PowerPoint geometry report plus a sibling draw.io shadow review before deciding the slide is broken
    - reject slides that still read as a sparse scaffold with oversized empty rectangles and too little foreground weight
@@ -255,7 +262,7 @@ Use the repo-level `output/` directory for generated architecture files during t
 - Run `python3 scripts/build_powerpoint_catalog.py` after updating the Oracle PowerPoint toolkit.
 - Run `python3 scripts/build_powerpoint_reference_catalog.py` after updating the Oracle PowerPoint toolkit or when you want to refresh the baseline-slide catalog.
 - Run `python3 scripts/export_powerpoint_preview.py --input ... --image-out ...` when you need a preview image for visual QA; if it reports `Backend: quicklook-pptx`, combine that thumbnail with the PowerPoint geometry report and a sibling draw.io shadow review.
-- Run `python3 scripts/review_visual_preview.py --preview ... --report ... --spec ...` after export and treat failed visual checks as blockers even when the slide XML is valid.
+- Run `python3 scripts/review_visual_preview.py --preview ... --report ... --spec ... --output ...visual-review.json --fail-on-issues` after export; this is the required visual gate for icon visibility, sparse slides, ingress-gateway bypass, decorative gateway placement, AD/data-tier framing, support-panel overlap, duplicate native/custom labels, labels on connector lanes, gateway label wrapping, and connectors riding container borders.
 - Run `python3 scripts/resolve_oci_powerpoint_icon.py --query "service"` to resolve icons.
 - Run `python3 scripts/select_reference_architecture.py --query "request text" --bundle --top 5` to find the closest bundled Oracle PowerPoint baseline before laying out a new slide.
 - Run `python3 scripts/render_oci_powerpoint.py --spec ... --output ... --report-out ... --quality-out ... --fail-on-quality` to generate the final deck.
