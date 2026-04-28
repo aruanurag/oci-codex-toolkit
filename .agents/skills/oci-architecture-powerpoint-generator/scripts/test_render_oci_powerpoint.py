@@ -346,9 +346,9 @@ def main() -> None:
                         "shape": "rounded-rectangle",
                         "x": 120,
                         "y": 130,
-                        "w": 132,
-                        "h": 46,
-                        "label": "This label is far too long for this tiny card",
+                        "w": 88,
+                        "h": 28,
+                        "label": "This label is still far too long for this impossible card",
                         "style": "fillColor=#FFFFFF;strokeColor=#312D2A;fontSize=18;fontStyle=1;"
                     },
                     {
@@ -356,9 +356,9 @@ def main() -> None:
                         "type": "text",
                         "x": 320,
                         "y": 128,
-                        "w": 108,
-                        "h": 34,
-                        "text": "This body copy is too dense for the box.",
+                        "w": 84,
+                        "h": 24,
+                        "text": "This body copy is intentionally impossible to fit cleanly.",
                         "style": "align=left;fontSize=17;fontStyle=0;"
                     }
                 ]
@@ -558,7 +558,8 @@ def main() -> None:
             semantic_slide_xml = archive.read("ppt/slides/slide1.xml").decode("utf-8")
         assert semantic_slide_xml.count('<a:prstDash val="sysDot"') == 1, semantic_slide_xml
         assert 'wrap="none"' in semantic_slide_xml, semantic_slide_xml
-        assert "spAutoFit" in semantic_slide_xml, semantic_slide_xml
+        assert "normAutofit" in semantic_slide_xml, semantic_slide_xml
+        assert "spAutoFit" not in semantic_slide_xml, semantic_slide_xml
         assert 'anchor="t"' in semantic_slide_xml, semantic_slide_xml
         semantic_quality = json.loads(semantic_quality_path.read_text())
         semantic_issue_types = {issue["type"] for issue in semantic_quality["pages"][0]["issues"]}

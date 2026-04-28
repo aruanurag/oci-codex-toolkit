@@ -67,7 +67,8 @@ MAX_CONNECTOR_BENDS = 2
 MIN_GROUPING_INSET = 8.0
 SIBLING_OVERLAP_TOLERANCE = 2.0
 UNRELATED_OVERLAP_TOLERANCE = 2.0
-TEXT_FIT_ERROR_THRESHOLD = 0.62
+TEXT_FIT_SHRINK_THRESHOLD = 0.98
+TEXT_FIT_ERROR_THRESHOLD = 0.90
 TEXT_FIT_CHAR_WIDTH = 0.40
 TEXT_FIT_UPPERCASE_WIDTH = 0.50
 TEXT_FIT_DIGIT_WIDTH = 0.46
@@ -196,7 +197,10 @@ def build_empty_tx_body(
         body_pr_attrib.update({"lIns": "0", "rIns": "0", "tIns": "0", "bIns": "0"})
     body_pr = ET.SubElement(tx_body, qn(A_NS, "bodyPr"), body_pr_attrib)
     if auto_fit:
-        ET.SubElement(body_pr, qn(A_NS, "spAutoFit"))
+        # PowerPoint cards and labels in this renderer use fixed geometry. Use
+        # normal auto-fit so the text shrinks to stay inside the box instead of
+        # requesting shape growth, which can still render as visible overflow.
+        ET.SubElement(body_pr, qn(A_NS, "normAutofit"))
     ET.SubElement(tx_body, qn(A_NS, "lstStyle"))
     return tx_body
 
@@ -971,6 +975,40 @@ def estimate_text_fit(
         "width_needed": width_needed,
         "height_needed": height_needed,
     }
+
+
+def shrink_font_size_to_fit(
+    text: str,
+    *,
+    font_size_pt: int,
+    bold: bool,
+    bbox: dict[str, float],
+    wrap_enabled: bool,
+    zero_margins: bool,
+    auto_fit: bool,
+    page_width: float,
+    min_font_size_pt: int = 8,
+) -> int:
+    if not text.strip():
+        return font_size_pt
+    if not auto_fit:
+        return font_size_pt
+
+    adjusted = max(int(font_size_pt), min_font_size_pt)
+    probe = {
+        "text_content": text,
+        "font_size_pt": adjusted,
+        "bold": bold,
+        "bbox": bbox,
+        "wrap_enabled": wrap_enabled,
+        "zero_margins": zero_margins,
+    }
+    fit = estimate_text_fit(probe, page_width=page_width)
+    while adjusted > min_font_size_pt and fit and fit["required_scale"] < TEXT_FIT_SHRINK_THRESHOLD:
+        adjusted -= 1
+        probe["font_size_pt"] = adjusted
+        fit = estimate_text_fit(probe, page_width=page_width)
+    return adjusted
 
 
 def clamp_within_bounds(
@@ -2389,6 +2427,16 @@ def render_slide(
             wrap_enabled = not single_line_text
             zero_margins = single_line_text
             auto_fit = True
+            font_size_pt = shrink_font_size_to_fit(
+                text_value,
+                font_size_pt=font_size_pt,
+                bold=bold,
+                bbox=bbox,
+                wrap_enabled=wrap_enabled,
+                zero_margins=zero_margins,
+                auto_fit=auto_fit,
+                page_width=page_width,
+            )
             render_element = create_textbox(
                 allocator,
                 x=to_emu(abs_x, scale_x),
@@ -2413,6 +2461,18 @@ def render_slide(
             wrap_enabled = True
             zero_margins = False
             auto_fit = bool(text_content)
+            if text_content:
+                font_size_pt = shrink_font_size_to_fit(
+                    text_content,
+                    font_size_pt=font_size_pt,
+                    bold=bold,
+                    bbox=bbox,
+                    wrap_enabled=wrap_enabled,
+                    zero_margins=zero_margins,
+                    auto_fit=auto_fit,
+                    page_width=page_width,
+                )
+                style["fontSize"] = str(font_size_pt)
             hidden = item.get("id", "").endswith("-anchor") or (
                 style.get("fillColor") == "none" and style.get("strokeColor") == "none"
             )
@@ -2502,6 +2562,17 @@ def render_slide(
                 str(item.get("external_label_align", "center")).strip().lower(),
                 "ctr",
             )
+            label_wrap_enabled = "\n" in separate_external_label_text
+            label_font_size = shrink_font_size_to_fit(
+                separate_external_label_text,
+                font_size_pt=label_font_size,
+                bold=bool(item.get("external_label_bold", True)),
+                bbox=label_bbox,
+                wrap_enabled=label_wrap_enabled,
+                zero_margins=not bool(item.get("external_label_box", True)),
+                auto_fit=True,
+                page_width=page_width,
+            )
             if bool(item.get("external_label_box", True)):
                 external_label_shape = create_placeholder_shape(
                     allocator,
@@ -2529,9 +2600,9 @@ def render_slide(
                     font_size_pt=label_font_size,
                     bold=bool(item.get("external_label_bold", True)),
                     align=label_align,
-                    wrap="none" if "\n" not in separate_external_label_text else None,
+                    wrap="none" if not label_wrap_enabled else None,
                     zero_margins=True,
-                    auto_fit="\n" not in separate_external_label_text,
+                    auto_fit=True,
                 )
             label_id = f"{record['id']}__external_label" if record.get("id") else None
             label_record = {
@@ -2548,7 +2619,7 @@ def render_slide(
                 "text_content": separate_external_label_text,
                 "font_size_pt": label_font_size,
                 "bold": bool(item.get("external_label_bold", True)),
-                "wrap_enabled": "\n" in separate_external_label_text,
+                "wrap_enabled": label_wrap_enabled,
                 "zero_margins": not bool(item.get("external_label_box", True)),
                 "auto_fit": True,
             }

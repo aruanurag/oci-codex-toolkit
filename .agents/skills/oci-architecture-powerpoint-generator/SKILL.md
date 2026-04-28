@@ -38,6 +38,7 @@ Keep the same standards we established in the draw.io skill:
 - preserve symmetry when the architecture is staged, mirrored, or fanout-based by aligning repeated blocks and balancing whitespace before optimizing for the shortest connector
 - treat visibly mismatched sibling container sizes in mirrored or paired layouts as blockers unless the topology genuinely differs
 - shorten headings and reduce font size before accepting crowded or awkwardly wrapped labels
+- treat visible text escaping a fixed card, subtitle band, chip, or callout as a blocker even when the raw spec looks reasonable; use the PowerPoint-native preview as the source of truth
 - use a direct OCI PowerPoint icon first, then a closest honest fallback, then a clearly labeled placeholder shape if no direct map exists
 
 This skill is PowerPoint-native:
@@ -73,7 +74,7 @@ This skill is PowerPoint-native:
 16. Author the JSON slide spec only after the planning and clarification gate is complete, and record the final questions, selected answers, and recommended options in the top-level `clarification_gate` object.
 16a. If the slide needs presenter-only coaching, implication text, workshop output, or other spoken guidance, store it in page-level `presenter_notes` or `speaker_notes` instead of rendering that copy on the slide.
 16b. If the slide needs a conceptual sidecar or reusable explainer motif that is not itself an OCI service topology, read [../oci-diagram-patterns/SKILL.md](../oci-diagram-patterns/SKILL.md) and carry its `Pattern Brief` into the slide spec before drawing ad hoc boxes and arrows.
-17. Render with `python3 scripts/render_oci_powerpoint.py --spec ... --output ... --report-out ... --quality-out ... --fail-on-quality`. The renderer now refuses to render when the required `clarification_gate` is missing or incomplete.
+17. Render with `python3 scripts/render_oci_powerpoint.py --spec ... --output ... --report-out ... --quality-out ... --fail-on-quality --fail-on-text-overflow`. The renderer now refuses to render when the required `clarification_gate` is missing or incomplete, and final deck passes should fail fast on unresolved text containment issues.
 18. Export a preview image of the rendered `.pptx` and inspect it visually before delivery. Prefer `python3 scripts/export_powerpoint_preview.py --input ... --image-out ...` because it tries a PowerPoint-native PDF render first before falling back to a direct `.pptx` thumbnail when automation is unavailable.
 18a. Treat a PowerPoint repair prompt, an automation timeout, or a `quicklook-pptx` fallback on a deck that previously exported via PowerPoint as a package-integrity blocker, not just a preview inconvenience.
 18b. When a connector-heavy slide triggers that blocker, first remove or externalize custom text rewrites inside grouped OCI icons and retest before changing the topology or the connector routing.
@@ -90,6 +91,7 @@ This skill is PowerPoint-native:
    - check that security, observability, support, or operations panels sit beside the VCN and subnets instead of overlapping network boundaries
    - check that native OCI icon labels are hidden when a custom side label repeats the same service name
    - check that expected icon regions still show visible icon content in the preview instead of blank areas, clipped fragments, or detached text cards
+   - check that PowerPoint-native text shrink still leaves the slide readable; if a card only fits because the text became visibly cramped, enlarge the box or shorten the copy instead of accepting the slide
    - if the exporter reports `Backend: quicklook-pptx`, treat icon-visibility findings as lower-confidence for nested Oracle vector groups and pair them with the PowerPoint geometry report plus a sibling draw.io shadow review before deciding the slide is broken
    - reject slides that still read as a sparse scaffold with oversized empty rectangles and too little foreground weight
    - reject any label card, external label, or title box that rests directly on a primary connector lane when a clean nearby lane exists

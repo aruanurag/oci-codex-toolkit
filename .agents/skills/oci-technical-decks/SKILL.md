@@ -106,6 +106,7 @@ Use this skill for:
    - use [../oci-architecture-powerpoint-generator/SKILL.md](../oci-architecture-powerpoint-generator/SKILL.md) for architecture slides
    - export a preview and review for clipping, overlap, leaked notes, pacing problems, and any text escaping its intended card or container
    - treat text that spills outside a card, box, or summary strip as a hard blocker, not a polish item
+   - if PowerPoint-native shrink makes a card technically fit but visibly cramped, rewrite the copy or enlarge the container instead of accepting the slide
    - use the renderer quality output as a hard gate and rerender until there are no unresolved `text-overflow` findings, using the renderer's `--fail-on-text-overflow` mode for final deck passes
 14. Before sign-off, explicitly record:
    - that presenter notes exist on every slide
