@@ -1,0 +1,4 @@
+interface:
+  display_name: "XLSX Workbooks"
+  short_description: "Create, edit, analyze, and validate Excel files"
+  default_prompt: "Use $xlsx to create, inspect, modify, or validate an Excel .xlsx workbook while preserving formulas, formatting, and recalculation integrity."

@@ -101,13 +101,17 @@ Use this skill for:
    - keep the deck instructor-led rather than document-like
    - put presenter coaching, transitions, caveats, and deeper explanation into notes on every slide
    - keep visible slide copy audience-facing and compact
+   - use subtitles only for audience-facing context; if the line reads like speaker guidance, a teaching cue, a transition, a recommendation caveat, or a workshop instruction, put it in presenter notes instead
+   - do not add bottom footer strips for presenter interpretation in instructor-led decks unless the user explicitly asks for a leave-behind slide
+   - size eyebrow pills for one clean line, or shorten the label; never allow eyebrow labels to wrap or escape the pill
+   - keep compact service tiles to service-name labels only, normally `1-2` lines; put descriptions such as "search and patterns" or "trend and capacity" in presenter notes or a larger explanatory card
    - preserve Oracle-native technical deck feel without copying source-deck text
    - use [../oci-diagram-patterns/SKILL.md](../oci-diagram-patterns/SKILL.md) for editable conceptual diagrams instead of ad hoc shapes whenever the same motif could recur
    - use [../oci-architecture-powerpoint-generator/SKILL.md](../oci-architecture-powerpoint-generator/SKILL.md) for architecture slides
    - export a preview and review for clipping, overlap, leaked notes, pacing problems, and any text escaping its intended card or container
    - treat text that spills outside a card, box, or summary strip as a hard blocker, not a polish item
    - if PowerPoint-native shrink makes a card technically fit but visibly cramped, rewrite the copy or enlarge the container instead of accepting the slide
-   - use the renderer quality output as a hard gate and rerender until there are no unresolved `text-overflow` findings, using the renderer's `--fail-on-text-overflow` mode for final deck passes
+   - use the renderer quality output as a hard gate and rerender until there are no unresolved `text-overflow` or `text-cramped` findings, using the renderer's `--fail-on-text-overflow` mode for final deck passes
 14. Before sign-off, explicitly record:
    - that presenter notes exist on every slide
    - whether the deck is internal-only or customer-safe
@@ -139,9 +143,11 @@ Increase slide count only when the teaching objective really needs step-by-step 
 - Do not drop dense screenshots or terminal output onto the slide without cropping, scaling, or framing them so they are readable.
 - Reduce table rows before shrinking the font into clutter.
 - Keep presenter prompts, transition cues, and explanations in notes, not on the canvas.
+- Keep spoken recommendations, teaching cues, and transition lines out of subtitles, footer bars, and summary strips unless the text is truly meant for the audience to read.
 - Use one architecture diagram, one comparison frame, or one hero visual per slide when possible.
 - If the deck covers networking, observability, or another control-plane-heavy topic, be explicit about data path, control path, and where the service sits.
 - Treat visible text escaping its intended card, chip, callout, strip, or container as a blocker.
+- Treat compact icon tiles as labels, not explanation boxes. If the label needs both a service name and a description, the tile is too small or the explanation belongs elsewhere.
 - Do not accept a deck just because PowerPoint can auto-fit the text; if the box becomes cramped or visibly strained, revise the slide.
 
 ## Review Checklist
@@ -154,11 +160,14 @@ Before sharing the deck or outline, check:
 - Is the visible copy concise enough for instructor-led delivery?
 - Did the deck pass design-director review?
 - Did any presenter notes, speaker coaching, or author prompts leak into visible slide text?
+- Do subtitles, footer strips, and bottom callouts read as audience-facing slide content rather than presenter notes?
+- Are all eyebrow and section pills single-line labels that fit inside their boxes?
+- Do compact service tiles stay to short labels without wrapped descriptive copy pushing toward the card edge?
 - Did any internal-only label, safe-harbor text, or confidentiality footer remain unintentionally?
 - Are any comparisons or product statements outdated, overstated, or missing key caveats?
 - If diagrams are present, did architecture and visual review pass?
 - Does any visible text clip, overlap, or collide with a border?
-- Did the final render pass the hard text-containment gate with no unresolved `text-overflow` findings?
+- Did the final render pass the hard text-containment gate with no unresolved `text-overflow` or `text-cramped` findings?
 - Did the generated `.pptx` open and export cleanly through a PowerPoint-native path?
 
 ## Deliverables

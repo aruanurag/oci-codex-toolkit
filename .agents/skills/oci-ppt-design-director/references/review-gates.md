@@ -19,8 +19,11 @@ Reject the deck if you see:
 - overlapping boxes
 - card bodies spilling beyond their containers
 - any text shrinking or wrapping so badly that it visibly escapes the intended card, chip, callout, or summary strip
+- any text that only passes by shrinking down to a cramped minimum size
 - long single-line copy overrunning a wide horizontal bar or summary strip
 - eyebrow pills or labels wrapping awkwardly
+- eyebrow, chip, or section labels that wrap, clip, or visually escape their container
+- compact icon tiles that combine a service name and explanatory copy so the text crowds the card boundary
 - captions touching borders
 - unrelated elements colliding
 
@@ -33,6 +36,7 @@ Reject the deck if you see:
 - visible presenter notes
 - author prompts
 - process language such as draft instructions or internal reminders
+- subtitle, footer, summary-strip, or bottom-band text that reads like speaker notes, teaching cues, transitions, or presenter-only interpretation
 - inherited internal-only labels that should not ship
 
 Speaker notes may exist separately, but they must not leak onto the visible slide canvas.
@@ -66,4 +70,4 @@ The deck is ready only when:
 - the slides feel calm and intentional
 - the deck is editable
 - the rendered PowerPoint behaves like a normal customer-facing file
-- no visible text escapes its intended container, and any renderer `text-overflow` findings have been fixed or the slide has been redesigned
+- no visible text escapes its intended container, and any renderer `text-overflow` or `text-cramped` findings have been fixed or the slide has been redesigned

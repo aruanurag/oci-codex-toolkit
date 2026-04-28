@@ -1,0 +1,4 @@
+interface:
+  display_name: "OCI BOM Generator"
+  short_description: "Create OCI BOMs and cost estimates"
+  default_prompt: "Use $oci-bom-generator to create an OCI BOM from an architecture spec, service list, or prompt. First run the assumptions-only gate and confirm or edit sizing assumptions with the user before fetching prices, then generate an Excel-first BOM plus Markdown/CSV/JSON support files, validate the workbook, and only use Oracle Cost Estimator browser validation after confirming any data-transmitting action."

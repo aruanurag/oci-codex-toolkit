@@ -69,6 +69,8 @@ SIBLING_OVERLAP_TOLERANCE = 2.0
 UNRELATED_OVERLAP_TOLERANCE = 2.0
 TEXT_FIT_SHRINK_THRESHOLD = 0.98
 TEXT_FIT_ERROR_THRESHOLD = 0.90
+TEXT_FIT_CRAMPED_FINAL_FONT_PT = 8
+TEXT_FIT_CRAMPED_SHRINK_PT = 2
 TEXT_FIT_CHAR_WIDTH = 0.40
 TEXT_FIT_UPPERCASE_WIDTH = 0.50
 TEXT_FIT_DIGIT_WIDTH = 0.46
@@ -1339,7 +1341,16 @@ def create_placeholder_shape(
         ET.SubElement(line, qn(A_NS, "prstDash"), {"val": "sysDot"})
     ET.SubElement(line, qn(A_NS, "miter"), {"lim": "800000"})
     if label:
-        set_text(shape, label, font_size_pt=font_size, bold=bold, auto_fit=True)
+        single_line_label = "\n" not in label
+        set_text(
+            shape,
+            label,
+            font_size_pt=font_size,
+            bold=bold,
+            wrap="none" if single_line_label else None,
+            zero_margins=single_line_label,
+            auto_fit=True,
+        )
     else:
         ensure_tx_body(shape)
     allocator.assign(shape)
@@ -2092,6 +2103,24 @@ def validate_geometry(
                             ),
                         }
                     )
+                original_font_size = int(float(item.get("original_font_size_pt", item.get("font_size_pt", 11))))
+                final_font_size = int(float(item.get("font_size_pt", original_font_size)))
+                if (
+                    item.get("auto_fit")
+                    and item.get("text_content")
+                    and final_font_size <= TEXT_FIT_CRAMPED_FINAL_FONT_PT
+                    and original_font_size - final_font_size >= TEXT_FIT_CRAMPED_SHRINK_PT
+                ):
+                    issues.append(
+                        {
+                            "severity": "error",
+                            "type": "text-cramped",
+                            "message": (
+                                f"{item['id']} relies on shrinking text from {original_font_size}pt "
+                                f"to {final_font_size}pt; rewrite the copy or enlarge the container."
+                            ),
+                        }
+                    )
             continue
 
         parent = placed_by_id[parent_id]
@@ -2151,6 +2180,24 @@ def validate_geometry(
                         "message": (
                             f"{item['id']} is overstuffed for its box and would need roughly "
                             f"{scale_pct:.0f}% text scale to fit cleanly."
+                        ),
+                    }
+                )
+            original_font_size = int(float(item.get("original_font_size_pt", item.get("font_size_pt", 11))))
+            final_font_size = int(float(item.get("font_size_pt", original_font_size)))
+            if (
+                item.get("auto_fit")
+                and item.get("text_content")
+                and final_font_size <= TEXT_FIT_CRAMPED_FINAL_FONT_PT
+                and original_font_size - final_font_size >= TEXT_FIT_CRAMPED_SHRINK_PT
+            ):
+                issues.append(
+                    {
+                        "severity": "error",
+                        "type": "text-cramped",
+                        "message": (
+                            f"{item['id']} relies on shrinking text from {original_font_size}pt "
+                            f"to {final_font_size}pt; rewrite the copy or enlarge the container."
                         ),
                     }
                 )
@@ -2338,6 +2385,7 @@ def render_slide(
         internal_label_hidden = False
         text_content = ""
         font_size_pt = 11
+        original_font_size_pt = 11
         bold = False
         wrap_enabled = True
         zero_margins = False
@@ -2420,6 +2468,7 @@ def render_slide(
             style = parse_style(item.get("style"))
             align = {"left": "l", "center": "ctr", "right": "r"}.get(style.get("align", "center"), "ctr")
             font_size_pt = int(float(style.get("fontSize", "11")))
+            original_font_size_pt = font_size_pt
             bold = style.get("fontStyle") == "1"
             text_value = item.get("text", "")
             text_content = text_value
@@ -2456,10 +2505,12 @@ def render_slide(
         elif kind == "shape":
             style = parse_style(item.get("style"))
             font_size_pt = int(float(style.get("fontSize", "11")))
+            original_font_size_pt = font_size_pt
             bold = style.get("fontStyle") == "1"
             text_content = strip_non_placeholder_tags(item.get("label"))
-            wrap_enabled = True
-            zero_margins = False
+            single_line_label = "\n" not in text_content
+            wrap_enabled = not single_line_label
+            zero_margins = single_line_label
             auto_fit = bool(text_content)
             if text_content:
                 font_size_pt = shrink_font_size_to_fit(
@@ -2536,6 +2587,7 @@ def render_slide(
             "boundary_side": boundary_side,
             "text_content": text_content,
             "font_size_pt": font_size_pt,
+            "original_font_size_pt": original_font_size_pt,
             "bold": bold,
             "wrap_enabled": wrap_enabled,
             "zero_margins": zero_margins,
@@ -2902,7 +2954,7 @@ def render_presentation(
         1
         for page_quality in slide_qualities
         for issue in page_quality["issues"]
-        if issue.get("type") == "text-overflow"
+        if issue.get("type") in {"text-overflow", "text-cramped"}
     )
     if fail_on_quality and total_issues:
         raise SystemExit(f"Quality review found {total_issues} issue(s).")
