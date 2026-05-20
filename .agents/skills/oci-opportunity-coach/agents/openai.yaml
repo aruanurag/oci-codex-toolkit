@@ -1,0 +1,4 @@
+interface:
+  display_name: "OCI Opportunity Coach"
+  short_description: "Coach OCI account and deal strategy"
+  default_prompt: "Use $oci-opportunity-coach to prepare an OCI account brief, discovery plan, stakeholder map, mutual action plan, and handoff to the right OCI artifact skill from account notes or Sales Navigator context; confirm before reading Sales Navigator or generating Account IQ insights."

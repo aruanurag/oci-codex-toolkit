@@ -4,6 +4,7 @@ This repository is a Codex skill workspace for OCI solution work across architec
 
 It bundles local skills for:
 
+- OCI opportunity coaching, account prep, and Sales Navigator-gated discovery
 - OCI physical architecture diagrams in `.drawio`
 - OCI architecture slides in `.pptx`
 - OCI presales and executive decks
@@ -68,6 +69,7 @@ ln -s "$REPO_ROOT/.agents/skills/oci-architecture-generator" ~/.codex/skills/oci
 ln -s "$REPO_ROOT/.agents/skills/oci-architecture-powerpoint-generator" ~/.codex/skills/oci-architecture-powerpoint-generator
 ln -s "$REPO_ROOT/.agents/skills/oci-bom-generator" ~/.codex/skills/oci-bom-generator
 ln -s "$REPO_ROOT/.agents/skills/oci-diagram-patterns" ~/.codex/skills/oci-diagram-patterns
+ln -s "$REPO_ROOT/.agents/skills/oci-opportunity-coach" ~/.codex/skills/oci-opportunity-coach
 ln -s "$REPO_ROOT/.agents/skills/oci-ppt-design-director" ~/.codex/skills/oci-ppt-design-director
 ln -s "$REPO_ROOT/.agents/skills/oci-sales-decks" ~/.codex/skills/oci-sales-decks
 ln -s "$REPO_ROOT/.agents/skills/oci-technical-decks" ~/.codex/skills/oci-technical-decks
@@ -85,6 +87,7 @@ ln -s "$REPO_ROOT/.agents/skills/shared" ~/.codex/skills/shared
 |       |-- oci-architecture-powerpoint-generator/
 |       |-- oci-bom-generator/
 |       |-- oci-diagram-patterns/
+|       |-- oci-opportunity-coach/
 |       |-- oci-ppt-design-director/
 |       |-- oci-sales-decks/
 |       |-- oci-technical-decks/
@@ -101,6 +104,7 @@ ln -s "$REPO_ROOT/.agents/skills/shared" ~/.codex/skills/shared
 | `oci-architecture-generator` | OCI architecture generation for draw.io | `.drawio`, `.json`, review reports, previews | You want an editable OCI architecture diagram |
 | `oci-architecture-powerpoint-generator` | OCI architecture generation for PowerPoint | `.pptx`, `.json`, review reports, previews | You want an OCI architecture slide in PowerPoint |
 | `oci-bom-generator` | OCI BOM and price-estimate generation | `.xlsx`, `.md`, `.csv`, `.json` | You want a confirmed-assumption OCI BOM or cost workbook |
+| `oci-opportunity-coach` | OCI opportunity strategy and discovery prep | account brief, discovery plan, stakeholder map, handoff | You want to prep a rep or SE before creating artifacts |
 | `oci-sales-decks` | OCI presales and executive storytelling | slide outline, notes, `.pptx` | You want a customer-facing sales or briefing deck |
 | `oci-technical-decks` | OCI instructor-led technical presentations | slide outline, presenter notes, `.pptx` | You want a technical deck with notes on every slide |
 | `oci-ppt-design-director` | visual system and design review | design brief, review findings, direction | You want cleaner, more polished PowerPoint output |
@@ -157,6 +161,22 @@ Use the oci-bom-generator skill to create an Excel BOM from this OCI architectur
 
 ```text
 Use the oci-bom-generator skill to price this service list: OKE, 3 worker nodes, public load balancer, OCIR, and a two-node Base Database RAC system. Generate an Excel workbook after I confirm the assumptions.
+```
+
+### `oci-opportunity-coach`
+
+Prepares OCI reps and Sales Engineers for customer opportunities. It turns account notes, meeting transcripts, CRM context, public research, or user-approved Sales Navigator context into concise account briefs, discovery plans, deal hypotheses, stakeholder maps, mutual action plans, follow-up language, and handoffs to the right OCI artifact skill.
+
+Sales Navigator usage is gated. The skill confirms before reading account or lead context, and separately confirms before clicking Account IQ `Generate insights`.
+
+Sample prompts:
+
+```text
+Use the oci-opportunity-coach skill to prep me for a discovery call with this account. Ask before using Sales Navigator.
+```
+
+```text
+Use the oci-opportunity-coach skill to turn these meeting notes into a deal hypothesis, stakeholder map, discovery plan, and SE handoff.
 ```
 
 ### `oci-sales-decks`
@@ -246,6 +266,7 @@ Use the skills as a small OCI content system rather than isolated tools:
 - `oci-architecture-generator` creates editable draw.io architecture source.
 - `oci-architecture-powerpoint-generator` creates OCI-native architecture slides.
 - `oci-bom-generator` creates confirmed-assumption Excel BOMs and cost-estimate support files.
+- `oci-opportunity-coach` shapes the account strategy, discovery plan, and artifact handoff before downstream content is created.
 - `oci-sales-decks` creates presales, executive, and recommendation stories.
 - `oci-technical-decks` creates instructor-led product and architecture teaching decks.
 - `oci-ppt-design-director` sets the visual contract and reviews PowerPoint output.
@@ -254,6 +275,7 @@ Use the skills as a small OCI content system rather than isolated tools:
 
 Typical combinations:
 
+- Opportunity prep: `oci-opportunity-coach` + optional Sales Navigator context + handoff to the right artifact skill
 - Customer deck: `oci-sales-decks` + `oci-ppt-design-director` + optional `oci-architecture-powerpoint-generator`
 - Technical deck: `oci-technical-decks` + `oci-ppt-design-director` + optional `oci-diagram-patterns`
 - Architecture-only slide: `oci-architecture-powerpoint-generator` + `oci-ppt-design-director`
@@ -271,6 +293,10 @@ Use the oci-architecture-generator skill to create a multi-AD OCI web applicatio
 
 ```text
 Use the oci-bom-generator skill to create an Excel BOM from this architecture image after confirming assumptions with me.
+```
+
+```text
+Use the oci-opportunity-coach skill to prepare an account brief and discovery plan for a customer meeting. Ask before using Sales Navigator.
 ```
 
 ```text
@@ -294,9 +320,11 @@ Generated files land in `output/`. Depending on the workflow, a run may produce:
 - `.report.json` execution reports
 - `.quality.json` review outputs
 - preview images for visual QA
+- account briefs, discovery plans, stakeholder maps, and handoff summaries
 
 Example artifact categories:
 
+- OCI opportunity briefs and discovery plans
 - customer or executive OCI decks
 - instructor-led OCI technical decks
 - editable OCI architecture diagrams
@@ -309,6 +337,7 @@ These skills are built for iterative, review-driven output rather than one-pass 
 
 - ask targeted clarification questions when answers change the architecture, deck, BOM, or sizing assumptions
 - confirm BOM assumptions before fetching prices or producing customer-facing totals
+- confirm before reading Sales Navigator context or generating Account IQ insights
 - prefer official OCI icons and honest fallbacks
 - keep connector routing simple and avoid unnecessary elbows
 - prevent overlaps, clipped text, cramped text, and elements crossing container boundaries
