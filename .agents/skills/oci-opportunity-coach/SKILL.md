@@ -1,6 +1,6 @@
 ---
 name: oci-opportunity-coach
-description: Prepare OCI reps and sales engineers for customer opportunities by turning customer notes, CRM context, meeting transcripts, public account research, or user-approved Sales Navigator context into account briefs, discovery plans, deal hypotheses, stakeholder maps, mutual action plans, follow-up messages, CRM summaries, and handoffs to OCI deck, diagram, BOM, or technical skills.
+description: Prepare OCI reps and sales engineers for customer opportunities by turning a single account, an Excel/CSV list of accounts, customer notes, CRM context, meeting transcripts, public research, key decision maker research, champion/persona target research, or user-approved Sales Navigator context into account research profiles, executive summaries, stakeholder profiles, champion maps, OCI pursuit hypotheses, stakeholder maps, outreach campaigns, discovery plans, mutual action plans, CRM summaries, and handoffs to OCI deck, diagram, BOM, or technical skills.
 ---
 
 # OCI Opportunity Coach
@@ -9,16 +9,20 @@ description: Prepare OCI reps and sales engineers for customer opportunities by 
 
 Use this skill as the front door for OCI opportunity strategy. It helps reps and Sales Engineers decide what to say, ask, build, or send before generating a deck, architecture, BOM, or technical briefing.
 
-This skill is for messy early and mid-stage sales context: partial notes, a named account, a meeting transcript, a renewal or migration motion, an executive sponsor request, a competitor displacement opportunity, or a request like "help me prep for this account."
+This skill is for messy early and mid-stage sales context: partial notes, a named account, a spreadsheet of target accounts, a meeting transcript, a renewal or migration motion, an executive sponsor request, a competitor displacement opportunity, or a request like "help me prep for this account."
 
 ## Use Cases
 
 Use this skill for:
 
 - account and meeting preparation
+- comprehensive account research from one account or an Excel/CSV account list
 - discovery call plans
 - opportunity qualification and deal hypotheses
 - stakeholder maps and missing-role analysis
+- named stakeholder, key decision maker, and technical influencer research
+- non-executive champion and persona target discovery for product, engineering, platform, data, security, SRE, architecture, and operations campaigns
+- executive one-pagers and outreach campaign kits
 - mutual action plans
 - follow-up emails and CRM summaries
 - SE handoff briefs
@@ -30,10 +34,17 @@ Do not use this skill as the final authoring workflow for PowerPoint decks, OCI 
 ## Core Rules
 
 - Separate `known`, `assumed`, and `recommended` in every customer-facing or field-facing output.
+- For account research, separate `publicly verified`, `Sales Navigator context`, `CRM/internal context`, `estimated`, `assumed`, and `not found in available sources`.
+- For current company facts, financials, leadership, partnerships, cloud/AI signals, social posts, and tech-stack clues, browse or use current source material and cite sources with as-of dates.
+- For cloud-provider posture, use job postings, hiring pages, engineering blogs, public resumes/employee skill aggregates, certifications, and LinkedIn/Sales Navigator skill signals to infer AWS/Azure/GCP/OCI/private-cloud likelihood. Label this as `inferred`, include evidence, confidence, and counter-signals.
+- For personalized outreach and decision-maker research, profile relevant named executives, technical leaders, product leaders, platform/cloud owners, security/data leaders, and known CRM contacts using public web, company pages, company technical blogs, public professional profiles, public posts, and user-approved LinkedIn/Sales Navigator lead context. Use only professional opportunity-relevant information, label sources, and do not infer sensitive personal attributes.
+- For product/engineering campaigns, identify named non-executive champion candidates as well as senior leaders. Inspect relevant open jobs and individual public or approved Sales Navigator lead profiles for engineers, product managers, architects, platform/cloud owners, SRE/DevOps, data/AI, database, security, and operations personas. Record how many job postings, employee profiles, Sales Navigator lead profiles, and technical posts were checked.
 - Do not invent pricing, discounts, OCI commitments, region availability, customer priorities, stakeholder intent, or competitor details.
-- Ask only the smallest useful set of follow-up questions, usually `1-3`, when missing information would materially change the recommendation.
+- Ask only the smallest useful set of follow-up questions, usually `1-3`, when missing information would materially change the recommendation. For account research or account-list research, ask the required validation block before starting.
 - Keep outputs practical for field use: concise, specific, and tied to a next customer action.
 - Treat CRM notes, meeting transcripts, Sales Navigator pages, and account data as sensitive customer context.
+- Do not leave Oracle contract, license, renewal, opportunity, account-owner, CRM-match, or internal relationship fields blank when they are visible in user-authorized internal, CRM, Oracle, or Sales Navigator surfaces. Capture every visible relevant field, label the source and as-of/access date, and use `not found in available sources` only when the field was actually checked and not visible.
+- For comprehensive account research, deliver final output files as DOCX and PDF only. Do not place Markdown, CSV, JSON, XLSX, raw browser captures, screenshots, or text exports in the delivered output folder unless the user explicitly requests those extra formats.
 - Before reading or using Sales Navigator for a specific account, lead, list, or search, ask the user to confirm:
   `Do you want me to look at Sales Navigator for <account or objective> and use visible account or lead context to prepare this output?`
 - Before clicking Sales Navigator Account IQ `Generate insights`, ask a separate action-specific confirmation unless the user already explicitly requested generated insights for that same account and objective:
@@ -46,6 +57,8 @@ Do not use this skill as the final authoring workflow for PowerPoint decks, OCI 
 ## Workflow
 
 1. Identify the request:
+   - account research profile
+   - account list research from Excel/CSV
    - account brief
    - discovery plan
    - meeting prep
@@ -62,9 +75,12 @@ Do not use this skill as the final authoring workflow for PowerPoint decks, OCI 
    - public research
    - Sales Navigator context
    - prior deck, architecture, BOM, or email thread
-3. If Sales Navigator is relevant and has not already been confirmed for this specific task, ask the Sales Navigator confirmation question from `Core Rules` before opening, reading, or extracting page context.
+3. For account research from a named account or account spreadsheet, read [references/account-research.md](references/account-research.md) and ask the validation questions there before beginning research.
+   - If the user provides an Excel or CSV account list, use the spreadsheet/xlsx workflow first to inspect headers, row count, account names, domains, and any notes before normalizing the research queue.
+   - If the user wants file outputs, recommend the default folder structure from `references/account-research.md` unless they specify another location.
+4. If Sales Navigator is relevant and has not already been confirmed for this specific task, ask the Sales Navigator confirmation question from `Core Rules` before opening, reading, or extracting page context.
    - If Account IQ `Generate insights` would materially improve the output, ask the separate Generate insights confirmation before clicking it.
-4. Build a quick opportunity frame:
+5. Build a quick opportunity frame:
    - customer and industry
    - likely business pressure
    - current technology posture
@@ -72,19 +88,28 @@ Do not use this skill as the final authoring workflow for PowerPoint decks, OCI 
    - target workload or initiative
    - stakeholders and missing roles
    - known constraints such as security, compliance, region, incumbent platform, timeline, or budget
-5. Choose the output shape:
+6. For comprehensive account research or outreach, build stakeholder profiles before writing emails:
+   - identify the likely buying committee and technical influencers
+   - research each named person from public and approved LinkedIn/Sales Navigator sources
+   - identify non-executive champion candidates and persona targets who can influence technical validation, introduce workload context, or become internal advocates
+   - inspect current open roles for persona, skill, cloud, database, AI, security, and platform signals
+   - open individual employee/lead profiles for the finite target set when public or approved, rather than relying only on account-level people lists
+   - use company technical blogs and employee-authored posts to understand technical priorities
+   - tie each personalized email to a specific profile insight, source category, and OCI wedge
+7. Choose the output shape:
+   - for comprehensive account research, read [references/account-research.md](references/account-research.md)
    - for role-based questions, read [references/discovery-plays.md](references/discovery-plays.md)
    - for account briefs, mutual action plans, follow-ups, and CRM summaries, read [references/output-templates.md](references/output-templates.md)
    - for Sales Navigator usage, read [references/sales-navigator.md](references/sales-navigator.md)
    - for handoffs to sibling skills, read [references/artifact-routing.md](references/artifact-routing.md)
-6. Create the field-ready output with:
+8. Create the field-ready output with:
    - the deal hypothesis
    - what to validate next
    - recommended discovery questions
    - stakeholder view
    - next best action
    - artifact handoff when appropriate
-7. If a downstream artifact is needed, route to the sibling skill rather than drafting that artifact inside this skill.
+9. If a downstream artifact is needed, route to the sibling skill rather than drafting that artifact inside this skill.
 
 ## Opportunity Frame
 
@@ -108,8 +133,11 @@ Include:
 - `Validation needed`: what must be confirmed before committing to a recommendation
 - `Discovery plan`: role-specific questions for the next meeting
 - `Stakeholder map`: known roles, missing roles, and likely concerns
+- `Champion/persona map`: named non-executive campaign targets and likely technical champions when outreach is requested
 - `Next best action`: one concrete customer-facing move
 - `Artifact handoff`: which OCI skill should be used next, with a short brief
+
+For comprehensive account research, deliver the package described in [references/account-research.md](references/account-research.md): a full research profile, one-page executive summary, source log, scorecard, outreach kit, stakeholder profiles, and champion/persona target pack.
 
 ## Sales Engineering Guardrails
 
@@ -131,6 +159,7 @@ Include:
 
 ## Resources
 
+- [references/account-research.md](references/account-research.md): comprehensive account research workflow, validation questions, source plan, directory structure, research fields, scoring, and outreach deliverables.
 - [references/discovery-plays.md](references/discovery-plays.md): role-based discovery questions and qualification prompts.
 - [references/output-templates.md](references/output-templates.md): concise account brief, mutual action plan, follow-up, CRM update, and SE handoff templates.
 - [references/sales-navigator.md](references/sales-navigator.md): gated Sales Navigator workflow and safety rules.
