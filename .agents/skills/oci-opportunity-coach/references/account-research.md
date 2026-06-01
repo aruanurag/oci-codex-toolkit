@@ -87,6 +87,40 @@ output/account-research/<YYYY-MM-DD>/
 
 For a single account, the same per-account folder is enough; add root index DOCX/PDF only if useful.
 
+For account-list research, the per-account directories are mandatory. A consolidated
+all-account brief, rollup, or index may be added at the root for convenience, but it
+must not replace the `<account-slug>/` folders or the per-account DOCX/PDF outputs.
+If time or source access limits require a reduced deliverable, still create one
+folder per account with at least `account-research-pack.docx`,
+`account-research-pack.pdf`, `00-source-log.docx`, and `00-source-log.pdf`, and
+record any omitted sections inside the pack.
+
+When a spreadsheet contains duplicate or near-duplicate account names, preserve the
+row-level account context instead of merging them silently. Disambiguate the folder
+name with the source row number or another stable identifier, such as
+`006-bentley-systems-inc/` and `007-bentley-systems-inc/`.
+
+Depth parity gate: per-account files must contain substantive research, not thin
+shells around a single Sales Navigator snippet. Before delivery, compare a sample
+account pack against the required research fields below and any prior user-approved
+example pack. Each `01-comprehensive-profile` and `account-research-pack` should
+include, when available or explicitly marked not found: executive snapshot,
+business/products, industries/customers, competitors, growth/financial health,
+leadership/buying centers, stakeholder profiles, technical/employee signals,
+cloud-provider inference, tech-stack posture, cloud-spend estimate, workload
+finder, OCI pursuit hypotheses, scorecard, contract/timing levers, discovery plan,
+executive summary, and source log. If those sections cannot be researched yet,
+label the pack as a draft and do not present it as the final comprehensive package.
+
+When the user asks for another review, a missing-insights check, or a more detailed
+pass after an initial account-list package, perform a second-pass insight audit
+instead of only reformatting the same material. Refresh the approved Sales
+Navigator account context when available, review public company/news/investor/job
+or official pages for each account, filter noisy or wrong-entity matches, and add
+a `Second-Pass Insight Review` section to each comprehensive profile and account
+pack with refreshed Sales Navigator signals, public-source signals, source rows
+checked, and remaining validation gaps.
+
 ## Output File Rule
 
 Final research output files must be `.docx` or `.pdf`.
