@@ -16,66 +16,14 @@ It bundles local skills for:
 
 The repo is intentionally simple at the top level. Most logic, assets, references, and scripts live in `.agents/skills/`, and generated artifacts land in `output/`.
 
-## Installation
+## Setup
 
-### Use In This Repo
+For Codex prerequisites, browser access, and installation options, see
+[Prerequisites And Installation](docs/prerequisites-installation.md). That guide
+includes both options:
 
-This repository already uses the local-skill layout Codex expects:
-
-- local skills live in `.agents/skills/`
-- they are available inside this workspace
-- this is the best mode when the skills are under active development
-
-Nothing extra is required for local use in this repo.
-
-### Install In Another Repo
-
-To use this toolkit inside a different repository, copy the local skills folder into that repo:
-
-```bash
-REPO_ROOT=/path/to/OCiArchitecture-CodexSkill
-mkdir -p /path/to/other-repo/.agents
-cp -R "$REPO_ROOT/.agents/skills" /path/to/other-repo/.agents/
-```
-
-That installs the OCI skills only for that repository.
-
-### Install Globally
-
-To make the skills available across repositories, copy the skill suite into the Codex global skills directory:
-
-```bash
-REPO_ROOT=/path/to/OCiArchitecture-CodexSkill
-mkdir -p ~/.codex/skills
-cp -R "$REPO_ROOT/.agents/skills/." ~/.codex/skills/
-```
-
-Global notes:
-
-- The typical global location is `~/.codex/skills/`.
-- Keep the directory names exactly the same.
-- Copy the full suite together, because several skills cross-reference one another.
-- Copy `shared/` along with the OCI skills, because review scripts import shared helpers by relative path.
-- If the skills do not appear immediately, start a new Codex session in the target workspace.
-
-### Copy Vs Symlink
-
-If you want the global install to track this repo while you continue editing the skills, symlink instead of copying:
-
-```bash
-REPO_ROOT=/path/to/OCiArchitecture-CodexSkill
-mkdir -p ~/.codex/skills
-ln -s "$REPO_ROOT/.agents/skills/oci-architecture-generator" ~/.codex/skills/oci-architecture-generator
-ln -s "$REPO_ROOT/.agents/skills/oci-architecture-powerpoint-generator" ~/.codex/skills/oci-architecture-powerpoint-generator
-ln -s "$REPO_ROOT/.agents/skills/oci-bom-generator" ~/.codex/skills/oci-bom-generator
-ln -s "$REPO_ROOT/.agents/skills/oci-diagram-patterns" ~/.codex/skills/oci-diagram-patterns
-ln -s "$REPO_ROOT/.agents/skills/oci-opportunity-coach" ~/.codex/skills/oci-opportunity-coach
-ln -s "$REPO_ROOT/.agents/skills/oci-ppt-design-director" ~/.codex/skills/oci-ppt-design-director
-ln -s "$REPO_ROOT/.agents/skills/oci-sales-decks" ~/.codex/skills/oci-sales-decks
-ln -s "$REPO_ROOT/.agents/skills/oci-technical-decks" ~/.codex/skills/oci-technical-decks
-ln -s "$REPO_ROOT/.agents/skills/xlsx" ~/.codex/skills/xlsx
-ln -s "$REPO_ROOT/.agents/skills/shared" ~/.codex/skills/shared
-```
+- clone the repo with `git clone`
+- download the repo ZIP from GitHub
 
 ## Repository Layout
 
@@ -93,6 +41,7 @@ ln -s "$REPO_ROOT/.agents/skills/shared" ~/.codex/skills/shared
 |       |-- oci-technical-decks/
 |       |-- shared/
 |       `-- xlsx/
+|-- docs/
 |-- output/
 `-- README.md
 ```
@@ -169,6 +118,30 @@ Prepares OCI reps and Sales Engineers for customer opportunities. It turns accou
 
 Sales Navigator usage is gated. The skill confirms before reading account or lead context, and separately confirms before clicking Account IQ `Generate insights`.
 
+For account-list research, the skill can score each account to help prioritize
+follow-up. Scores are calculated from the ranked scorecard in
+`.agents/skills/oci-opportunity-coach/references/account-research.md`. Review
+and adjust these weights before running research across a full account list.
+
+Default ranked scorecard:
+
+| Criterion | Weight |
+|---|---:|
+| Oracle relationship and license posture | 20 |
+| Workload portability | 25 |
+| OCI workload fit | 25 |
+| Cloud wallet size and growth | 10 |
+| Renewal/timing pressure | 10 |
+| Compliance/sovereign fit | 5 |
+| AI/HPC fit | 5 |
+
+The score is an OCI pursuit-fit score, not a guaranteed deal score. If your
+motion is not AI-led, keep `AI/HPC fit` low. If your motion is database,
+app modernization, VMware/OCVS, OKE, DR, observability, security, Oracle apps,
+integration, or cloud cost optimization, keep `OCI workload fit` high. If your
+accounts are regulated or data-residency sensitive, increase
+`Compliance/sovereign fit`.
+
 Sample prompts:
 
 ```text
@@ -177,6 +150,10 @@ Use the oci-opportunity-coach skill to prep me for a discovery call with this ac
 
 ```text
 Use the oci-opportunity-coach skill to turn these meeting notes into a deal hypothesis, stakeholder map, discovery plan, and SE handoff.
+```
+
+```text
+Before researching the full account list, show me the account scoring rubric and update it for my territory.
 ```
 
 ### `oci-sales-decks`
