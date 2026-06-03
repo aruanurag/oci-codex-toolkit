@@ -402,11 +402,18 @@ Score each account 0-100:
 | Criterion | Weight |
 |---|---:|
 | Oracle relationship and license posture | 20 |
-| Cloud wallet size and growth | 20 |
 | Workload portability | 25 |
-| AI/HPC fit | 15 |
+| OCI workload fit | 25 |
+| Cloud wallet size and growth | 10 |
 | Renewal/timing pressure | 10 |
-| Compliance/sovereign fit | 10 |
+| Compliance/sovereign fit | 5 |
+| AI/HPC fit | 5 |
+
+Use `OCI workload fit` as the broad primary workload signal for database,
+app modernization, VMware/OCVS, OKE/Kubernetes, storage, DR, observability,
+security, Oracle applications, integration, and cloud cost optimization. Treat
+`AI/HPC fit` as a bonus signal unless the user explicitly says the target motion
+is AI infrastructure, GPU, HPC, or model workload led.
 
 Output:
 
