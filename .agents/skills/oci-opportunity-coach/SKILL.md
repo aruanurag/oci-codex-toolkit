@@ -1,6 +1,6 @@
 ---
 name: oci-opportunity-coach
-description: Prepare OCI reps and sales engineers for customer opportunities by turning a single account, an Excel/CSV list of accounts, customer notes, CRM context, meeting transcripts, public research, key decision maker research, champion/persona target research, or user-approved Sales Navigator context into account research profiles, executive summaries, stakeholder profiles, champion maps, OCI pursuit hypotheses, stakeholder maps, outreach campaigns, discovery plans, mutual action plans, CRM summaries, and handoffs to OCI deck, diagram, BOM, or technical skills.
+description: Prepare OCI reps and sales engineers for customer opportunities by turning a single account, an Excel/CSV list of accounts, customer notes, CRM context, meeting transcripts, public research, key decision maker research, champion/persona target research, or user-approved Sales Navigator context into account research profiles, executive summaries, stakeholder profiles, champion maps, OCI pursuit hypotheses, account-tailored OCI buying-objection prep, stakeholder maps, outreach campaigns, discovery plans, mutual action plans, CRM summaries, and handoffs to OCI deck, diagram, BOM, or technical skills.
 ---
 
 # OCI Opportunity Coach
@@ -22,6 +22,7 @@ Use this skill for:
 - stakeholder maps and missing-role analysis
 - named stakeholder, key decision maker, and technical influencer research
 - non-executive champion and persona target discovery for product, engineering, platform, data, security, SRE, architecture, and operations campaigns
+- account-tailored customer objection prep for concerns against buying OCI
 - executive one-pagers and outreach campaign kits
 - mutual action plans
 - follow-up emails and CRM summaries
@@ -44,7 +45,7 @@ Do not use this skill as the final authoring workflow for PowerPoint decks, OCI 
 - Keep outputs practical for field use: concise, specific, and tied to a next customer action.
 - Treat CRM notes, meeting transcripts, Sales Navigator pages, and account data as sensitive customer context.
 - Do not leave Oracle contract, license, renewal, opportunity, account-owner, CRM-match, or internal relationship fields blank when they are visible in user-authorized internal, CRM, Oracle, or Sales Navigator surfaces. Capture every visible relevant field, label the source and as-of/access date, and use `not found in available sources` only when the field was actually checked and not visible.
-- For comprehensive account research, deliver final output files as DOCX and PDF only. Do not place Markdown, CSV, JSON, XLSX, raw browser captures, screenshots, or text exports in the delivered output folder unless the user explicitly requests those extra formats.
+- For comprehensive account research, deliver final output files as DOCX and PDF, plus the required `account-research.json` sidecar in each per-account folder and the root `account-research-visualizer.html` for account-list outputs. Do not place Markdown, CSV, XLSX, raw browser captures, screenshots, or text exports in the delivered output folder unless the user explicitly requests those extra formats.
 - Before reading or using Sales Navigator for a specific account, lead, list, or search, ask the user to confirm:
   `Do you want me to look at Sales Navigator for <account or objective> and use visible account or lead context to prepare this output?`
 - Before clicking Sales Navigator Account IQ `Generate insights`, ask a separate action-specific confirmation unless the user already explicitly requested generated insights for that same account and objective:
@@ -109,6 +110,7 @@ Do not use this skill as the final authoring workflow for PowerPoint decks, OCI 
    - stakeholder view
    - next best action
    - artifact handoff when appropriate
+   - for account-list file outputs, run `scripts/build_account_research_visualizer.py <output-root>` after every per-account `account-research.json` sidecar exists
 9. If a downstream artifact is needed, route to the sibling skill rather than drafting that artifact inside this skill.
 
 ## Opportunity Frame
@@ -137,7 +139,7 @@ Include:
 - `Next best action`: one concrete customer-facing move
 - `Artifact handoff`: which OCI skill should be used next, with a short brief
 
-For comprehensive account research, deliver the package described in [references/account-research.md](references/account-research.md): a full research profile, one-page executive summary, source log, scorecard, outreach kit, stakeholder profiles, and champion/persona target pack.
+For comprehensive account research, deliver the package described in [references/account-research.md](references/account-research.md): a full research profile, one-page executive summary, source log, scorecard, outreach kit, stakeholder profiles, champion/persona target pack, OCI buying-objection prep, the `account-research.json` app-import sidecar, and the account-list HTML visualizer when multiple accounts are researched.
 
 ## Sales Engineering Guardrails
 
@@ -148,6 +150,8 @@ For comprehensive account research, deliver the package described in [references
 - Avoid generic discovery checklists. Tailor questions to the account, role, workload, and stage.
 - Surface risks early: unclear champion, missing economic buyer, no compelling event, unvalidated workload fit, security blocker, pricing uncertainty, or weak migration path.
 - Keep competitor positioning tied to the customer's stated priorities.
+- Treat OCI buying-objection prep as Oracle internal field preparation: make likely customer concerns explicit, tailor them to account evidence, and pair each inferred concern with validation questions and proof to prepare.
+- Do not turn objection prep into discount guidance, concession strategy, or unsupported claims about private customer sentiment.
 
 ## Sibling Skill Routing
 

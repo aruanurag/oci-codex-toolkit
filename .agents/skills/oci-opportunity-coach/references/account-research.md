@@ -22,7 +22,7 @@ Recommended defaults when the user says to proceed without more detail:
 - Output root: `<cwd>/output/account-research/<YYYY-MM-DD>/`
 - Account folder name: `<account-slug>/`
 - Research all rows for lists of 10 or fewer accounts; for larger lists, process a 3-account pilot first and ask before scaling.
-- Create only DOCX and PDF deliverables in the final output folder. Do not deliver Markdown, CSV, JSON, XLSX, or raw data files unless the user explicitly asks for machine-readable exports.
+- Create DOCX/PDF deliverables, including `07-oci-buying-objection-prep.docx` and `.pdf`, the required `account-research.json` sidecar in each per-account folder, and `account-research-visualizer.html` at the research root for account-list outputs. Do not deliver Markdown, CSV, XLSX, or raw data files unless the user explicitly asks for additional machine-readable exports.
 - Capture all visible/user-authorized Oracle, CRM, contract, license, renewal, opportunity, owner, and relationship fields; mark a field `not found in available sources` only after checking the available source set.
 - Research named key decision makers, technical stakeholders, likely buying-committee members, and non-executive champion candidates when outreach is requested.
 - For account lists, default to 6-12 executive/stakeholder profiles plus 8-15 champion/persona targets per account unless the user provides named targets or asks for a deeper pass.
@@ -66,6 +66,7 @@ output/account-research/<YYYY-MM-DD>/
   account-research-index.pdf
   sources-master.docx
   sources-master.pdf
+  account-research-visualizer.html
   <account-slug>/
     00-source-log.docx
     00-source-log.pdf
@@ -81,8 +82,11 @@ output/account-research/<YYYY-MM-DD>/
     05-stakeholder-profiles.pdf
     06-champion-persona-targets.docx
     06-champion-persona-targets.pdf
+    07-oci-buying-objection-prep.docx
+    07-oci-buying-objection-prep.pdf
     account-research-pack.docx
     account-research-pack.pdf
+    account-research.json
 ```
 
 For a single account, the same per-account folder is enough; add root index DOCX/PDF only if useful.
@@ -109,8 +113,9 @@ business/products, industries/customers, competitors, growth/financial health,
 leadership/buying centers, stakeholder profiles, technical/employee signals,
 cloud-provider inference, tech-stack posture, cloud-spend estimate, workload
 finder, OCI pursuit hypotheses, scorecard, contract/timing levers, discovery plan,
-executive summary, and source log. If those sections cannot be researched yet,
-label the pack as a draft and do not present it as the final comprehensive package.
+executive summary, OCI buying-objection prep, and source log. If those sections
+cannot be researched yet, label the pack as a draft and do not present it as the
+final comprehensive package.
 
 When the user asks for another review, a missing-insights check, or a more detailed
 pass after an initial account-list package, perform a second-pass insight audit
@@ -123,12 +128,111 @@ checked, and remaining validation gaps.
 
 ## Output File Rule
 
-Final research output files must be `.docx` or `.pdf`.
+Final research output files must be `.docx` or `.pdf`, with two required exceptions: each per-account folder must include `account-research.json` for Meeting Memory import, and account-list research roots must include `account-research-visualizer.html`.
 
-- Do not save Markdown, CSV, JSON, TXT, XLSX, screenshots, raw browser captures, or raw Sales Navigator exports into the delivered output folder unless the user explicitly asks for those formats.
+- Do not save Markdown, CSV, TXT, XLSX, screenshots, raw browser captures, or raw Sales Navigator exports into the delivered output folder unless the user explicitly asks for those formats.
 - If structured working data is useful during execution, keep it transient or outside the final deliverable tree.
-- If the user asks for a spreadsheet or machine-readable export, ask whether to add it as an exception before creating non-DOCX/PDF files.
-- The source log, account index, scorecard, outreach kit, stakeholder profiles, champion/persona target pack, one-pager, and comprehensive profile should all be delivered as DOCX/PDF.
+- If the user asks for a spreadsheet or extra machine-readable export beyond `account-research.json` and `account-research-visualizer.html`, ask whether to add it as an exception before creating extra non-DOCX/PDF files.
+- The source log, account index, scorecard, outreach kit, stakeholder profiles, champion/persona target pack, OCI buying-objection prep, one-pager, and comprehensive profile should all be delivered as DOCX/PDF.
+
+## Meeting Memory JSON Sidecar
+
+Create `account-research.json` in every per-account folder. It is the machine-readable import contract for the Meeting Memory app and must contain only facts, estimates, assumptions, validation gaps, and not-found values already represented in the written research pack.
+
+Use these top-level fields:
+
+```json
+{
+  "skill_name": "oci-opportunity-coach",
+  "research_date": "YYYY-MM-DD",
+  "source_folder": "<account-folder-name>",
+  "account_name": "<legal or display account name>",
+  "account_slug": "<normalized account slug>",
+  "executive_snapshot": "",
+  "business_overview": {},
+  "leadership_buying_centers": [],
+  "stakeholders": [],
+  "technology_signals": [],
+  "tech_stack_cloud_posture": {},
+  "oci_pursuit_hypotheses": [],
+  "workload_finder": [],
+  "scorecard": {},
+  "oci_buying_objection_prep": {
+    "summary": "",
+    "top_objections": [],
+    "objection_inventory": [],
+    "discovery_questions": [],
+    "proof_to_prepare": [],
+    "stakeholders_to_engage": [],
+    "next_actions": [],
+    "source_notes": []
+  },
+  "recommended_next_move": "",
+  "validation_needed": [],
+  "source_log": [],
+  "artifacts": {
+    "source_log_docx": "00-source-log.docx",
+    "source_log_pdf": "00-source-log.pdf",
+    "comprehensive_profile_docx": "01-comprehensive-profile.docx",
+    "comprehensive_profile_pdf": "01-comprehensive-profile.pdf",
+    "executive_one_pager_docx": "02-executive-one-pager.docx",
+    "executive_one_pager_pdf": "02-executive-one-pager.pdf",
+    "scorecard_docx": "03-oci-pursuit-scorecard.docx",
+    "scorecard_pdf": "03-oci-pursuit-scorecard.pdf",
+    "outreach_kit_docx": "04-outreach-kit.docx",
+    "outreach_kit_pdf": "04-outreach-kit.pdf",
+    "stakeholder_profiles_docx": "05-stakeholder-profiles.docx",
+    "stakeholder_profiles_pdf": "05-stakeholder-profiles.pdf",
+    "champion_persona_targets_docx": "06-champion-persona-targets.docx",
+    "champion_persona_targets_pdf": "06-champion-persona-targets.pdf",
+    "oci_buying_objection_prep_docx": "07-oci-buying-objection-prep.docx",
+    "oci_buying_objection_prep_pdf": "07-oci-buying-objection-prep.pdf",
+    "research_pack_docx": "account-research-pack.docx",
+    "research_pack_pdf": "account-research-pack.pdf"
+  }
+}
+```
+
+The JSON may use strings, arrays, or objects for research sections, but it must remain valid JSON, preserve source-category labels, and avoid adding claims that are not in the DOCX/PDF package.
+
+Each `oci_buying_objection_prep.objection_inventory` object should use these fields:
+
+```json
+{
+  "objection": "",
+  "category": "",
+  "customer_language": "",
+  "account_specific_trigger": "",
+  "evidence_source": "",
+  "confidence": "",
+  "likely_speaker": "",
+  "impact": "",
+  "discovery_questions": [],
+  "response_strategy": "",
+  "proof_to_prepare": [],
+  "risk_if_unresolved": "",
+  "next_best_action": ""
+}
+```
+
+## Account Research HTML Visualizer
+
+For account-list research, create `account-research-visualizer.html` at the research root after every per-account `account-research.json` sidecar is present.
+
+Generate it with the bundled script:
+
+```bash
+python3 .agents/skills/oci-opportunity-coach/scripts/build_account_research_visualizer.py output/account-research/<YYYY-MM-DD>
+```
+
+The visualizer must:
+
+- be a self-contained static HTML file that opens directly from disk without a web server
+- embed the sidecar data instead of fetching local JSON files at runtime
+- show a searchable and sortable account list with score, disposition, top OCI wedge, buyer intent, and revenue/employee signal when available
+- open a detail view for the selected account with tabs for overview, business, leadership, stakeholders, technology, OCI motion, objections, scorecard, sources, and files
+- include a files tab with relative links to the DOCX/PDF artifacts and PDF previews when the browser can render them
+- preserve source labels and validation gaps from the sidecars, and avoid adding research claims not already represented in the written package or `account-research.json`
 
 ## Research Sources
 
@@ -173,6 +277,7 @@ Every comprehensive account profile should include:
 - Current cloud and infrastructure posture: AWS, Azure, GCP, OCI, private cloud, colo, data centers, edge, SaaS platform dependencies, deeper GTM/product partnerships, and cloud-provider inference from jobs/employee skills.
 - Tech stack signals: AI strategy, VMware, Oracle apps/licenses, Oracle Database, Microsoft SQL Server, mainframe, storage platforms, DR posture, security/compliance drivers.
 - Contract and renewal timing: public, Sales Navigator, CRM/internal, user-provided, or inferred renewal cliffs for cloud commits, Oracle contracts/licenses, VMware ELAs, database support, colo leases, storage refreshes, and hardware EOLs. If a date or field is not visible, write `not found in available sources` or `needs user-authorized internal source`.
+- OCI buying-objection prep: account-specific concerns the customer may raise against buying OCI products, why each concern is plausible, discovery questions, response strategy, proof to prepare, likely speaker, risk if unresolved, and next best action.
 - 10-K/annual report and financial-report findings: strategic priorities, risk factors, capex/opex, cloud/software spend language, AI/data/security mentions, supply chain or operational pressure.
 - Employee-authored technical content: blogs, Substacks, conference talks, GitHub, patents, or papers that reveal architectural direction.
 
@@ -395,6 +500,61 @@ For each motion, include:
 - proof artifact needed
 - evidence and assumptions
 
+## OCI Buying-Objection Prep
+
+Create `07-oci-buying-objection-prep.docx` and `.pdf` for every comprehensive account package. This is Oracle internal field preparation, not customer-facing copy. The goal is to anticipate the customer concerns that could block OCI, test whether they are real, and prepare the proof the rep and SE need.
+
+For existing account-list packages whose sidecars already exist, add objection prep from the captured research before rebuilding the visualizer:
+
+```bash
+python3 .agents/skills/oci-opportunity-coach/scripts/enrich_account_objections.py output/account-research/<YYYY-MM-DD>
+python3 .agents/skills/oci-opportunity-coach/scripts/build_account_research_visualizer.py output/account-research/<YYYY-MM-DD>
+```
+
+Evaluate the full objection library for each account, then include only objections that are materially plausible for that account:
+
+| Category | Common customer language |
+|---|---|
+| Cloud standardization | We are already committed to AWS, Azure, or GCP; we do not want another cloud; our platform tooling is standardized elsewhere. |
+| Developer preference and skills | Our engineers know the incumbent cloud; OCI talent is harder to hire; developer experience may slow us down. |
+| Migration risk | Downtime, data gravity, cutover complexity, refactoring, rollback risk, operational disruption, or unclear migration factory. |
+| Application fit | Application dependencies, latency, SaaS/platform coupling, Kubernetes portability, middleware, or integration complexity. |
+| Database and licensing concerns | Oracle licensing complexity, audit fear, lock-in perception, database stability, or reluctance to move mission-critical systems. |
+| Commercial and business case | Unclear TCO, discount comparison, support cost, egress/networking cost, migration funding, cloud commit conflicts, or budget timing. |
+| Procurement and vendor strategy | OCI used as a price benchmark, incumbent leverage, multi-vendor policy, procurement skepticism, or contract-term concern. |
+| Security, compliance, and sovereignty | Regulatory controls, data residency, key management, identity integration, audit evidence, FedRAMP/industry controls, or region availability. |
+| Operational maturity and support | Support quality, incident response, observability, managed-service maturity, DR operations, escalation path, or SRE runbooks. |
+| Ecosystem and marketplace | Partner availability, ISV integrations, managed services partners, marketplace depth, or consulting capacity. |
+| Architecture and performance proof | Benchmark skepticism, network/storage/database latency, GPU/HPC proof, resilience claims, or reference architecture gaps. |
+| Strategic trust and brand perception | Oracle is only for databases; Oracle is hard to work with; lock-in concerns; executive trust gaps. |
+| Incumbent relationship risk | Existing AWS/Azure/GCP commit, strategic partnership, board or executive alignment, or strong incumbent account team. |
+| Industry-specific risk | Healthcare, financial services, government, retail, manufacturing, telecom, media, SaaS, or regulated-industry concerns. |
+| Internal change management | Missing champion, weak economic buyer, platform-team resistance, unclear owner, or workload owner not engaged. |
+
+Tailoring rules:
+
+- Produce a prioritized list of account-specific objections, not a generic checklist.
+- Tie every objection to at least one account signal: public source, Sales Navigator context, CRM/internal context, job posting, tech-stack clue, leadership priority, industry pattern, financial pressure, or explicit validation gap.
+- Label inferred objections as `inferred` and include the discovery question needed to confirm or disprove them.
+- Include the likely speaker or owner when possible: CIO, CTO, CISO, CFO, procurement, platform team, app owner, database team, security, compliance, developer leader, or economic buyer.
+- Default to 8-15 tailored objections per account when evidence supports it. Use fewer only when the research is thin, and state the source gap that limited confidence.
+- Do not fabricate private pricing, discount thresholds, contract terms, renewal dates, support history, stakeholder sentiment, or competitor details.
+
+Each objection prep file should include:
+
+- Executive Objection Summary: top 3-5 objections most likely to affect the deal.
+- Prioritized Objection Table: objection, category, likely speaker, account-specific trigger, confidence, impact, and stage risk.
+- Customer Language: how the customer might phrase the concern in a meeting.
+- Why They Might Believe It: evidence, assumptions, or validation gaps.
+- Discovery Questions: targeted questions to test whether the objection is real.
+- OCI Response Strategy: concise guidance for the rep and SE, grounded in the account context.
+- Proof To Prepare: architecture, benchmark, TCO model, migration plan, security mapping, customer reference, support plan, workshop, or BOM.
+- Stakeholders To Engage: who should be pulled into the next conversation.
+- Risk If Unresolved: how the objection could slow, shrink, or kill the opportunity.
+- Next Best Action: one concrete step for the account team.
+
+Objection prep should sharpen the next customer conversation; it should not become a list of generic OCI advantages or a concession plan.
+
 ## Ranked Scorecard
 
 Score each account 0-100:
@@ -458,7 +618,8 @@ For each account, deliver in this order:
 4. `04-outreach-kit.docx` and `.pdf`
 5. `05-stakeholder-profiles.docx` and `.pdf`
 6. `06-champion-persona-targets.docx` and `.pdf`
-7. `00-source-log.docx` and `.pdf`
+7. `07-oci-buying-objection-prep.docx` and `.pdf`
+8. `00-source-log.docx` and `.pdf`
 
 End the profile or root index with a six-bullet executive summary per account.
 
@@ -468,5 +629,6 @@ End the profile or root index with a six-bullet executive summary per account.
 - Cite or log sources for the five most important claims per account at minimum.
 - Prefer fewer, stronger hypotheses over generic cloud sales language.
 - For outreach packages, state how many open jobs, individual employee profiles, Sales Navigator lead profiles, and technical posts/docs were inspected. Never imply a deep people/job pass was done if only account-level pages were reviewed.
+- For OCI buying-objection prep, include only objections that are plausible for the account, label inferred concerns, and pair each with validation questions and proof to prepare.
 - Do not fill Oracle internal fields from public guesses; fill them from authorized visible sources or mark them `not found in available sources` / `needs user-authorized internal source`.
 - If evidence is thin, state the gap and convert it into a discovery question.
