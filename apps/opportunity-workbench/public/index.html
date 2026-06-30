@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opportunity Coach Workbench</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app" id="appShell">
+    <aside class="sidebar">
+      <header class="brand">
+        <div>
+          <h1>Opportunity Workbench</h1>
+          <p id="rootLabel">No account owner selected</p>
+        </div>
+        <button id="hideSidebarButton" class="sidebar-toggle" type="button" title="Hide left pane">Hide</button>
+      </header>
+
+      <section class="rep-picker">
+        <label for="repSelect">Account Owner</label>
+        <select id="repSelect"></select>
+        <button id="newRepButton" type="button">Add Owner</button>
+      </section>
+
+      <details id="ownerSettings" class="owner-settings">
+        <summary>Owner Settings</summary>
+        <form class="rep-form" id="repForm">
+          <label for="repNameInput">Owner Name</label>
+          <input id="repNameInput" name="repName" type="text" autocomplete="off" placeholder="Name">
+          <label for="rootInput">Research Folder</label>
+          <div class="folder-row">
+            <input id="rootInput" name="root" type="text" autocomplete="off" placeholder="/path/to/package">
+            <button id="browseFolderButton" type="button">Browse</button>
+          </div>
+          <button class="primary" type="submit">Save Owner</button>
+        </form>
+      </details>
+
+      <section class="stats" aria-label="Workspace stats">
+        <div><strong id="statAccounts">0</strong><span>Accounts</span></div>
+        <div><strong id="statOpen">0</strong><span>Open</span></div>
+        <div><strong id="statDue">0</strong><span>Due</span></div>
+      </section>
+
+      <div class="filters">
+        <input id="searchInput" type="search" placeholder="Search accounts and research">
+        <select id="dispositionFilter">
+          <option value="">All dispositions</option>
+          <option value="go">Go</option>
+          <option value="watch">Watch</option>
+          <option value="hold">Hold</option>
+        </select>
+        <select id="taskFilter">
+          <option value="">All task states</option>
+          <option value="open">Has open tasks</option>
+          <option value="overdue">Has overdue reminders</option>
+          <option value="done">All tasks done</option>
+        </select>
+      </div>
+
+      <nav id="accountList" class="account-list" aria-label="Accounts"></nav>
+    </aside>
+
+    <main class="main">
+      <button id="showSidebarButton" class="show-sidebar hidden" type="button">Show Accounts</button>
+      <section id="emptyState" class="empty-state">
+        <h2>Select Or Add An Account Owner</h2>
+        <p>Add an account owner and their Opportunity Coach research folder. The app will discover account folders with <code>account-research.json</code> and keep notes/tasks inside each account folder.</p>
+      </section>
+
+      <section id="detailView" class="detail hidden">
+        <header class="detail-head">
+          <div>
+            <h2 id="accountTitle"></h2>
+            <p id="accountMeta"></p>
+          </div>
+          <div class="head-actions">
+            <span id="accountBadge" class="badge"></span>
+            <button id="bootstrapButton" type="button">Clear Todo Tasks</button>
+          </div>
+        </header>
+
+        <section class="summary-grid">
+          <article><span>Score</span><strong id="summaryScore"></strong></article>
+          <article><span>Top Wedge</span><strong id="summaryWedge"></strong></article>
+          <article><span>Intent</span><strong id="summaryIntent"></strong></article>
+          <article><span>Next Reminder</span><strong id="summaryReminder"></strong></article>
+        </section>
+
+        <nav id="tabs" class="tabs" aria-label="Account sections"></nav>
+        <section id="panel" class="panel"></section>
+      </section>
+    </main>
+  </div>
+
+  <template id="taskTemplate">
+    <article class="task-row">
+      <div class="task-topline">
+        <label class="check-label">
+          <input class="task-done" type="checkbox">
+          <input class="task-title" type="text" aria-label="Task title">
+        </label>
+        <button class="task-delete" type="button">Delete</button>
+      </div>
+      <div class="task-fields">
+        <label>Category
+          <select class="task-category">
+            <option value="todo">Todo</option>
+            <option value="outreach">Outreach</option>
+            <option value="discovery">Discovery</option>
+            <option value="internal">Internal</option>
+            <option value="email">Email</option>
+            <option value="follow-up">Follow-up</option>
+          </select>
+        </label>
+        <label>Due date
+          <input class="task-due" type="datetime-local" aria-label="Due date">
+        </label>
+        <label>Reminder date
+          <input class="task-remind" type="datetime-local" aria-label="Reminder date">
+        </label>
+      </div>
+      <div class="email-fields hidden">
+        <input class="task-recipient" type="text" placeholder="Recipient name or email">
+        <input class="task-subject" type="text" placeholder="Email subject">
+        <textarea class="task-message" rows="7" placeholder="Exact email message to send"></textarea>
+      </div>
+      <textarea class="task-notes" rows="2" placeholder="Task notes"></textarea>
+    </article>
+  </template>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

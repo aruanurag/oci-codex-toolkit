@@ -1,0 +1,4 @@
+interface:
+  display_name: "Account Activity Refresh"
+  short_description: "Refresh account notes from Outlook activity"
+  default_prompt: "Use $account-activity-refresh to refresh this week's Outlook and Zoom meeting notes into my account workbench notes."

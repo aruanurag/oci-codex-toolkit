@@ -339,6 +339,7 @@ def render_html(payload: dict[str, Any]) -> str:
       ['oci', 'OCI Motion'],
       ['objections', 'Objections'],
       ['scorecard', 'Scorecard'],
+      ['todo', 'Todo'],
       ['sources', 'Sources'],
       ['files', 'Files']
     ];
@@ -446,6 +447,7 @@ def render_html(payload: dict[str, Any]) -> str:
       if (selectedTab === 'oci') return renderOci(account);
       if (selectedTab === 'objections') return renderObjections(account);
       if (selectedTab === 'scorecard') return renderScorecard(account);
+      if (selectedTab === 'todo') return renderTodo(account);
       if (selectedTab === 'sources') return renderArraySection('Source Log', account.source_log);
       if (selectedTab === 'files') return renderFiles(account);
       return '';
@@ -508,6 +510,35 @@ def render_html(payload: dict[str, Any]) -> str:
       </div>
       <div class="block objection-panel"><h3>Prioritized Objection Inventory</h3>${{renderObjectionCards(cardItems)}}</div>
       <div class="block objection-panel"><h3>Source Notes</h3>${{renderListItems(prep.source_notes)}}</div>`;
+    }}
+
+    function renderTodo(account) {{
+      const prep = account.oci_buying_objection_prep || {{}};
+      const todoItems = []
+        .concat(Array.isArray(account.todo) ? account.todo : [])
+        .concat(account.recommended_next_move ? [account.recommended_next_move] : [])
+        .concat(Array.isArray(prep.next_actions) ? prep.next_actions : []);
+      const unique = [];
+      const seen = new Set();
+      todoItems.forEach(item => {{
+        const text = typeof item === 'object' ? JSON.stringify(item, null, 2) : String(item || '').trim();
+        const key = text.toLowerCase();
+        if (text && !seen.has(key)) {{
+          seen.add(key);
+          unique.push(text);
+        }}
+      }});
+      return `<div class="section-grid">
+        <div class="block"><h3>Start Here</h3>${{renderChecklist(unique)}}</div>
+        <div class="block"><h3>Outreach Focus</h3>${{renderListItems(account.outreach_todo || [])}}</div>
+        <div class="block"><h3>Discovery Prep</h3>${{renderListItems(account.discovery_todo || [])}}</div>
+        <div class="block"><h3>Internal Follow-Up</h3>${{renderListItems(account.internal_todo || [])}}</div>
+      </div>`;
+    }}
+
+    function renderChecklist(items) {{
+      if (!Array.isArray(items) || !items.length) return '<div class="muted">No todo items found in sidecar.</div>';
+      return `<ul>${{items.map(item => `<li class="prose"><input type="checkbox"> ${{esc(item)}}</li>`).join('')}}</ul>`;
     }}
 
     function renderObjectionCards(items) {{
