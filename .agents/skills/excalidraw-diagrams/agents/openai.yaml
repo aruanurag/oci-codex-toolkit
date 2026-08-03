@@ -1,0 +1,4 @@
+interface:
+  display_name: "Excalidraw Diagrams"
+  short_description: "Build editable Excalidraw diagrams locally"
+  default_prompt: "Use $excalidraw-diagrams to create an editable Excalidraw diagram with a local SVG preview."

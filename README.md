@@ -6,6 +6,7 @@ It bundles local skills for:
 
 - OCI opportunity coaching, account prep, and Sales Navigator-gated discovery
 - OCI physical architecture diagrams in `.drawio`
+- editable Excalidraw diagrams with local SVG previews and optional in-chat iteration
 - OCI architecture slides in `.pptx`
 - OCI presales and executive decks
 - OCI instructor-led technical decks
@@ -31,6 +32,7 @@ includes both options:
 .
 |-- .agents/
 |   `-- skills/
+|       |-- excalidraw-diagrams/
 |       |-- oci-architecture-generator/
 |       |-- oci-architecture-powerpoint-generator/
 |       |-- oci-bom-generator/
@@ -51,6 +53,7 @@ includes both options:
 | Skill | Primary Job | Main Output | Best Used When |
 | --- | --- | --- | --- |
 | `oci-architecture-generator` | OCI architecture generation for draw.io | `.drawio`, `.json`, review reports, previews | You want an editable OCI architecture diagram |
+| `excalidraw-diagrams` | editable hand-drawn diagrams with review gates | `.excalidraw`, local SVG preview | You want an editable architecture, process, workshop, or whiteboard diagram |
 | `oci-architecture-powerpoint-generator` | OCI architecture generation for PowerPoint | `.pptx`, `.json`, review reports, previews | You want an OCI architecture slide in PowerPoint |
 | `oci-bom-generator` | OCI BOM and price-estimate generation | `.xlsx`, `.md`, `.csv`, `.json` | You want a confirmed-assumption OCI BOM or cost workbook |
 | `oci-opportunity-coach` | OCI opportunity strategy and discovery prep | account brief, discovery plan, stakeholder map, handoff | You want to prep a rep or SE before creating artifacts |
@@ -75,6 +78,28 @@ Use the oci-architecture-generator skill to create a physical OCI architecture f
 
 ```text
 Use the oci-architecture-generator skill to recreate this Oracle reference architecture as an editable draw.io file, then review the routing and icon mapping before delivery.
+```
+
+### `excalidraw-diagrams`
+
+Creates editable `.excalidraw` diagrams and local SVG previews for architecture flows, process maps, workshop whiteboards, and stakeholder maps. It validates scene structure and runs a layout review for crowding, collisions, arrow routing, and readability before delivery.
+
+It can partner with the upstream [Excalidraw MCP](https://github.com/excalidraw/excalidraw-mcp) when that MCP integration is configured and available in the client. The MCP renders an interactive hand-drawn diagram in chat, supports streamed visual iteration, and can open the canvas for editing. The local skill remains the durable artifact and QA path: it produces the portable `.excalidraw` file and its local SVG preview.
+
+Use the two together as follows:
+
+- Use the MCP for collaborative, in-chat sketching and incremental feedback.
+- Use `excalidraw-diagrams` to persist the final local scene, generate a preview, and complete the review gate.
+- If no MCP is configured, the skill still works entirely locally.
+
+Sample prompts:
+
+```text
+Use the excalidraw-diagrams skill to create an editable left-to-right OCI web application flow and a local SVG preview.
+```
+
+```text
+Use excalidraw-diagrams with the available excalidraw-local MCP to sketch an OCI architecture in chat, then create and validate a local .excalidraw handoff file.
 ```
 
 ### `oci-architecture-powerpoint-generator`
@@ -241,6 +266,7 @@ Use the OCI skill suite normally; keep shared installed because architecture and
 Use the skills as a small OCI content system rather than isolated tools:
 
 - `oci-architecture-generator` creates editable draw.io architecture source.
+- `excalidraw-diagrams` creates editable local whiteboard-style diagrams and can use an available Excalidraw MCP for interactive iteration.
 - `oci-architecture-powerpoint-generator` creates OCI-native architecture slides.
 - `oci-bom-generator` creates confirmed-assumption Excel BOMs and cost-estimate support files.
 - `oci-opportunity-coach` shapes the account strategy, discovery plan, and artifact handoff before downstream content is created.
@@ -257,6 +283,7 @@ Typical combinations:
 - Technical deck: `oci-technical-decks` + `oci-ppt-design-director` + optional `oci-diagram-patterns`
 - Architecture-only slide: `oci-architecture-powerpoint-generator` + `oci-ppt-design-director`
 - Editable source diagram: `oci-architecture-generator`
+- Interactive whiteboard diagram: `excalidraw-diagrams` + optional Excalidraw MCP
 - Customer BOM: `oci-bom-generator` + `xlsx`
 - Architecture package: `oci-architecture-generator` or `oci-architecture-powerpoint-generator` + `oci-bom-generator`
 
@@ -266,6 +293,10 @@ In Codex, name the skill directly in the prompt:
 
 ```text
 Use the oci-architecture-generator skill to create a multi-AD OCI web application diagram.
+```
+
+```text
+Use the excalidraw-diagrams skill to create an editable OCI network and high-availability diagram with a local SVG preview.
 ```
 
 ```text
@@ -289,6 +320,7 @@ Use the oci-technical-decks skill to create a technical deck on OCI observabilit
 Generated files land in `output/`. Depending on the workflow, a run may produce:
 
 - `.drawio` diagrams
+- `.excalidraw` diagrams and local SVG previews
 - `.pptx` presentations
 - `.xlsx` BOMs and workbooks
 - `.md` summaries
@@ -305,6 +337,7 @@ Example artifact categories:
 - customer or executive OCI decks
 - instructor-led OCI technical decks
 - editable OCI architecture diagrams
+- editable Excalidraw architecture and whiteboard diagrams
 - PowerPoint-native architecture slides
 - Excel BOM workbooks
 
@@ -317,6 +350,7 @@ These skills are built for iterative, review-driven output rather than one-pass 
 - confirm before reading Sales Navigator context or generating Account IQ insights
 - prefer official OCI icons and honest fallbacks
 - keep connector routing simple and avoid unnecessary elbows
+- prefer horizontal or vertical diagram connectors; use diagonals only when they improve the overall structure
 - prevent overlaps, clipped text, cramped text, and elements crossing container boundaries
 - keep presenter guidance in notes instead of leaking it onto slides
 - validate Excel workbooks before delivery
